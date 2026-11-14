@@ -1,11 +1,131 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld min" : {
+      "comment" : "Duration in minutes"
+    },
+    "%lld more %@ issues not listed" : {
+      "comment" : "Validation summary; first argument is a count, second a technical issue code",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld more %2$@ issues not listed"
+          }
+        }
+      }
+    },
+    "Basal rate %@ U/h exceeds %@ U/h" : {
+      "comment" : "Validation warning; arguments are insulin units per hour",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Basal rate %1$@ U/h exceeds %2$@ U/h"
+          }
+        }
+      }
+    },
+    "Basal records cover %@ of the interval; basal totals undercount unless a basal schedule is provided" : {
+      "comment" : "Validation warning; the argument is a percentage"
+    },
+    "Basal records overlap by %@" : {
+      "comment" : "Validation warning; the argument is a duration"
+    },
+    "Bolus of %@ U exceeds %@ U" : {
+      "comment" : "Validation warning; arguments are insulin units",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bolus of %1$@ U exceeds %2$@ U"
+          }
+        }
+      }
+    },
+    "CGM coverage is %@ (minimum %@)" : {
+      "comment" : "Validation warning; arguments are percentages",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "CGM coverage is %1$@ (minimum %2$@)"
+          }
+        }
+      }
+    },
+    "Carb entry of %@ g exceeds %@ g" : {
+      "comment" : "Validation warning; arguments are grams of carbohydrate",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Carb entry of %1$@ g exceeds %2$@ g"
+          }
+        }
+      }
+    },
+    "Dose ends before it starts" : {
+      "comment" : "Validation error"
+    },
+    "Duplicate bolus of %@ U" : {
+      "comment" : "Validation warning; the argument is insulin units"
+    },
+    "Duplicate carb entry of %@ g" : {
+      "comment" : "Validation warning; the argument is grams of carbohydrate"
+    },
+    "Duplicate glucose reading" : {
+      "comment" : "Validation warning"
+    },
+    "Glucose %@ mg/dL is outside the plausible range" : {
+      "comment" : "Validation error; the argument is a glucose value"
+    },
+    "Glucose changed %@ mg/dL/min" : {
+      "comment" : "Validation warning about a very fast glucose change"
+    },
+    "Median sensor glucose is below 30; values look like mmol/L delivered as mg/dL" : {
+      "comment" : "Validation error: the data source sent mmol/L values where mg/dL were expected"
+    },
     "Merged sources" : {
       "comment" : "Data source name when several sources are combined"
     },
+    "Negative carb entry %@ g" : {
+      "comment" : "Validation error; the argument is grams of carbohydrate"
+    },
+    "Negative insulin amount %@ U" : {
+      "comment" : "Validation error; the argument is insulin units"
+    },
+    "No insulin records in the interval" : {
+      "comment" : "Validation warning"
+    },
+    "No sensor data for the first %@" : {
+      "comment" : "Validation note; the argument is a duration at the start of the report"
+    },
+    "No sensor data for the last %@" : {
+      "comment" : "Validation note; the argument is a duration at the end of the report"
+    },
+    "No sensor glucose in the interval" : {
+      "comment" : "Validation warning"
+    },
     "Other" : {
       "comment" : "Data source name for an unknown app"
+    },
+    "Record is dated in the future (clock or time-zone problem)" : {
+      "comment" : "Validation error"
+    },
+    "Report covers %@ days; GMI and time-in-range targets assume at least %@ days" : {
+      "comment" : "Validation note; arguments are numbers of days",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Report covers %1$@ days; GMI and time-in-range targets assume at least %2$@ days"
+          }
+        }
+      }
+    },
+    "Sensor gap of %@" : {
+      "comment" : "Validation note; the argument is a duration"
     },
     "Synthetic data" : {
       "comment" : "Data source name for generated test data"
