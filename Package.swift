@@ -15,6 +15,8 @@ let package = Package(
         .library(name: "AIDReportKit", targets: ["AIDReportKit"]),
         // Nightscout entries/treatments/profile parsing and an HTTP data source.
         .library(name: "AIDReportNightscout", targets: ["AIDReportNightscout"]),
+        // Apple Health (HealthKit) data source.
+        .library(name: "AIDReportHealthKit", targets: ["AIDReportHealthKit"]),
         // Synthetic data, in-memory sources and adapter conformance checks for host test targets.
         .library(name: "AIDReportTesting", targets: ["AIDReportTesting"]),
     ],
@@ -22,6 +24,7 @@ let package = Package(
         // User-facing strings live in each target's Resources/Localizable.xcstrings.
         .target(name: "AIDReportKit", resources: [.process("Resources")]),
         .target(name: "AIDReportNightscout", dependencies: ["AIDReportKit"], resources: [.process("Resources")]),
+        .target(name: "AIDReportHealthKit", dependencies: ["AIDReportKit"]),
         .target(name: "AIDReportTesting", dependencies: ["AIDReportKit"]),
         .testTarget(
             name: "AIDReportKitTests",
@@ -31,6 +34,10 @@ let package = Package(
             name: "AIDReportNightscoutTests",
             dependencies: ["AIDReportNightscout", "AIDReportTesting"],
             resources: [.copy("Fixtures")]
+        ),
+        .testTarget(
+            name: "AIDReportHealthKitTests",
+            dependencies: ["AIDReportHealthKit"]
         ),
     ]
 )
