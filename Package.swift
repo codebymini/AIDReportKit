@@ -17,5 +17,9 @@ let package = Package(
     targets: [
         // User-facing strings live in each target's Resources/Localizable.xcstrings.
         .target(name: "AIDReportKit", resources: [.process("Resources")]),
+        .testTarget(
+            name: "AIDReportKitTests",
+            dependencies: ["AIDReportKit"]
+        ),
     ]
 )
