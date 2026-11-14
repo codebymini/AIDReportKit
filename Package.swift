@@ -13,13 +13,16 @@ let package = Package(
         // Models, statistics, validation, report definitions/presets and text renderers.
         // No LoopKit, CoreData or UIKit dependencies.
         .library(name: "AIDReportKit", targets: ["AIDReportKit"]),
+        // Synthetic data, in-memory sources and adapter conformance checks for host test targets.
+        .library(name: "AIDReportTesting", targets: ["AIDReportTesting"]),
     ],
     targets: [
         // User-facing strings live in each target's Resources/Localizable.xcstrings.
         .target(name: "AIDReportKit", resources: [.process("Resources")]),
+        .target(name: "AIDReportTesting", dependencies: ["AIDReportKit"]),
         .testTarget(
             name: "AIDReportKitTests",
-            dependencies: ["AIDReportKit"]
+            dependencies: ["AIDReportKit", "AIDReportTesting"]
         ),
     ]
 )
