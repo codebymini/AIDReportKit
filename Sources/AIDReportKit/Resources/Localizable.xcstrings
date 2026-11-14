@@ -134,6 +134,9 @@
     "Duplicate glucose reading" : {
       "comment" : "Validation warning"
     },
+    "Fri" : {
+      "comment" : "Short weekday name: Friday"
+    },
     "Glucose" : {
       "comment" : "Report category heading"
     },
@@ -175,6 +178,9 @@
     },
     "Merged sources" : {
       "comment" : "Data source name when several sources are combined"
+    },
+    "Mon" : {
+      "comment" : "Short weekday name: Monday"
     },
     "Negative carb entry %@ g" : {
       "comment" : "Validation error; the argument is grams of carbohydrate"
@@ -223,14 +229,23 @@
         }
       }
     },
+    "Sat" : {
+      "comment" : "Short weekday name: Saturday"
+    },
     "Sensor gap of %@" : {
       "comment" : "Validation note; the argument is a duration"
     },
     "Summary" : {
       "comment" : "Report category heading: overview and data quality pages"
     },
+    "Sun" : {
+      "comment" : "Short weekday name: Sunday"
+    },
     "Synthetic data" : {
       "comment" : "Data source name for generated test data"
+    },
+    "Thu" : {
+      "comment" : "Short weekday name: Thursday"
     },
     "Total Daily Dose" : {
       "comment" : "Report section: insulin per day"
@@ -238,11 +253,17 @@
     "Total Meals" : {
       "comment" : "Export menu chart name: carbs, fat and protein per day"
     },
+    "Tue" : {
+      "comment" : "Short weekday name: Tuesday"
+    },
     "Version" : {
       "comment" : "Report header label for the app version"
     },
     "W" : {
       "comment" : "Short range name: one week"
+    },
+    "Wed" : {
+      "comment" : "Short weekday name: Wednesday"
     }
   },
   "version" : "1.0"
