@@ -1,0 +1,308 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ (zone %@)" : {
+      "comment" : "GRI score followed by its zone letter A–E",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (zone %2$@)"
+          }
+        }
+      }
+    },
+    "%@ — Statistics Report" : {
+      "comment" : "PDF page title; the argument is the app name"
+    },
+    "%lld errors, %lld warnings" : {
+      "comment" : "Counts of validation errors and warnings",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld errors, %2$lld warnings"
+          }
+        }
+      }
+    },
+    "25–75%" : {
+      "comment" : "Chart series: 25th to 75th percentile band"
+    },
+    "5–95%" : {
+      "comment" : "Chart series: 5th to 95th percentile band"
+    },
+    "Automatic" : {
+      "comment" : "Bolus type / chart series: SMB / automatic bolus"
+    },
+    "Automatic bolus per day" : {
+      "comment" : "Statistic label: average SMB / automatic bolus units per day"
+    },
+    "Automatic boluses per day" : {
+      "comment" : "Statistic label: average number of automatic boluses per day"
+    },
+    "Average carbs per day" : {
+      "comment" : "Statistic label"
+    },
+    "Average daily dose" : {
+      "comment" : "Statistic label: total daily insulin"
+    },
+    "Average daily insulin" : {
+      "comment" : "Statistic label"
+    },
+    "Average per day" : {
+      "comment" : "Statistic label: carbs per day"
+    },
+    "Average per entry" : {
+      "comment" : "Statistic label: carbs per entry"
+    },
+    "Basal" : {
+      "comment" : "Insulin type / chart series"
+    },
+    "Basal per day" : {
+      "comment" : "Statistic label: average basal insulin per day"
+    },
+    "Basal record coverage" : {
+      "comment" : "Statistic label: share of time covered by basal records"
+    },
+    "Basal share" : {
+      "comment" : "Statistic label: basal share of total insulin"
+    },
+    "Bolus" : {
+      "comment" : "Insulin type / chart series"
+    },
+    "Bolus per day" : {
+      "comment" : "Statistic label: average bolus insulin per day"
+    },
+    "Boluses per day" : {
+      "comment" : "Statistic label: average number of boluses per day"
+    },
+    "By time of day" : {
+      "comment" : "Chart heading: glucose ranges split by time of day"
+    },
+    "CGM coverage" : {
+      "comment" : "Statistic label: share of time with sensor readings"
+    },
+    "Carb entries per day" : {
+      "comment" : "Statistic label: average number of carb entries per day"
+    },
+    "Coefficient of variation" : {
+      "comment" : "Statistic label"
+    },
+    "Combined: %@, capped at 100." : {
+      "comment" : "GRI formula result; the argument is the uncapped score"
+    },
+    "Could not render the PDF content." : {
+      "comment" : "Export error"
+    },
+    "Data issues" : {
+      "comment" : "Statistic label"
+    },
+    "Each cell is one day's average glucose (%@), colored by the range it falls in. The number after each range is how many days fell in it." : {
+      "comment" : "Heatmap caption; the argument is the glucose unit"
+    },
+    "Errors" : {
+      "comment" : "Count of validation errors"
+    },
+    "External" : {
+      "comment" : "Bolus type / chart series: not delivered by the pump"
+    },
+    "External bolus per day" : {
+      "comment" : "Statistic label: average units per day not delivered by the pump"
+    },
+    "Failed to write PDF file: %@" : {
+      "comment" : "Export error; the argument is the system error message"
+    },
+    "Fat / protein per day" : {
+      "comment" : "Statistic label: average grams of fat and protein per day"
+    },
+    "Fat/protein carb equivalents per day" : {
+      "comment" : "Statistic label: Trio fat/protein units as carbs, average per day"
+    },
+    "GMI" : {
+      "comment" : "Statistic label: Glucose Management Indicator"
+    },
+    "GRI" : {
+      "comment" : "Statistic label: Glycemia Risk Index"
+    },
+    "GRI combines low and high glucose exposure into a 0–100 score; lower is less risk. It uses fixed thresholds regardless of target range or display unit. Short periods and sensor gaps make it less representative." : {
+      "comment" : "GRI explanation on the report page"
+    },
+    "Generated %@ · Source: %@ · Units: %@" : {
+      "comment" : "PDF page subtitle; arguments are a date and time, the data source and the glucose unit",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Generated %1$@ · Source: %2$@ · Units: %3$@"
+          }
+        }
+      }
+    },
+    "Hardware" : {
+      "comment" : "PDF header column: CGM, pump and phone"
+    },
+    "High" : {
+      "comment" : "Glucose band, short"
+    },
+    "High (>180–250 mg/dL)" : {
+      "comment" : "GRI band with its fixed thresholds"
+    },
+    "Hyperglycemia component" : {
+      "comment" : "GRI component label"
+    },
+    "Hyperglycemia component (%)" : {
+      "comment" : "GRI grid vertical axis title"
+    },
+    "Hypoglycemia component" : {
+      "comment" : "GRI component label"
+    },
+    "Hypoglycemia component (%)" : {
+      "comment" : "GRI grid horizontal axis title"
+    },
+    "In range" : {
+      "comment" : "Glucose band, short"
+    },
+    "Largest entry" : {
+      "comment" : "Statistic label: largest carb entry"
+    },
+    "Low" : {
+      "comment" : "Glucose band, short"
+    },
+    "Low (54–<70 mg/dL)" : {
+      "comment" : "GRI band with its fixed thresholds"
+    },
+    "Lowest / highest" : {
+      "comment" : "Statistic label: minimum and maximum glucose"
+    },
+    "Manual" : {
+      "comment" : "Bolus type / chart series: given by the user"
+    },
+    "Manual bolus per day" : {
+      "comment" : "Statistic label: average user-given bolus units per day"
+    },
+    "Mean" : {
+      "comment" : "Statistic label"
+    },
+    "Mean glucose" : {
+      "comment" : "Statistic label"
+    },
+    "Median" : {
+      "comment" : "Statistic or chart series: median glucose"
+    },
+    "No data" : {
+      "comment" : "Shown when there is nothing to show: a value that cannot be computed, or a heatmap day without sensor glucose"
+    },
+    "No issues found." : {
+      "comment" : "Data quality page when validation found nothing"
+    },
+    "No sensor glucose in this period." : {
+      "comment" : "Shown instead of glucose statistics when there is no CGM data"
+    },
+    "Not a medical device. Discuss therapy changes with your care team." : {
+      "comment" : "Disclaimer in the PDF footer"
+    },
+    "Notes" : {
+      "comment" : "Count of informational validation notes"
+    },
+    "Page %lld of %lld" : {
+      "comment" : "PDF page number footer",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Page %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Per day: whisker 5–95%%, box 25–75%%, dot median (%@)." : {
+      "comment" : "Chart caption; the argument is the glucose unit"
+    },
+    "Percentiles of %@ by time of day, all days overlaid. Shaded: 5–95%% and 25–75%%; line: median." : {
+      "comment" : "AGP chart caption; the argument is the glucose unit"
+    },
+    "Readings" : {
+      "comment" : "Statistic label: number of CGM readings"
+    },
+    "Settings" : {
+      "comment" : "PDF header column: key therapy settings"
+    },
+    "Share of readings in each range for each hour of the day, all days overlaid." : {
+      "comment" : "Chart caption for the time-of-day range breakdown"
+    },
+    "Software" : {
+      "comment" : "PDF header column: app name, version and build"
+    },
+    "Standard deviation" : {
+      "comment" : "Statistic label"
+    },
+    "Suspended per day" : {
+      "comment" : "Statistic label: average pump suspension time per day"
+    },
+    "The report has no pages to export." : {
+      "comment" : "Export error"
+    },
+    "Time above range" : {
+      "comment" : "Statistic label: share of readings above the high threshold"
+    },
+    "Time below range" : {
+      "comment" : "Statistic label: share of readings below the low threshold"
+    },
+    "Time in range" : {
+      "comment" : "Statistic label: share of readings between the low and high thresholds"
+    },
+    "Very high" : {
+      "comment" : "Glucose band, short"
+    },
+    "Very high (>250 mg/dL)" : {
+      "comment" : "GRI band with its fixed threshold"
+    },
+    "Very low" : {
+      "comment" : "Glucose band, short"
+    },
+    "Very low (<54 mg/dL)" : {
+      "comment" : "GRI band with its fixed threshold"
+    },
+    "Warnings" : {
+      "comment" : "Count of validation warnings"
+    },
+    "Weighted hyperglycemia: 1.6 × %@ = %@" : {
+      "comment" : "GRI formula line with computed numbers",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Weighted hyperglycemia: 1.6 × %1$@ = %2$@"
+          }
+        }
+      }
+    },
+    "Weighted hypoglycemia: 3 × %@ = %@" : {
+      "comment" : "GRI formula line with computed numbers",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Weighted hypoglycemia: 3 × %1$@ = %2$@"
+          }
+        }
+      }
+    },
+    "Zone %@" : {
+      "comment" : "GRI zone; the argument is a letter A–E"
+    },
+    "Zone %@ (%@)" : {
+      "comment" : "GRI grid legend entry; arguments are the zone letter and its score range",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zone %1$@ (%2$@)"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
