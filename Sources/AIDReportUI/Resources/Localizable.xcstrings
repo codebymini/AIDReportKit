@@ -15,6 +15,9 @@
     "%@ — Statistics Report" : {
       "comment" : "PDF page title; the argument is the app name"
     },
+    "%lld charts" : {
+      "comment" : "Number of selected report pages; the argument is the count"
+    },
     "%lld errors, %lld warnings" : {
       "comment" : "Counts of validation errors and warnings",
       "localizations" : {
@@ -25,6 +28,9 @@
           }
         }
       }
+    },
+    "1 chart" : {
+      "comment" : "Number of selected report pages: exactly one"
     },
     "25–75%" : {
       "comment" : "Chart series: 25th to 75th percentile band"
@@ -83,11 +89,17 @@
     "CGM coverage" : {
       "comment" : "Statistic label: share of time with sensor readings"
     },
+    "Cancel" : {
+      "comment" : "Closes the export sheet or a prompt without doing anything"
+    },
     "Carb entries per day" : {
       "comment" : "Statistic label: average number of carb entries per day"
     },
     "Coefficient of variation" : {
       "comment" : "Statistic label"
+    },
+    "Collapsed" : {
+      "comment" : "Accessibility value of a closed category row"
     },
     "Combined: %@, capped at 100." : {
       "comment" : "GRI formula result; the argument is the uncapped score"
@@ -103,6 +115,15 @@
     },
     "Errors" : {
       "comment" : "Count of validation errors"
+    },
+    "Expanded" : {
+      "comment" : "Accessibility value of an open category row"
+    },
+    "Export" : {
+      "comment" : "Builds the report and creates the PDF"
+    },
+    "Export PDF" : {
+      "comment" : "Title of the report export sheet"
     },
     "External" : {
       "comment" : "Bolus type / chart series: not delivered by the pump"
@@ -163,6 +184,9 @@
     "In range" : {
       "comment" : "Glucose band, short"
     },
+    "Include" : {
+      "comment" : "Export sheet section listing what goes into the report"
+    },
     "Largest entry" : {
       "comment" : "Statistic label: largest carb entry"
     },
@@ -190,6 +214,9 @@
     "Median" : {
       "comment" : "Statistic or chart series: median glucose"
     },
+    "Name" : {
+      "comment" : "Placeholder for the patient name field"
+    },
     "No data" : {
       "comment" : "Shown when there is nothing to show: a value that cannot be computed, or a heatmap day without sensor glucose"
     },
@@ -216,20 +243,50 @@
         }
       }
     },
+    "Patient Name" : {
+      "comment" : "Title of the prompt shown before each export"
+    },
     "Per day: whisker 5–95%%, box 25–75%%, dot median (%@)." : {
       "comment" : "Chart caption; the argument is the glucose unit"
     },
     "Percentiles of %@ by time of day, all days overlaid. Shaded: 5–95%% and 25–75%%; line: median." : {
       "comment" : "AGP chart caption; the argument is the glucose unit"
     },
+    "Preset name" : {
+      "comment" : "Placeholder for the preset name field"
+    },
+    "Range" : {
+      "comment" : "Export sheet section for the report date range"
+    },
     "Readings" : {
       "comment" : "Statistic label: number of CGM readings"
+    },
+    "Save" : {
+      "comment" : "Saves the preset"
+    },
+    "Save Preset" : {
+      "comment" : "Title of the dialog that names a new preset"
+    },
+    "Save as Preset…" : {
+      "comment" : "Button that saves the current range and chart selection"
+    },
+    "Saved Reports" : {
+      "comment" : "Export sheet section listing saved report presets"
+    },
+    "Saves the current range and chart selection for reuse." : {
+      "comment" : "Explains what a report preset stores"
     },
     "Settings" : {
       "comment" : "PDF header column: key therapy settings"
     },
+    "Share %@" : {
+      "comment" : "Button to share the exported file; the argument is the file name"
+    },
     "Share of readings in each range for each hour of the day, all days overlaid." : {
       "comment" : "Chart caption for the time-of-day range breakdown"
+    },
+    "Shown in the report header. Leave blank to omit." : {
+      "comment" : "Explains the patient name prompt"
     },
     "Software" : {
       "comment" : "PDF header column: app name, version and build"
