@@ -42,6 +42,11 @@ let package = Package(
             name: "AIDReportHealthKitTests",
             dependencies: ["AIDReportHealthKit"]
         ),
+        // Whole-pipeline tests: one hand-computed scenario through every source and renderer.
+        .testTarget(
+            name: "AIDReportEndToEndTests",
+            dependencies: ["AIDReportKit", "AIDReportNightscout", "AIDReportHealthKit", "AIDReportUI", "AIDReportTesting"]
+        ),
         .testTarget(
             name: "AIDReportUITests",
             dependencies: ["AIDReportUI", "AIDReportTesting"]
