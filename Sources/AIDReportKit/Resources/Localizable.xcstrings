@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ Statistics Report" : {
+      "comment" : "Default report title; the argument is the app or data source name"
+    },
+    "%lld D" : {
+      "comment" : "Short range name: a number of days"
+    },
     "%lld min" : {
       "comment" : "Duration in minutes"
     },
@@ -14,6 +20,21 @@
           }
         }
       }
+    },
+    "2 W" : {
+      "comment" : "Short range name: two weeks"
+    },
+    "3 M" : {
+      "comment" : "Short range name: three months"
+    },
+    "Ambulatory Glucose Profile" : {
+      "comment" : "Report section: AGP, glucose percentiles by time of day"
+    },
+    "App" : {
+      "comment" : "Report header label for the app name"
+    },
+    "Average Glucose by Day" : {
+      "comment" : "Report section: calendar shaded by each day's average glucose"
     },
     "Basal rate %@ U/h exceeds %@ U/h" : {
       "comment" : "Validation warning; arguments are insulin units per hour",
@@ -32,6 +53,9 @@
     "Basal records overlap by %@" : {
       "comment" : "Validation warning; the argument is a duration"
     },
+    "Bolus Distribution" : {
+      "comment" : "Report section: manual vs automatic vs external boluses"
+    },
     "Bolus of %@ U exceeds %@ U" : {
       "comment" : "Validation warning; arguments are insulin units",
       "localizations" : {
@@ -42,6 +66,12 @@
           }
         }
       }
+    },
+    "Build date" : {
+      "comment" : "Report header label for when the app was built"
+    },
+    "CGM" : {
+      "comment" : "Report header label for the continuous glucose monitor"
     },
     "CGM coverage is %@ (minimum %@)" : {
       "comment" : "Validation warning; arguments are percentages",
@@ -65,6 +95,33 @@
         }
       }
     },
+    "Carbohydrates" : {
+      "comment" : "Report category and section heading"
+    },
+    "Carbs" : {
+      "comment" : "Carbohydrates, short: report category heading and table column header"
+    },
+    "Custom" : {
+      "comment" : "Short range name: range picked by the user"
+    },
+    "Custom range" : {
+      "comment" : "Report range picked by the user"
+    },
+    "D" : {
+      "comment" : "Short range name: one day"
+    },
+    "Data Quality" : {
+      "comment" : "Report section: coverage and validation issues"
+    },
+    "Device" : {
+      "comment" : "Report header label for the phone model"
+    },
+    "Distribution" : {
+      "comment" : "Export menu chart name: time in ranges"
+    },
+    "Distribution (by day)" : {
+      "comment" : "Export menu chart name: time in ranges for each day"
+    },
     "Dose ends before it starts" : {
       "comment" : "Validation error"
     },
@@ -77,11 +134,41 @@
     "Duplicate glucose reading" : {
       "comment" : "Validation warning"
     },
+    "Glucose" : {
+      "comment" : "Report category heading"
+    },
     "Glucose %@ mg/dL is outside the plausible range" : {
       "comment" : "Validation error; the argument is a glucose value"
     },
+    "Glucose Distribution" : {
+      "comment" : "Report section: time in ranges and glucose metrics"
+    },
+    "Glucose Distribution by Day" : {
+      "comment" : "Report section: time in ranges for each day"
+    },
+    "Glucose Percentiles by Day" : {
+      "comment" : "Report section: glucose percentiles for each day"
+    },
     "Glucose changed %@ mg/dL/min" : {
       "comment" : "Validation warning about a very fast glucose change"
+    },
+    "Glycemia Risk Index" : {
+      "comment" : "Report section: GRI score"
+    },
+    "Heatmap (by day)" : {
+      "comment" : "Export menu chart name: calendar shaded by each day's average glucose"
+    },
+    "Insulin" : {
+      "comment" : "Report category heading"
+    },
+    "Last %lld days" : {
+      "comment" : "Report range: rolling number of days ending when the report is made"
+    },
+    "Last 24 hours" : {
+      "comment" : "Report range: the 24 hours before the report was made"
+    },
+    "M" : {
+      "comment" : "Short range name: one month"
     },
     "Median sensor glucose is below 30; values look like mmol/L delivered as mg/dL" : {
       "comment" : "Validation error: the data source sent mmol/L values where mg/dL were expected"
@@ -110,6 +197,18 @@
     "Other" : {
       "comment" : "Data source name for an unknown app"
     },
+    "Overview" : {
+      "comment" : "Report category and section heading"
+    },
+    "Percentile" : {
+      "comment" : "Export menu chart name: glucose percentiles by time of day (AGP)"
+    },
+    "Percentile (by day)" : {
+      "comment" : "Export menu chart name: glucose percentiles for each day"
+    },
+    "Pump" : {
+      "comment" : "Report header label for the insulin pump"
+    },
     "Record is dated in the future (clock or time-zone problem)" : {
       "comment" : "Validation error"
     },
@@ -127,8 +226,23 @@
     "Sensor gap of %@" : {
       "comment" : "Validation note; the argument is a duration"
     },
+    "Summary" : {
+      "comment" : "Report category heading: overview and data quality pages"
+    },
     "Synthetic data" : {
       "comment" : "Data source name for generated test data"
+    },
+    "Total Daily Dose" : {
+      "comment" : "Report section: insulin per day"
+    },
+    "Total Meals" : {
+      "comment" : "Export menu chart name: carbs, fat and protein per day"
+    },
+    "Version" : {
+      "comment" : "Report header label for the app version"
+    },
+    "W" : {
+      "comment" : "Short range name: one week"
     }
   },
   "version" : "1.0"
