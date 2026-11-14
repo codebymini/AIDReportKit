@@ -1,11 +1,66 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ (basal %@)" : {
+      "comment" : "Daily insulin dose followed by the basal share",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (basal %2$@)"
+          }
+        }
+      }
+    },
+    "%@ (zone %@)" : {
+      "comment" : "GRI score followed by its zone letter A–E",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (zone %2$@)"
+          }
+        }
+      }
+    },
     "%@ Statistics Report" : {
       "comment" : "Default report title; the argument is the app or data source name"
     },
+    "%@ boluses per day, %@ of them automatic." : {
+      "comment" : "Bolus count summary; arguments are average boluses per day and average automatic boluses per day",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ boluses per day, %2$@ of them automatic."
+          }
+        }
+      }
+    },
     "%lld D" : {
       "comment" : "Short range name: a number of days"
+    },
+    "%lld errors, %lld warnings" : {
+      "comment" : "Counts of validation errors and warnings",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld errors, %2$lld warnings"
+          }
+        }
+      }
+    },
+    "%lld h %lld min" : {
+      "comment" : "Duration in hours and minutes",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld h %2$lld min"
+          }
+        }
+      }
     },
     "%lld min" : {
       "comment" : "Duration in minutes"
@@ -21,11 +76,73 @@
         }
       }
     },
+    "%lld of %lld" : {
+      "comment" : "Heatmap statistic value; arguments are days with data and days in the period",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "**GRI %@ / 100 — zone %@**" : {
+      "comment" : "Markdown GRI headline; arguments are the score and zone letter",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "**GRI %1$@ / 100 — zone %2$@**"
+          }
+        }
+      }
+    },
+    "**Warning:** %@" : {
+      "comment" : "Markdown warning line; the argument is the warning sentence"
+    },
+    "- **Generated:** %@" : {
+      "comment" : "Markdown report header line; the argument is a date and time"
+    },
+    "- **Glucose unit:** %@" : {
+      "comment" : "Markdown report header line; the argument is mg/dL or mmol/L"
+    },
+    "- **Patient:** %@" : {
+      "comment" : "Markdown report header line; the argument is the patient's name"
+    },
+    "- **Period:** %@ (%@)" : {
+      "comment" : "Markdown report header line; arguments are a date range and the range name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "- **Period:** %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "- **Source:** %@" : {
+      "comment" : "Markdown report header line; the argument is the data source"
+    },
+    "- … %lld more" : {
+      "comment" : "List continuation; the argument is a count"
+    },
     "2 W" : {
       "comment" : "Short range name: two weeks"
     },
     "3 M" : {
       "comment" : "Short range name: three months"
+    },
+    "3.0 × %@ + 1.6 × %@ = %@ (capped at 100)." : {
+      "comment" : "GRI formula with the computed components",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "3.0 × %1$@ + 1.6 × %2$@ = %3$@ (capped at 100)."
+          }
+        }
+      }
     },
     "Ambulatory Glucose Profile" : {
       "comment" : "Report section: AGP, glucose percentiles by time of day"
@@ -33,8 +150,48 @@
     "App" : {
       "comment" : "Report header label for the app name"
     },
+    "Automatic" : {
+      "comment" : "Bolus type: SMB / automatic bolus"
+    },
+    "Automatic (SMB)" : {
+      "comment" : "Bolus type, long form"
+    },
+    "Automatic bolus" : {
+      "comment" : "Insulin type: SMB / automatic bolus"
+    },
+    "Average %@ per day in %@ entries per day (average %@ per entry, largest %@)." : {
+      "comment" : "Carbohydrate summary; arguments are grams per day, entries per day, grams per entry and the largest entry",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Average %1$@ per day in %2$@ entries per day (average %3$@ per entry, largest %4$@)."
+          }
+        }
+      }
+    },
+    "Average %@ per day — basal %@, bolus %@." : {
+      "comment" : "Total daily dose summary; arguments are units and percentages",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Average %1$@ per day — basal %2$@, bolus %3$@."
+          }
+        }
+      }
+    },
     "Average Glucose by Day" : {
       "comment" : "Report section: calendar shaded by each day's average glucose"
+    },
+    "Average carbs per day" : {
+      "comment" : "Statistic label"
+    },
+    "Average total daily dose" : {
+      "comment" : "Statistic label"
+    },
+    "Basal" : {
+      "comment" : "Insulin type"
     },
     "Basal rate %@ U/h exceeds %@ U/h" : {
       "comment" : "Validation warning; arguments are insulin units per hour",
@@ -47,11 +204,17 @@
         }
       }
     },
+    "Basal record coverage" : {
+      "comment" : "Statistic label: share of time covered by basal records"
+    },
     "Basal records cover %@ of the interval; basal totals undercount unless a basal schedule is provided" : {
       "comment" : "Validation warning; the argument is a percentage"
     },
     "Basal records overlap by %@" : {
       "comment" : "Validation warning; the argument is a duration"
+    },
+    "Bolus" : {
+      "comment" : "Insulin type"
     },
     "Bolus Distribution" : {
       "comment" : "Report section: manual vs automatic vs external boluses"
@@ -67,11 +230,20 @@
         }
       }
     },
+    "Bolus type" : {
+      "comment" : "Table column header"
+    },
+    "Boluses" : {
+      "comment" : "Table column header: number of boluses"
+    },
     "Build date" : {
       "comment" : "Report header label for when the app was built"
     },
     "CGM" : {
       "comment" : "Report header label for the continuous glucose monitor"
+    },
+    "CGM coverage" : {
+      "comment" : "Statistic label: share of time with sensor readings"
     },
     "CGM coverage is %@ (minimum %@)" : {
       "comment" : "Validation warning; arguments are percentages",
@@ -101,6 +273,15 @@
     "Carbs" : {
       "comment" : "Carbohydrates, short: report category heading and table column header"
     },
+    "Check" : {
+      "comment" : "Table column header: data quality check"
+    },
+    "Coefficient of variation" : {
+      "comment" : "Statistic label"
+    },
+    "Component" : {
+      "comment" : "Table column header: GRI component"
+    },
     "Custom" : {
       "comment" : "Short range name: range picked by the user"
     },
@@ -110,8 +291,23 @@
     "D" : {
       "comment" : "Short range name: one day"
     },
+    "Daily average (%@)" : {
+      "comment" : "Table column header; the argument is the glucose unit"
+    },
     "Data Quality" : {
       "comment" : "Report section: coverage and validation issues"
+    },
+    "Data issues" : {
+      "comment" : "Statistic label"
+    },
+    "Day" : {
+      "comment" : "Table column header: calendar day"
+    },
+    "Days" : {
+      "comment" : "Table column header: number of days"
+    },
+    "Days with data" : {
+      "comment" : "Heatmap statistic label: days that have sensor glucose"
     },
     "Device" : {
       "comment" : "Report header label for the phone model"
@@ -134,14 +330,44 @@
     "Duplicate glucose reading" : {
       "comment" : "Validation warning"
     },
+    "Entries" : {
+      "comment" : "Table column header: number of carb entries"
+    },
+    "Errors" : {
+      "comment" : "Count of validation errors"
+    },
+    "External" : {
+      "comment" : "Bolus type: not delivered by the pump"
+    },
+    "External (not pump)" : {
+      "comment" : "Bolus type, long form"
+    },
+    "Fat" : {
+      "comment" : "Table column header: grams of fat"
+    },
+    "Fat/protein carb equivalents: %@ per day (not included in the averages above)." : {
+      "comment" : "Note about Trio fat/protein units; the argument is grams per day"
+    },
     "Fri" : {
       "comment" : "Short weekday name: Friday"
+    },
+    "GMI" : {
+      "comment" : "Statistic label: Glucose Management Indicator"
+    },
+    "GRI" : {
+      "comment" : "Statistic label: Glycemia Risk Index"
+    },
+    "GRI uses fixed thresholds regardless of target range or display unit." : {
+      "comment" : "GRI explanation"
     },
     "Glucose" : {
       "comment" : "Report category heading"
     },
     "Glucose %@ mg/dL is outside the plausible range" : {
       "comment" : "Validation error; the argument is a glucose value"
+    },
+    "Glucose (%@) by time of day, all days overlaid." : {
+      "comment" : "AGP table caption; the argument is the glucose unit"
     },
     "Glucose Distribution" : {
       "comment" : "Report section: time in ranges and glucose metrics"
@@ -161,6 +387,46 @@
     "Heatmap (by day)" : {
       "comment" : "Export menu chart name: calendar shaded by each day's average glucose"
     },
+    "High" : {
+      "comment" : "Glucose band, short"
+    },
+    "High (>%@–%@)" : {
+      "comment" : "Glucose band between the high and very-high thresholds",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "High (>%1$@–%2$@)"
+          }
+        }
+      }
+    },
+    "High (>180–250 mg/dL)" : {
+      "comment" : "GRI band with its fixed thresholds"
+    },
+    "Highest daily average" : {
+      "comment" : "Heatmap statistic label"
+    },
+    "Hyperglycemia component" : {
+      "comment" : "GRI component label"
+    },
+    "Hypoglycemia component" : {
+      "comment" : "GRI component label"
+    },
+    "In range" : {
+      "comment" : "Glucose band, short"
+    },
+    "In range (%@–%@)" : {
+      "comment" : "Glucose band between the low and high thresholds",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "In range (%1$@–%2$@)"
+          }
+        }
+      }
+    },
     "Insulin" : {
       "comment" : "Report category heading"
     },
@@ -170,14 +436,55 @@
     "Last 24 hours" : {
       "comment" : "Report range: the 24 hours before the report was made"
     },
+    "Low" : {
+      "comment" : "Glucose band, short"
+    },
+    "Low (%@–<%@)" : {
+      "comment" : "Glucose band between the very-low and low thresholds",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Low (%1$@–<%2$@)"
+          }
+        }
+      }
+    },
+    "Low (54–<70 mg/dL)" : {
+      "comment" : "GRI band with its fixed thresholds"
+    },
+    "Low (<%@)" : {
+      "comment" : "Heatmap band for a daily average below the low threshold; the argument is that threshold"
+    },
+    "Lowest / highest" : {
+      "comment" : "Statistic label: minimum and maximum glucose"
+    },
+    "Lowest daily average" : {
+      "comment" : "Heatmap statistic label"
+    },
     "M" : {
       "comment" : "Short range name: one month"
+    },
+    "Manual" : {
+      "comment" : "Bolus type: given by the user"
+    },
+    "Mean" : {
+      "comment" : "Statistic label"
+    },
+    "Mean glucose" : {
+      "comment" : "Statistic label"
+    },
+    "Median" : {
+      "comment" : "Statistic: median value"
     },
     "Median sensor glucose is below 30; values look like mmol/L delivered as mg/dL" : {
       "comment" : "Validation error: the data source sent mmol/L values where mg/dL were expected"
     },
     "Merged sources" : {
       "comment" : "Data source name when several sources are combined"
+    },
+    "Metric" : {
+      "comment" : "Table column header"
     },
     "Mon" : {
       "comment" : "Short weekday name: Monday"
@@ -188,8 +495,14 @@
     "Negative insulin amount %@ U" : {
       "comment" : "Validation error; the argument is insulin units"
     },
+    "No data" : {
+      "comment" : "Shown when a value cannot be computed"
+    },
     "No insulin records in the interval" : {
       "comment" : "Validation warning"
+    },
+    "No sensor data" : {
+      "comment" : "Shown when there are no CGM readings"
     },
     "No sensor data for the first %@" : {
       "comment" : "Validation note; the argument is a duration at the start of the report"
@@ -200,11 +513,20 @@
     "No sensor glucose in the interval" : {
       "comment" : "Validation warning"
     },
+    "No sensor glucose in this period." : {
+      "comment" : "Shown instead of glucose statistics when there is no CGM data"
+    },
+    "Notes" : {
+      "comment" : "Count of informational validation notes"
+    },
     "Other" : {
       "comment" : "Data source name for an unknown app"
     },
     "Overview" : {
       "comment" : "Report category and section heading"
+    },
+    "Per day" : {
+      "comment" : "Table column header: average per day"
     },
     "Percentile" : {
       "comment" : "Export menu chart name: glucose percentiles by time of day (AGP)"
@@ -212,8 +534,17 @@
     "Percentile (by day)" : {
       "comment" : "Export menu chart name: glucose percentiles for each day"
     },
+    "Protein" : {
+      "comment" : "Table column header: grams of protein"
+    },
     "Pump" : {
       "comment" : "Report header label for the insulin pump"
+    },
+    "Range" : {
+      "comment" : "Table column header: glucose band"
+    },
+    "Readings" : {
+      "comment" : "Statistic label: number of CGM readings"
     },
     "Record is dated in the future (clock or time-zone problem)" : {
       "comment" : "Validation error"
@@ -229,11 +560,23 @@
         }
       }
     },
+    "Result" : {
+      "comment" : "Table column header"
+    },
     "Sat" : {
       "comment" : "Short weekday name: Saturday"
     },
     "Sensor gap of %@" : {
       "comment" : "Validation note; the argument is a duration"
+    },
+    "Share" : {
+      "comment" : "Table column header: share of readings"
+    },
+    "Share of bolus" : {
+      "comment" : "Table column header"
+    },
+    "Standard deviation" : {
+      "comment" : "Statistic label"
     },
     "Summary" : {
       "comment" : "Report category heading: overview and data quality pages"
@@ -244,8 +587,54 @@
     "Synthetic data" : {
       "comment" : "Data source name for generated test data"
     },
+    "The first and last day are partial: data runs from %@ to %@, so those two days show less than a full day." : {
+      "comment" : "Warning on per-day charts; arguments are the first and last data point as date and time",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The first and last day are partial: data runs from %1$@ to %2$@, so those two days show less than a full day."
+          }
+        }
+      }
+    },
+    "The first day is partial: data starts at %@, so that day shows less than a full day." : {
+      "comment" : "Warning on per-day charts; the argument is the first data point as date and time"
+    },
+    "The last day is partial: data ends at %@, so that day shows less than a full day." : {
+      "comment" : "Warning on per-day charts; the argument is the last data point as date and time"
+    },
     "Thu" : {
       "comment" : "Short weekday name: Thursday"
+    },
+    "Tight range (%@–%@)" : {
+      "comment" : "Glucose band for time in tight range (TITR)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tight range (%1$@–%2$@)"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "comment" : "Table column header: time of day"
+    },
+    "Time above range" : {
+      "comment" : "Statistic label"
+    },
+    "Time below range" : {
+      "comment" : "Statistic label"
+    },
+    "Time in range" : {
+      "comment" : "Statistic label"
+    },
+    "Time of day" : {
+      "comment" : "Table column header: start of a time-of-day bucket"
+    },
+    "Total" : {
+      "comment" : "Table column header: total insulin"
     },
     "Total Daily Dose" : {
       "comment" : "Report section: insulin per day"
@@ -256,14 +645,44 @@
     "Tue" : {
       "comment" : "Short weekday name: Tuesday"
     },
+    "Under 50% CGM coverage that day." : {
+      "comment" : "Footnote for heatmap days marked with an asterisk"
+    },
+    "Value" : {
+      "comment" : "Table column header"
+    },
     "Version" : {
       "comment" : "Report header label for the app version"
+    },
+    "Very high" : {
+      "comment" : "Glucose band, short"
+    },
+    "Very high (>%@)" : {
+      "comment" : "Glucose band above the very-high threshold"
+    },
+    "Very high (>250 mg/dL)" : {
+      "comment" : "GRI band with its fixed threshold"
+    },
+    "Very low" : {
+      "comment" : "Glucose band, short"
+    },
+    "Very low (<%@)" : {
+      "comment" : "Glucose band below the very-low threshold; the argument is that threshold"
+    },
+    "Very low (<54 mg/dL)" : {
+      "comment" : "GRI band with its fixed threshold"
     },
     "W" : {
       "comment" : "Short range name: one week"
     },
+    "Warnings" : {
+      "comment" : "Count of validation warnings"
+    },
     "Wed" : {
       "comment" : "Short weekday name: Wednesday"
+    },
+    "Week of" : {
+      "comment" : "Table column header: the date a calendar week starts"
     }
   },
   "version" : "1.0"
