@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Merged sources" : {
+      "comment" : "Data source name when several sources are combined"
+    },
+    "Other" : {
+      "comment" : "Data source name for an unknown app"
+    },
+    "Synthetic data" : {
+      "comment" : "Data source name for generated test data"
+    }
+  },
+  "version" : "1.0"
+}
