@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "p1",
+    "defaultProfile": "Default",
+    "startDate": "2025-12-01T00:00:00.000Z",
+    "store": {
+      "Default": {
+        "timezone": "Europe/Stockholm",
+        "units": "mg/dl",
+        "basal": [
+          { "time": "00:00", "value": 0.8, "timeAsSeconds": 0 },
+          { "time": "06:00", "value": "1.1" },
+          { "time": "22:00", "value": 0.9, "timeAsSeconds": 79200 }
+        ]
+      },
+      "Other": {
+        "basal": [{ "time": "00:00", "value": 2 }]
+      }
+    }
+  }
+]

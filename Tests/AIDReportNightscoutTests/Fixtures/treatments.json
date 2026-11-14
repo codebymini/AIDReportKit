@@ -1,0 +1,14 @@
+[
+  { "_id": "t1", "eventType": "Temp Basal", "created_at": "2026-01-01T00:00:00.000Z", "duration": 30, "absolute": 1.2, "rate": 1.2, "automatic": true, "enteredBy": "loop://iPhone" },
+  { "_id": "t2", "eventType": "Temp Basal", "created_at": "2026-01-01T00:05:00Z", "duration": 30, "rate": "0.6" },
+  { "_id": "t3", "eventType": "Correction Bolus", "created_at": "2026-01-01T00:05:00.000Z", "insulin": 0.4, "automatic": true, "enteredBy": "loop://iPhone" },
+  { "_id": "t4", "eventType": "Meal Bolus", "created_at": "2026-01-01T07:30:00.000Z", "insulin": 4.5, "carbs": 45, "absorptionTime": 180 },
+  { "_id": "t5", "eventType": "SMB", "timestamp": "2026-01-01T08:00:00.000Z", "insulin": 0.3, "isSMB": true, "enteredBy": "Trio" },
+  { "_id": "t6", "eventType": "Carb Correction", "created_at": "2026-01-01T12:00:00.000Z", "carbs": 50, "fat": 20, "protein": 30, "id": "meal-1", "fpuID": "fpu-1", "enteredBy": "Trio" },
+  { "_id": "t7", "eventType": "Carb Correction", "created_at": "2026-01-01T13:00:00.000Z", "carbs": 10, "fat": 0, "protein": 0, "id": "fpu-1", "fpuID": "fpu-1", "enteredBy": "Trio" },
+  { "_id": "t8", "eventType": "Suspend Pump", "created_at": "2026-01-01T14:00:00.000Z" },
+  { "_id": "t9", "eventType": "Resume Pump", "created_at": "2026-01-01T14:45:00.000Z" },
+  { "_id": "t10", "eventType": "External Insulin", "created_at": "2026-01-01T16:00:00.000Z", "insulin": 2 },
+  { "_id": "t11", "eventType": "Note", "created_at": "2026-01-01T17:00:00.000Z", "notes": "not therapy data" },
+  { "_id": "t12", "eventType": "Bolus", "mills": 1767268800000, "insulin": "1.5" }
+]

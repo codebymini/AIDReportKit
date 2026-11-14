@@ -1,0 +1,7 @@
+[
+  { "_id": "e1", "type": "sgv", "sgv": 120, "date": 1767225600000, "direction": "Flat" },
+  { "_id": "e2", "type": "sgv", "sgv": "125", "date": 1767225900000 },
+  { "_id": "e3", "type": "mbg", "mbg": 118, "date": 1767226000000 },
+  { "_id": "e4", "type": "cal", "slope": 900, "intercept": 30000, "date": 1767226100000 },
+  { "_id": "e5", "sgv": 130, "dateString": "2026-01-01T00:10:00.000Z" }
+]
