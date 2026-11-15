@@ -337,7 +337,8 @@ final class EndToEndReportTests: XCTestCase {
             XCTAssertEqual(report.partialDayWarning(for: section) != nil, expected, "\(section)")
         }
         let markdown = MarkdownReportRenderer().render(report)
-        XCTAssertTrue(markdown.contains("## Total Daily Dose\n\n**Warning:** The first and last day are partial"))
+        XCTAssertTrue(markdown.contains("## Insulin\n\n**Warning:** The first and last day are partial"))
+        XCTAssertFalse(markdown.contains("## Settings\n\n**Warning:**"), "settings are not per day")
         XCTAssertTrue(markdown.contains("## Data Quality\n\n**Warning:** The first and last day are partial"))
         XCTAssertFalse(markdown.contains("## Overview\n\n**Warning:**"))
     }
@@ -485,7 +486,8 @@ final class EndToEndReportTests: XCTestCase {
         XCTAssertEqual(ReportSection.Category.glucose.sections.map(\.menuTitle),
                        ["Distribution", "Glycemia Risk Index", "Percentile (by day)", "Distribution (by day)", "Heatmap (by day)"])
         XCTAssertEqual(ReportSection.Category.carbs.sections.map(\.menuTitle), ["Total Meals"])
-        XCTAssertEqual(ReportSection.Category.insulin.sections.map(\.menuTitle), ["Total Daily Dose", "Bolus Distribution"])
+        XCTAssertEqual(ReportSection.Category.insulin.sections.map(\.menuTitle), ["Insulin", "Settings", "Bolus Distribution"])
+        XCTAssertFalse(ReportDefinition.defaultSections.contains(.therapySettings), "the Settings page is optional")
 
         // Pages: overview first, the charts in menu order, data quality last.
         let charts = [ReportSection.Category.glucose, .carbs, .insulin].flatMap(\.sections)

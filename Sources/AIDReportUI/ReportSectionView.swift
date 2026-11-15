@@ -42,6 +42,7 @@ public struct ReportSectionView: View {
         case .glucoseHeatmapByDay: GlucoseHeatmapPage(report: report)
         case .glycemiaRiskIndex: GRIPage(report: report)
         case .insulinTotalDailyDose: TotalDailyDosePage(report: report)
+        case .therapySettings: TherapySettingsPage(report: report)
         case .insulinBolusDistribution: BolusDistributionPage(report: report)
         case .carbsTotals: CarbsPage(report: report)
         case .dataQuality: DataQualityPage(report: report)
@@ -1008,23 +1009,217 @@ struct TotalDailyDosePage: View {
             [Part(day: d.day, kind: basal, units: d.insulin.basalUnits),
              Part(day: d.day, kind: bolus, units: d.insulin.bolusUnits)]
         }
-        VStack(alignment: .leading, spacing: 20) {
+        let schedules = report.insulinSchedules(f)
+        VStack(alignment: .leading, spacing: 18) {
+            // Named as on the overview, so the same number reads the same on both pages.
             MetricGrid(metrics: [
-                (String(localized: "Average daily dose", bundle: .module, comment: "Statistic label: total daily insulin"), f.insulin(s.averageDailyDose)),
-                (String(localized: "Basal per day", bundle: .module, comment: "Statistic label: average basal insulin per day"), f.insulin(s.averageDailyBasal)),
+                (String(localized: "Total daily dose", bundle: .module, comment: "Statistic label: average insulin per day, basal and bolus"), f.insulin(s.averageDailyDose)),
+                (String(localized: "Delivered basal per day", bundle: .module, comment: "Statistic label: basal actually delivered per day, temp basals and suspensions included"), f.insulin(s.averageDailyBasal)),
+                (String(localized: "Programmed basal per day", bundle: .module, comment: "Statistic label: basal the basal schedule would deliver per day"), s.averageDailyProgrammedBasal.map(f.insulin) ?? "–"),
                 (String(localized: "Bolus per day", bundle: .module, comment: "Statistic label: average bolus insulin per day"), f.insulin(s.averageDailyBolus)),
                 (String(localized: "Basal share", bundle: .module, comment: "Statistic label: basal share of total insulin"), f.percent(s.basalFraction, decimals: 0)),
-                (String(localized: "Basal record coverage", bundle: .module, comment: "Statistic label: share of time covered by basal records"), f.percent(s.basalCoverage, decimals: 0)),
                 (String(localized: "Suspended per day", bundle: .module, comment: "Statistic label: average pump suspension time per day"), f.duration(s.averageDailySuspendedDuration)),
-            ])
+            ], compact: true)
             Chart(parts) { part in
                 BarMark(x: .value(plotLabel("Day"), part.day, unit: .day, calendar: report.dayCalendar), y: .value(plotLabel("Units"), part.units))
                     .foregroundStyle(by: .value(plotLabel("Type"), part.kind))
             }
             .chartForegroundStyleScale([basal: ReportColors.basal, bolus: ReportColors.bolus])
             .reportDayAxis(report)
-            .chartFrame(360)
+            .chartFrame(schedules.isEmpty ? 360 : 190)
+            if !schedules.isEmpty {
+                Divider()
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(schedules.indices, id: \.self) { ScheduleBar(schedule: schedules[$0]) }
+                    DayAxis()
+                    Text(TherapyReport.settingsNote).font(SettingsText.small).foregroundStyle(Color.gray)
+                        .padding(.top, 4)
+                }
+            }
         }
+    }
+}
+
+/// Fixed small sizes for the settings tables: dense data that should read the same rendered on
+/// an iPhone as on a Mac.
+enum SettingsText {
+    static let heading = Font.system(size: 10, weight: .semibold)
+    static let small = Font.system(size: 9)
+    static let value = Font.system(size: 9, weight: .semibold)
+}
+
+/// A daily schedule as rows of (time, value) cells, six to a row, so 24 hourly basal rates take
+/// four lines.
+@available(iOS 16.0, macOS 13.0, *)
+struct ScheduleGrid: View {
+    let schedule: PrintedSchedule
+    var columns = 6
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(schedule.title).font(SettingsText.heading)
+                if let note = schedule.note {
+                    Text(note).font(SettingsText.small).foregroundStyle(Color.gray)
+                }
+            }
+            VStack(alignment: .leading, spacing: 3) {
+                ForEach(Array(stride(from: 0, to: schedule.rows.count, by: columns)), id: \.self) { start in
+                    HStack(spacing: 8) {
+                        ForEach(start ..< min(start + columns, schedule.rows.count), id: \.self) { index in
+                            HStack(spacing: 5) {
+                                Text(schedule.rows[index].time).font(SettingsText.small).foregroundStyle(Color.gray)
+                                Text(schedule.rows[index].value).font(SettingsText.value)
+                            }
+                            .monospacedDigit()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        ForEach(0 ..< (columns - min(columns, schedule.rows.count - start)), id: \.self) { _ in
+                            Color.clear.frame(maxWidth: .infinity, maxHeight: 1)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// A daily schedule as one bar across the 24 hours, split where the value changes. Each part is
+/// shaded by its value (darker is higher) and carries the value when it is wide enough; the
+/// heading gives the lowest and highest, so parts too narrow for a label are still covered.
+@available(iOS 16.0, macOS 13.0, *)
+struct ScheduleBar: View {
+    let schedule: PrintedSchedule
+
+    static let height: CGFloat = 18
+    private static let gap: CGFloat = 1
+
+    private struct Segment {
+        let start: TimeInterval
+        let end: TimeInterval
+        let row: PrintedSchedule.Row
+    }
+
+    private var color: Color {
+        switch schedule.kind {
+        case .basalRate: return ReportColors.basal
+        case .carbRatio: return ReportColors.carbs
+        case .insulinSensitivity: return ReportColors.bolus
+        case .target: return ReportColors.inRange
+        }
+    }
+
+    /// Midnight to midnight. Before the first entry the last one is still in force from the day before.
+    private var segments: [Segment] {
+        let rows = schedule.rows.sorted { $0.startOffset < $1.startOffset }
+        guard let first = rows.first, let last = rows.last else { return [] }
+        var segments = first.startOffset > 0 ? [Segment(start: 0, end: first.startOffset, row: last)] : []
+        for (index, row) in rows.enumerated() {
+            let end = index + 1 < rows.count ? rows[index + 1].startOffset : 86400
+            if end > row.startOffset { segments.append(Segment(start: row.startOffset, end: min(end, 86400), row: row)) }
+        }
+        return segments
+    }
+
+    var body: some View {
+        let segments = self.segments
+        let low = segments.map(\.row.magnitude).min() ?? 0
+        let high = segments.map(\.row.magnitude).max() ?? 0
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(schedule.title).font(SettingsText.heading)
+                if let range = schedule.range {
+                    Text(range).font(SettingsText.small).monospacedDigit().foregroundStyle(Color.gray)
+                }
+                if let note = schedule.note {
+                    Text(note).font(SettingsText.small).foregroundStyle(Color.gray)
+                }
+            }
+            GeometryReader { geometry in
+                let usable = geometry.size.width - Self.gap * CGFloat(max(segments.count - 1, 0))
+                HStack(spacing: Self.gap) {
+                    ForEach(segments.indices, id: \.self) { index in
+                        let segment = segments[index]
+                        let width = max(0, usable * CGFloat((segment.end - segment.start) / 86400))
+                        let shade = high > low ? 0.18 + 0.42 * (segment.row.magnitude - low) / (high - low) : 0.3
+                        ZStack {
+                            Rectangle().fill(color.opacity(shade))
+                            if Self.fits(segment.row.value, in: width) {
+                                Text(segment.row.value).font(SettingsText.value).monospacedDigit().foregroundStyle(ReportColors.ink)
+                            }
+                        }
+                        .frame(width: width)
+                    }
+                }
+            }
+            .frame(height: Self.height)
+            .clipShape(RoundedRectangle(cornerRadius: 3))
+        }
+    }
+
+    /// Whether a value printed at `SettingsText.value` fits a part `width` points wide, with a little air.
+    static func fits(_ text: String, in width: CGFloat) -> Bool {
+        CGFloat(text.count) * 5.4 + 6 <= width
+    }
+}
+
+/// Hours under the schedule bars: 00:00 to 24:00 every three hours, lined up with the bars above.
+@available(iOS 16.0, macOS 13.0, *)
+struct DayAxis: View {
+    var body: some View {
+        GeometryReader { geometry in
+            ForEach(Array(stride(from: 0, through: 24, by: 3)), id: \.self) { hour in
+                let x = geometry.size.width * CGFloat(hour) / 24
+                Rectangle().fill(Color.gray.opacity(0.6)).frame(width: 1, height: 3)
+                    .position(x: min(max(x, 0.5), geometry.size.width - 0.5), y: 1.5)
+                // The tick marks the hour exactly; the edge labels move inward to stay on the page.
+                Text(String(format: "%02d:00", hour)).font(SettingsText.small).monospacedDigit().foregroundStyle(Color.gray).fixedSize()
+                    .position(x: min(max(x, 13), geometry.size.width - 13), y: 10)
+            }
+        }
+        .frame(height: 16)
+    }
+}
+
+/// Everything the Insulin page does not show: glucose targets and the app's other settings,
+/// group by group.
+@available(iOS 16.0, macOS 13.0, *)
+struct TherapySettingsPage: View {
+    let report: TherapyReport
+
+    var body: some View {
+        let f = ReportFormatter(report: report)
+        let targets = report.targetSchedule(f)
+        let groups = report.settings?.groups ?? []
+        if targets == nil && groups.isEmpty {
+            NoDataView(text: String(localized: "The app supplied no other settings.", bundle: .module, comment: "Settings page when there is nothing to show"))
+        } else {
+            VStack(alignment: .leading, spacing: 18) {
+                if let targets {
+                    ScheduleGrid(schedule: targets)
+                }
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 24, alignment: .top), GridItem(.flexible(), alignment: .top)],
+                          alignment: .leading, spacing: 18) {
+                    ForEach(groups.indices, id: \.self) { group(groups[$0]) }
+                }
+                Text(TherapyReport.settingsNote).font(SettingsText.small).foregroundStyle(Color.gray)
+            }
+        }
+    }
+
+    private func group(_ group: TherapySettingsSnapshot.Group) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(group.title).font(SettingsText.heading)
+            Grid(alignment: .leading, horizontalSpacing: 10, verticalSpacing: 3) {
+                ForEach(group.items.indices, id: \.self) { index in
+                    GridRow {
+                        Text(group.items[index].label).font(SettingsText.small).foregroundStyle(Color.gray)
+                        Text(group.items[index].value).font(SettingsText.value).monospacedDigit()
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

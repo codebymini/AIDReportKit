@@ -22,9 +22,6 @@
     "Automatic boluses per day" : {
       "comment" : "Statistic label: average number of automatic boluses per day"
     },
-    "Average daily dose" : {
-      "comment" : "Statistic label: total daily insulin"
-    },
     "Average per day" : {
       "comment" : "Statistic label: carbs per day"
     },
@@ -33,9 +30,6 @@
     },
     "Basal" : {
       "comment" : "Insulin type / chart series"
-    },
-    "Basal per day" : {
-      "comment" : "Statistic label: average basal insulin per day"
     },
     "Basal record coverage" : {
       "comment" : "Statistic label: share of time covered by basal records"
@@ -75,6 +69,9 @@
     },
     "Could not render the PDF content." : {
       "comment" : "Export error"
+    },
+    "Delivered basal per day" : {
+      "comment" : "Statistic label: basal actually delivered per day, temp basals and suspensions included"
     },
     "Each cell is one day's average glucose (%@), colored by the range it falls in. The number after each range is how many days fell in it." : {
       "comment" : "Heatmap caption; the argument is the glucose unit"
@@ -224,6 +221,9 @@
     "Preset name" : {
       "comment" : "Placeholder for the preset name field"
     },
+    "Programmed basal per day" : {
+      "comment" : "Statistic label: basal the basal schedule would deliver per day"
+    },
     "Range" : {
       "comment" : "Export sheet section for the report date range"
     },
@@ -263,8 +263,14 @@
     "Suspended per day" : {
       "comment" : "Statistic label: average pump suspension time per day"
     },
+    "The app supplied no other settings." : {
+      "comment" : "Settings page when there is nothing to show"
+    },
     "The report has no pages to export." : {
       "comment" : "Export error"
+    },
+    "Total daily dose" : {
+      "comment" : "Statistic label: average insulin per day, basal and bolus"
     },
     "Very high" : {
       "comment" : "Glucose band, short"

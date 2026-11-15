@@ -45,6 +45,7 @@ public struct MarkdownReportRenderer: Sendable {
         case .glucoseHeatmapByDay: return heatmapByDay(report, f)
         case .glycemiaRiskIndex: return gri(report, f)
         case .insulinTotalDailyDose: return totalDailyDose(report, f)
+        case .therapySettings: return therapySettings(report, f)
         case .insulinBolusDistribution: return bolusDistribution(report, f)
         case .carbsTotals: return carbs(report, f)
         case .dataQuality: return dataQuality(report, f)
@@ -216,7 +217,41 @@ public struct MarkdownReportRenderer: Sendable {
             [f.day($0.day), f.insulin($0.insulin.totalUnits), f.insulin($0.insulin.basalUnits),
              f.insulin($0.insulin.bolusUnits), f.insulin($0.insulin.automaticBolusUnits)]
         })
+        let schedules = report.insulinSchedules(f)
+        for schedule in schedules {
+            lines += [""] + scheduleTable(schedule)
+        }
+        if !schedules.isEmpty {
+            lines += ["", "_\(TherapyReport.settingsNote)_"]
+        }
         return lines
+    }
+
+    private func therapySettings(_ report: TherapyReport, _ f: ReportFormatter) -> [String] {
+        var blocks: [[String]] = []
+        if let targets = report.targetSchedule(f) {
+            blocks.append(scheduleTable(targets))
+        }
+        for group in report.settings?.groups ?? [] {
+            blocks.append(["**\(group.title)**", ""] + table(
+                [String(localized: "Setting", bundle: .module, comment: "Table column header: the name of a therapy setting"),
+                 String(localized: "Value", bundle: .module, comment: "Table column header")],
+                group.items.map { [$0.label, $0.value] }
+            ))
+        }
+        guard !blocks.isEmpty else {
+            return [String(localized: "The app supplied no other settings.", bundle: .module, comment: "Settings section when there is nothing to show")]
+        }
+        return blocks.joined(separator: [""]).map { $0 } + ["", "_\(TherapyReport.settingsNote)_"]
+    }
+
+    private func scheduleTable(_ schedule: PrintedSchedule) -> [String] {
+        let heading = schedule.note.map { "**\(schedule.title)** · \($0)" } ?? "**\(schedule.title)**"
+        return [heading, ""] + table(
+            [String(localized: "From", bundle: .module, comment: "Table column header: time of day a setting starts"),
+             String(localized: "Value", bundle: .module, comment: "Table column header")],
+            schedule.rows.map { [$0.time, $0.value] }
+        )
     }
 
     private func bolusDistribution(_ report: TherapyReport, _ f: ReportFormatter) -> [String] {

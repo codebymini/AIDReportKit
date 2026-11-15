@@ -78,6 +78,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
     case glucoseHeatmapByDay
     case carbsTotals
     case insulinTotalDailyDose
+    case therapySettings
     case insulinBolusDistribution
     case dataQuality
 
@@ -93,7 +94,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
             case .summary: return String(localized: "Summary", bundle: .module, comment: "Report category heading: overview and data quality pages")
             case .glucose: return String(localized: "Glucose", bundle: .module, comment: "Report category heading")
             case .carbs: return String(localized: "Carbs", bundle: .module, comment: "Carbohydrates, short: report category heading and table column header")
-            case .insulin: return String(localized: "Insulin", bundle: .module, comment: "Report category heading")
+            case .insulin: return String(localized: "Insulin", bundle: .module, comment: "Report category and section heading")
             }
         }
 
@@ -111,7 +112,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
         case .glucoseDistribution, .glucoseDistributionByDay, .glucosePercentileByDay,
              .glucoseHeatmapByDay, .glycemiaRiskIndex:
             return .glucose
-        case .insulinTotalDailyDose, .insulinBolusDistribution: return .insulin
+        case .insulinTotalDailyDose, .therapySettings, .insulinBolusDistribution: return .insulin
         case .carbsTotals: return .carbs
         }
     }
@@ -135,7 +136,9 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
         case .carbsTotals:
             return String(localized: "Total Meals", bundle: .module, comment: "Export menu chart name: carbs, fat and protein per day")
         case .insulinTotalDailyDose:
-            return String(localized: "Total Daily Dose", bundle: .module, comment: "Report section: insulin per day")
+            return String(localized: "Insulin", bundle: .module, comment: "Report category and section heading")
+        case .therapySettings:
+            return String(localized: "Settings", bundle: .module, comment: "Report section: targets, limits and the other therapy settings")
         case .insulinBolusDistribution:
             return String(localized: "Bolus Distribution", bundle: .module, comment: "Report section: manual vs automatic vs external boluses")
         case .dataQuality:
@@ -159,7 +162,9 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
         case .glycemiaRiskIndex:
             return String(localized: "Glycemia Risk Index", bundle: .module, comment: "Report section: GRI score")
         case .insulinTotalDailyDose:
-            return String(localized: "Total Daily Dose", bundle: .module, comment: "Report section: insulin per day")
+            return String(localized: "Insulin", bundle: .module, comment: "Report category and section heading")
+        case .therapySettings:
+            return String(localized: "Settings", bundle: .module, comment: "Report section: targets, limits and the other therapy settings")
         case .insulinBolusDistribution:
             return String(localized: "Bolus Distribution", bundle: .module, comment: "Report section: manual vs automatic vs external boluses")
         case .carbsTotals:
@@ -187,7 +192,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
         case .glucosePercentileByDay, .glucoseDistributionByDay, .glucoseHeatmapByDay,
              .carbsTotals, .insulinTotalDailyDose, .insulinBolusDistribution:
             return true
-        case .overview, .glucoseDistribution, .glycemiaRiskIndex, .dataQuality:
+        case .overview, .glucoseDistribution, .glycemiaRiskIndex, .therapySettings, .dataQuality:
             return false
         }
     }

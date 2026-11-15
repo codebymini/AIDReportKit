@@ -9,6 +9,19 @@ import PDFKit
 import XCTest
 
 final class PDFReportExporterTests: XCTestCase {
+    /// Settings like Trio's, for the sample report's Insulin and Settings pages.
+    static let sampleSettings = TherapySettingsSnapshot(
+        carbRatios: [.init(startOffset: 0, value: 10), .init(startOffset: 6.0 * 3600, value: 8), .init(startOffset: 11.0 * 3600, value: 10), .init(startOffset: 17.0 * 3600, value: 9)],
+        insulinSensitivities: [.init(startOffset: 0, value: 50), .init(startOffset: 6.0 * 3600, value: 45), .init(startOffset: 22.0 * 3600, value: 55)],
+        targets: [.init(startOffset: 0, low: 100, high: 100), .init(startOffset: 7.0 * 3600, low: 105, high: 105)],
+        groups: [
+            .init("Limits", [.init("Max IOB", "6 U"), .init("Max basal", "3 U/h"), .init("Max bolus", "10 U"), .init("Max COB", "120 g")]),
+            .init("Insulin model", [.init("Curve", "Rapid-acting"), .init("Duration of insulin action", "10 h"), .init("Peak", "75 min")]),
+            .init("Algorithm", [.init("Dosing mode", "Closed Loop"), .init("SMB", "On"), .init("UAM", "On"), .init("Dynamic ISF", "Off"),
+                                .init("Max SMB basal minutes", "30 min"), .init("Autosens", "0.7–1.2")]),
+        ]
+    )
+
     @MainActor
     func testRendersOnePagePerRenderableSection() throws {
         guard #available(iOS 16.0, macOS 13.0, *) else { throw XCTSkip("Requires iOS 16 / macOS 13") }
@@ -18,6 +31,7 @@ final class PDFReportExporterTests: XCTestCase {
         let options = ReportOptions(
             // The schedule the synthetic loop adjusts, so the overview can compare programmed and delivered basal.
             basalSchedule: BasalSchedule(entries: [.init(startOffset: 0, ratePerHour: generator.scheduledBasalRate)], timeZone: dataset.source.timeZone),
+            therapySettings: Self.sampleSettings,
             metadata: ReportMetadata(
                 appName: "Trio", appVersion: "0.6.0", cgm: "Dexcom G7", pump: "Omnipod DASH", device: "iPhone 16",
                 settings: [.init("Closed loop", "On"), .init("SMB", "On"), .init("Dynamic ISF", "Off")]

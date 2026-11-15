@@ -155,4 +155,50 @@ final class ConformanceTests: XCTestCase {
         // And what it writes reads back the same.
         XCTAssertEqual(try JSONDecoder().decode(ReportDefinition.self, from: JSONEncoder().encode(definition)), definition)
     }
+
+    func testSettingsAreCarriedWithTheBasalSchedule() async throws {
+        let basal = try XCTUnwrap(BasalSchedule(entries: [.init(startOffset: 0, ratePerHour: 0.8), .init(startOffset: 12 * hour, ratePerHour: 1.025)], timeZone: utc))
+        let settings = TherapySettingsSnapshot(
+            carbRatios: [.init(startOffset: 0, value: 10), .init(startOffset: 11 * hour, value: 7.5)],
+            insulinSensitivities: [.init(startOffset: 0, value: 45)],
+            targets: [.init(startOffset: 0, low: 100, high: 110)],
+            groups: [.init("Limits", [.init("Max IOB", "6 U")]), .init("Empty", [])]
+        )
+        let definition = ReportDefinition(range: .lastDays(2), sections: [.insulinTotalDailyDose, .therapySettings])
+        let dataset = SyntheticTherapyGenerator(days: 2).makeDataset()
+        let report = ReportBuilder(options: ReportOptions(basalSchedule: basal, therapySettings: settings)).build(definition, from: dataset, now: dataset.interval.end)
+
+        XCTAssertEqual(report.settings?.basalSchedule, basal, "the report's basal schedule is printed with the other settings")
+        XCTAssertEqual(report.settings?.groups.map(\.title), ["Limits"], "empty groups are dropped")
+        let schedules = report.insulinSchedules(ReportFormatter(report: report))
+        XCTAssertEqual(schedules.map(\.kind), [.basalRate, .carbRatio, .insulinSensitivity])
+        XCTAssertEqual(schedules[0].range, "0.80–1.025", "printed next to the bar")
+        XCTAssertEqual(schedules[0].rows.map(\.startOffset), [0, 12 * hour])
+        XCTAssertNil(schedules[2].range, "one value has no range")
+        let markdown = MarkdownReportRenderer().render(report)
+        for expected in ["## Insulin", "**Basal rates (U/h)** · 21.9 U per day", "| 12:00 | 1.025 |", "| 00:00 | 0.80 |",
+                         "**Carb ratios (g/U)**", "| 11:00 | 7.5 |", "| 00:00 | 10 |", "**Insulin sensitivity (mg/dL per U)**", "| 00:00 | 45 |",
+                         "## Settings", "**Glucose targets (mg/dL)**", "| 00:00 | 100–110 |", "**Limits**", "| Max IOB | 6 U |",
+                         TherapyReport.settingsNote] {
+            XCTAssertTrue(markdown.contains(expected), "Markdown is missing: \(expected)")
+        }
+
+        // Basal schedule alone still makes the Insulin page's table; Settings says there is nothing else.
+        let basalOnly = ReportBuilder(options: ReportOptions(basalSchedule: basal)).build(definition, from: dataset, now: dataset.interval.end)
+        XCTAssertEqual(basalOnly.insulinSchedules(ReportFormatter(report: basalOnly)).count, 1)
+        XCTAssertTrue(MarkdownReportRenderer().render(basalOnly).contains("The app supplied no other settings."))
+        XCTAssertNil(ReportBuilder().build(definition, from: dataset, now: dataset.interval.end).settings)
+    }
+
+    func testSettingsInMmol() throws {
+        let settings = TherapySettingsSnapshot(insulinSensitivities: [.init(startOffset: 0, value: 45)], targets: [.init(startOffset: 0, low: 99, high: 99)])
+        let synthetic = SyntheticTherapyGenerator(days: 1).makeDataset()
+        let dataset = TherapyDataset(interval: synthetic.interval, source: DataSourceInfo(app: .synthetic, displayUnit: .mmolL, timeZone: utc),
+                                     glucose: synthetic.glucose, insulin: synthetic.insulin, carbs: synthetic.carbs)
+        let report = ReportBuilder(options: ReportOptions(therapySettings: settings)).build(ReportDefinition(range: .day, sections: [.therapySettings]), from: dataset, now: dataset.interval.end)
+        let f = ReportFormatter(report: report)
+        XCTAssertEqual(report.insulinSchedules(f).first?.title, "Insulin sensitivity (mmol/L per U)")
+        XCTAssertEqual(report.insulinSchedules(f).first?.rows.first?.value, "2.5")
+        XCTAssertEqual(report.targetSchedule(f)?.rows.first?.value, "5.5", "a single target prints once")
+    }
 }

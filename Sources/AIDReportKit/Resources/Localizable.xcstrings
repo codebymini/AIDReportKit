@@ -18,6 +18,9 @@
     "%@ of programmed" : {
       "comment" : "Under delivered basal: delivered as a share of programmed basal"
     },
+    "%@ per day" : {
+      "comment" : "Under the basal rates: what the schedule delivers in a day"
+    },
     "%lld D" : {
       "comment" : "Short range name: a number of days"
     },
@@ -168,6 +171,9 @@
         }
       }
     },
+    "Basal rates (U/h)" : {
+      "comment" : "Settings table heading"
+    },
     "Basal record coverage" : {
       "comment" : "Statistic label: share of time covered by basal records"
     },
@@ -247,6 +253,9 @@
           }
         }
       }
+    },
+    "Carb ratios (g/U)" : {
+      "comment" : "Settings table heading: grams of carbohydrate per unit"
     },
     "Carbohydrates" : {
       "comment" : "Report category and section heading"
@@ -335,6 +344,9 @@
     "Fri" : {
       "comment" : "Short weekday name: Friday"
     },
+    "From" : {
+      "comment" : "Table column header: time of day a setting starts"
+    },
     "GMI" : {
       "comment" : "Statistic label: Glucose Management Indicator"
     },
@@ -364,6 +376,9 @@
     },
     "Glucose changed %@ mg/dL/min" : {
       "comment" : "Validation warning about a very fast glucose change"
+    },
+    "Glucose targets (%@)" : {
+      "comment" : "Settings table heading: correction target ranges; the argument is the glucose unit"
     },
     "Glycemia Risk Index" : {
       "comment" : "Report section: GRI score"
@@ -412,7 +427,10 @@
       }
     },
     "Insulin" : {
-      "comment" : "Report category heading"
+      "comment" : "Report category and section heading"
+    },
+    "Insulin sensitivity (%@ per U)" : {
+      "comment" : "Settings table heading: how far one unit lowers glucose; the argument is the glucose unit"
     },
     "Last %lld days" : {
       "comment" : "Report range: rolling number of days ending when the report is made"
@@ -559,6 +577,15 @@
     "Sensor gap of %@" : {
       "comment" : "Validation note; the argument is a duration"
     },
+    "Setting" : {
+      "comment" : "Table column header: the name of a therapy setting"
+    },
+    "Settings" : {
+      "comment" : "Report section: targets, limits and the other therapy settings"
+    },
+    "Settings in force when the report was made. Changes during the period are not shown." : {
+      "comment" : "Note under the settings tables"
+    },
     "Share" : {
       "comment" : "Table column header: share of readings"
     },
@@ -576,6 +603,9 @@
     },
     "Synthetic data" : {
       "comment" : "Data source name for generated test data"
+    },
+    "The app supplied no other settings." : {
+      "comment" : "Settings section when there is nothing to show"
     },
     "The first and last day are partial: data runs from %@ to %@, so those two days show less than a full day." : {
       "comment" : "Warning on per-day charts; arguments are the first and last data point as date and time",
@@ -616,9 +646,6 @@
     },
     "Total" : {
       "comment" : "Table column header: total insulin"
-    },
-    "Total Daily Dose" : {
-      "comment" : "Report section: insulin per day"
     },
     "Total Meals" : {
       "comment" : "Export menu chart name: carbs, fat and protein per day"
