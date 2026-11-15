@@ -90,6 +90,16 @@ final class EndToEndReportTests: XCTestCase {
         let report = try await goldenReport()
         try assertGlucose(report.summary.glucose)
         assertInsulin(report.summary.insulin, basal: pumpHistoryBasal)
+        // eA1c (ADAG): (145 + 46.7) / 28.7; in mmol/mol 10.929 × (eA1c − 2.152).
+        XCTAssertEqual(try XCTUnwrap(report.summary.glucose).estimatedA1c, 191.7 / 28.7, accuracy: accuracy)
+        XCTAssertEqual(try XCTUnwrap(report.summary.glucose).estimatedA1cMmolMol, 10.929 * (191.7 / 28.7 - 2.152), accuracy: accuracy)
+        // Programmed basal: the 1.0 U/h schedule from the first record (00:00) to the last (23:55 on day 2).
+        let programmed = 47 + 55.0 / 60
+        XCTAssertEqual(report.summary.insulin.programmedBasalUnits ?? 0, programmed, accuracy: accuracy)
+        XCTAssertEqual(report.summary.insulin.averageDailyProgrammedBasal ?? 0, programmed / 2, accuracy: accuracy)
+        // Temps add 1.0 − 0.5 + 0.67 U, the suspension takes 1.0 U off: a sixth of a unit over the schedule.
+        XCTAssertEqual(report.summary.insulin.deliveredBasalFraction ?? 0, pumpHistoryBasal / programmed, accuracy: accuracy)
+        XCTAssertEqual(pumpHistoryBasal - programmed, 1.0 / 6, accuracy: accuracy)
         assertCarbs(report.summary.carbs)
         XCTAssertEqual(report.summary.carbs.totalFatGrams, 10)
         XCTAssertEqual(report.summary.carbs.totalProteinGrams, 20)
@@ -116,6 +126,9 @@ final class EndToEndReportTests: XCTestCase {
         // Day 2: suspended 10–11, temp 20:00–20:20 at 3 U/h, schedule filled to the last record at 23:55.
         XCTAssertEqual(day2.insulin.basalUnits, 19 + 1 + (3 + 35.0 / 60), accuracy: accuracy)
         XCTAssertEqual(day2.insulin.bolusUnits, 4.5, accuracy: accuracy)
+        // Programmed basal per day: a whole day of schedule, then the schedule up to the last record.
+        XCTAssertEqual(day1.insulin.programmedBasalUnits ?? 0, 24, accuracy: accuracy)
+        XCTAssertEqual(day2.insulin.programmedBasalUnits ?? 0, 23 + 55.0 / 60, accuracy: accuracy)
         XCTAssertEqual(day2.insulin.suspendedDuration, 3600, accuracy: accuracy)
 
         XCTAssertEqual(day1.carbs.totalGrams, 180)
@@ -150,6 +163,23 @@ final class EndToEndReportTests: XCTestCase {
             let t = try XCTUnwrap(bucket.timeInRanges)
             XCTAssertEqual(t.veryLow + t.low + t.inRange + t.high + t.veryHigh, 1, accuracy: accuracy)
         }
+    }
+
+    func testRangesByPartOfTheDay() async throws {
+        // Each six hours holds 72 readings from day 1 and 72 from day 2:
+        // night 100 / 50, morning 100 / 60, afternoon 200 / 150, evening 200 / 300.
+        let periods = try await goldenReport().dayPeriods
+        XCTAssertEqual(periods.map(\.period), [.night, .morning, .afternoon, .evening])
+        XCTAssertEqual(periods.map(\.readingCount), [144, 144, 144, 144])
+        let t = try periods.map { try XCTUnwrap($0.timeInRanges) }
+        XCTAssertEqual(t[0].veryLow, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[0].inRange, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[1].low, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[1].inRange, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[2].inRange, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[2].high, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[3].high, 0.5, accuracy: accuracy)
+        XCTAssertEqual(t[3].veryHigh, 0.5, accuracy: accuracy)
     }
 
     // MARK: - Other sources must give the same answers
@@ -191,6 +221,7 @@ final class EndToEndReportTests: XCTestCase {
         assertInsulin(report.summary.insulin, basal: 48 + 1.0 / 6) // 6 + 2 + 0.5 + 26 + 0 + 9 + 1 + 3⅔
         assertCarbs(report.summary.carbs, fatProteinEquivalent: 0)
         XCTAssertEqual(report.summary.insulin.basalCoverage, 1, accuracy: accuracy)
+        XCTAssertNil(report.summary.insulin.programmedBasalUnits, "no schedule, nothing to compare with")
         XCTAssertEqual(report.validation.issues(atLeast: .error), [])
     }
 

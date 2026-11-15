@@ -2,7 +2,8 @@ import Foundation
 
 /// A fully computed report: what renderers (Markdown, JSON, CSV, PDF) consume.
 public struct TherapyReport: Hashable, Codable, Sendable {
-    public static let currentSchemaVersion = 1
+    /// 2: `dayPeriods` and `settings` added.
+    public static let currentSchemaVersion = 2
 
     public var schemaVersion: Int
     public var definition: ReportDefinition
@@ -14,10 +15,15 @@ public struct TherapyReport: Hashable, Codable, Sendable {
     public var summary: TherapySummary
     public var daily: [DailySummary]
     public var agp: AGPProfile
+    /// Time in ranges for night, morning, afternoon and evening, all days overlaid.
+    public var dayPeriods: [DayPeriodRanges]
     /// Issues found in the raw data, before sanitizing.
     public var validation: ValidationReport
     /// The first and last data point the statistics rest on; `nil` when there is no data.
     public var dataSpan: DataSpan?
+    /// Basal rates, carb ratios, ISF, targets and other settings in force when the report was
+    /// made; `nil` when the app supplied none.
+    public var settings: TherapySettingsSnapshot?
 
     public var displayUnit: GlucoseUnit { source.displayUnit }
 
@@ -39,8 +45,12 @@ public struct ReportOptions: Sendable {
     public var validation: ValidationConfiguration
     /// Extra host-specific rules run after the standard ones.
     public var additionalRules: [any ValidationRule]
-    /// Fills basal gaps (needed for Trio and Nightscout, which only record temp basals).
+    /// Fills basal gaps (needed for Trio and Nightscout, which only record temp basals) and is
+    /// the programmed basal reports compare delivered basal with.
     public var basalSchedule: BasalSchedule?
+    /// Carb ratios, ISF, targets and other settings printed on the Insulin and Settings pages.
+    /// The basal schedule above is shown with them.
+    public var therapySettings: TherapySettingsSnapshot?
     public var agpBucketMinutes: Int
     public var metadata: ReportMetadata
 
@@ -49,6 +59,7 @@ public struct ReportOptions: Sendable {
         validation: ValidationConfiguration = ValidationConfiguration(),
         additionalRules: [any ValidationRule] = [],
         basalSchedule: BasalSchedule? = nil,
+        therapySettings: TherapySettingsSnapshot? = nil,
         agpBucketMinutes: Int = 60,
         metadata: ReportMetadata = ReportMetadata()
     ) {
@@ -56,8 +67,18 @@ public struct ReportOptions: Sendable {
         self.validation = validation
         self.additionalRules = additionalRules
         self.basalSchedule = basalSchedule
+        self.therapySettings = therapySettings
         self.agpBucketMinutes = agpBucketMinutes
         self.metadata = metadata
+    }
+
+    /// The settings a report prints: `therapySettings` with the basal schedule filled in.
+    var reportedSettings: TherapySettingsSnapshot? {
+        var settings = therapySettings ?? TherapySettingsSnapshot()
+        if settings.basalSchedule == nil {
+            settings.basalSchedule = basalSchedule
+        }
+        return settings.isEmpty ? nil : settings
     }
 }
 
@@ -89,7 +110,8 @@ public struct ReportBuilder: Sendable {
         let aggregator = StatsAggregator(
             thresholds: options.thresholds,
             timeZone: raw.source.timeZone,
-            agpBucketMinutes: options.agpBucketMinutes
+            agpBucketMinutes: options.agpBucketMinutes,
+            basalSchedule: options.basalSchedule
         )
 
         return TherapyReport(
@@ -103,8 +125,10 @@ public struct ReportBuilder: Sendable {
             summary: aggregator.summary(clean),
             daily: aggregator.daily(clean),
             agp: aggregator.agp(clean),
+            dayPeriods: aggregator.dayPeriods(clean),
             validation: validation,
-            dataSpan: clean.dataSpan
+            dataSpan: clean.dataSpan,
+            settings: options.reportedSettings
         )
     }
 }
