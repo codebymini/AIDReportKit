@@ -44,10 +44,13 @@ public struct NightscoutProfile: Sendable {
     public var basalSchedule: BasalSchedule?
     /// The looping phone's time zone; `nil` when the profile does not name one.
     public var timeZone: TimeZone?
+    /// Carb ratios, ISF, targets and insulin action time; pass as `ReportOptions.therapySettings`.
+    public var therapySettings: TherapySettingsSnapshot?
 
-    public init(basalSchedule: BasalSchedule? = nil, timeZone: TimeZone? = nil) {
+    public init(basalSchedule: BasalSchedule? = nil, timeZone: TimeZone? = nil, therapySettings: TherapySettingsSnapshot? = nil) {
         self.basalSchedule = basalSchedule
         self.timeZone = timeZone
+        self.therapySettings = therapySettings
     }
 }
 
@@ -112,13 +115,14 @@ public final class NightscoutTherapyDataSource: TherapyDataSource {
         try await profile(profileName: profileName).basalSchedule
     }
 
-    /// What a report needs from the site's current profile, in one request: the basal schedule
-    /// and the time zone of the looping phone.
+    /// What a report needs from the site's current profile, in one request: the basal schedule,
+    /// the other therapy settings and the time zone of the looping phone.
     public func profile(profileName: String? = nil, now: Date = Date()) async throws -> NightscoutProfile {
         let data = try await currentProfile(now: now)
         return NightscoutProfile(
             basalSchedule: try NightscoutParser.basalSchedule(fromProfile: data, profileName: profileName),
-            timeZone: try NightscoutParser.timeZone(fromProfile: data, profileName: profileName)
+            timeZone: try NightscoutParser.timeZone(fromProfile: data, profileName: profileName),
+            therapySettings: try NightscoutParser.therapySettings(fromProfile: data, profileName: profileName)
         )
     }
 

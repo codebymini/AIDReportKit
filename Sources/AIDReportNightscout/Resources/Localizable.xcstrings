@@ -1,8 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ h" : {
+      "comment" : "A duration in hours"
+    },
     "Could not build a Nightscout URL for %@" : {
       "comment" : "Nightscout error; the argument is an API path"
+    },
+    "Duration of insulin action" : {
+      "comment" : "Setting: how long insulin acts (DIA)"
+    },
+    "Insulin model" : {
+      "comment" : "Settings group: how insulin is modelled"
     },
     "Nightscout returned HTTP %lld for %@" : {
       "comment" : "Nightscout error; arguments are an HTTP status code and an API path",

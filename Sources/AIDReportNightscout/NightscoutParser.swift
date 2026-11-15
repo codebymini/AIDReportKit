@@ -124,6 +124,56 @@ public enum NightscoutParser {
         return BasalSchedule(entries: entries, timeZone: timeZone)
     }
 
+    /// Carb ratios, ISF, targets and insulin action time from the profile, converted to mg/dL;
+    /// `nil` when the profile has none of them. The basal schedule is read by `basalSchedule`.
+    ///
+    /// Glucose values follow the profile's `units` ("mg/dl" or "mmol"). Without one, targets
+    /// below 30 are taken as mmol/L.
+    public static func therapySettings(fromProfile data: Data, profileName: String? = nil) throws -> TherapySettingsSnapshot? {
+        let documents = try JSONDecoder().decode([ProfileDocument].self, from: data)
+        guard let document = documents.first,
+              let name = profileName ?? document.defaultProfile ?? document.store?.keys.sorted().first,
+              let store = document.store?[name]
+        else { return nil }
+
+        func schedule(_ entries: [ProfileDocument.ScheduleEntry]?) -> [TherapySettingsSnapshot.Entry] {
+            (entries ?? []).compactMap { entry in
+                entry.value.map { TherapySettingsSnapshot.Entry(startOffset: entry.timeAsSeconds ?? entry.time.flatMap(Self.secondsFromMidnight) ?? 0, value: $0) }
+            }
+        }
+        let lows = schedule(store.targetLow), highs = schedule(store.targetHigh)
+        let isMmol = store.units.map { $0.lowercased().contains("mmol") } ?? (lows + highs).contains { $0.value < 30 }
+        let mgdL = { (value: Double) in isMmol ? value * GlucoseUnit.mgdLPerMmolL : value }
+
+        // Low and high are separate schedules; each target range takes the value of both in force at its start.
+        func value(at offset: TimeInterval, in entries: [TherapySettingsSnapshot.Entry]) -> Double? {
+            entries.sorted { $0.startOffset < $1.startOffset }.last { $0.startOffset <= offset }?.value ?? entries.first?.value
+        }
+        let targets = Set((lows + highs).map(\.startOffset)).sorted().compactMap { offset -> TherapySettingsSnapshot.TargetRange? in
+            guard let low = value(at: offset, in: lows) ?? value(at: offset, in: highs),
+                  let high = value(at: offset, in: highs) ?? value(at: offset, in: lows)
+            else { return nil }
+            return TherapySettingsSnapshot.TargetRange(startOffset: offset, low: mgdL(low), high: mgdL(high))
+        }
+
+        var groups: [TherapySettingsSnapshot.Group] = []
+        if let dia = store.dia, dia > 0 {
+            let hours = dia.rounded() == dia ? String(format: "%.0f", dia) : String(format: "%.1f", dia)
+            groups.append(.init(
+                String(localized: "Insulin model", bundle: .module, comment: "Settings group: how insulin is modelled"),
+                [.init(String(localized: "Duration of insulin action", bundle: .module, comment: "Setting: how long insulin acts (DIA)"),
+                       String(localized: "\(hours) h", bundle: .module, comment: "A duration in hours"))]
+            ))
+        }
+        let settings = TherapySettingsSnapshot(
+            carbRatios: schedule(store.carbratio),
+            insulinSensitivities: schedule(store.sens).map { .init(startOffset: $0.startOffset, value: mgdL($0.value)) },
+            targets: targets,
+            groups: groups
+        )
+        return settings.isEmpty ? nil : settings
+    }
+
     /// The time zone the looping phone keeps, as written in the site's profile; `nil` when the
     /// profile has none or it cannot be read.
     public static func timeZone(fromProfile data: Data, profileName: String? = nil) throws -> TimeZone? {
@@ -309,6 +359,26 @@ private struct ProfileDocument: Decodable {
     struct Store: Decodable {
         let basal: [ScheduleEntry]?
         let timezone: String?
+        let carbratio: [ScheduleEntry]?
+        let sens: [ScheduleEntry]?
+        let targetLow: [ScheduleEntry]?
+        let targetHigh: [ScheduleEntry]?
+        /// Hours.
+        let dia: Double?
+        let units: String?
+
+        init(from decoder: Decoder) throws {
+            let c = try decoder.container(keyedBy: DynamicKey.self)
+            func entries(_ key: String) -> [ScheduleEntry]? { try? c.decodeIfPresent([ScheduleEntry].self, forKey: DynamicKey(key)) }
+            basal = entries("basal")
+            timezone = c.string("timezone")
+            carbratio = entries("carbratio")
+            sens = entries("sens")
+            targetLow = entries("target_low")
+            targetHigh = entries("target_high")
+            dia = c.double("dia")
+            units = c.string("units")
+        }
     }
 
     struct ScheduleEntry: Decodable {

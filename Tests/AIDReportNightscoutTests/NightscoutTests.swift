@@ -122,6 +122,33 @@ final class NightscoutDataSourceTests: XCTestCase {
         XCTAssertEqual(doses.reduce(0) { $0 + $1.units }, 3.0, accuracy: 1e-9)
     }
 
+    func testProfileTherapySettings() throws {
+        // Targets as separate low/high schedules in mmol/L; ISF in mmol/L per unit.
+        let profile = Data("""
+        [{"defaultProfile": "Default", "store": {"Default": {
+            "units": "mmol", "dia": 6,
+            "carbratio": [{"time": "00:00", "value": 10}, {"time": "11:00", "timeAsSeconds": 39600, "value": "8"}],
+            "sens": [{"time": "00:00", "value": 2.5}],
+            "target_low": [{"time": "00:00", "value": 5.5}, {"time": "07:00", "value": 6.0}],
+            "target_high": [{"time": "00:00", "value": 6.0}],
+            "basal": [{"time": "00:00", "value": 1.0}]
+        }}}]
+        """.utf8)
+        let settings = try XCTUnwrap(NightscoutParser.therapySettings(fromProfile: profile))
+        XCTAssertEqual(settings.carbRatios, [.init(startOffset: 0, value: 10), .init(startOffset: 11.0 * 3600, value: 8)])
+        XCTAssertEqual(settings.insulinSensitivities.map(\.value), [2.5 * GlucoseUnit.mgdLPerMmolL])
+        // 07:00 takes the low that starts then and the high still in force from midnight.
+        XCTAssertEqual(settings.targets.map(\.startOffset), [0, 7.0 * 3600])
+        XCTAssertEqual(settings.targets[0].low, 5.5 * GlucoseUnit.mgdLPerMmolL, accuracy: 1e-9)
+        XCTAssertEqual(settings.targets[1].low, 6.0 * GlucoseUnit.mgdLPerMmolL, accuracy: 1e-9)
+        XCTAssertEqual(settings.targets[1].high, 6.0 * GlucoseUnit.mgdLPerMmolL, accuracy: 1e-9)
+        XCTAssertEqual(settings.groups.flatMap(\.items).map(\.value), ["6 h"])
+        XCTAssertNil(settings.basalSchedule, "basal is read by basalSchedule(fromProfile:)")
+
+        // Basal only: nothing else to report.
+        XCTAssertNil(try NightscoutParser.therapySettings(fromProfile: Data(#"[{"store": {"Default": {"basal": [{"time": "00:00", "value": 1}]}}}]"#.utf8)))
+    }
+
     func testProfileWithoutTimeZone() throws {
         let profile = Data(#"[{"defaultProfile": "Default", "store": {"Default": {"basal": [{"time": "00:00", "value": 1.0}]}}}]"#.utf8)
         XCTAssertNil(try NightscoutParser.timeZone(fromProfile: profile))
