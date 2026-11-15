@@ -40,7 +40,6 @@ public struct MarkdownReportRenderer: Sendable {
         switch section {
         case .overview: return overview(report, f)
         case .glucoseDistribution: return glucoseDistribution(report, f)
-        case .glucosePercentileByTime: return agp(report, f)
         case .glucoseDistributionByDay: return distributionByDay(report, f)
         case .glucosePercentileByDay: return percentilesByDay(report, f)
         case .glucoseHeatmapByDay: return heatmapByDay(report, f)
@@ -103,40 +102,24 @@ public struct MarkdownReportRenderer: Sendable {
             [String(localized: "Lowest / highest", bundle: .module, comment: "Statistic label: minimum and maximum glucose"),
              "\(f.glucose(g.minimum)) / \(f.glucose(g.maximum, withUnit: true))"],
         ])
-        let buckets = report.agp.buckets.filter { $0.timeInRanges != nil }
-        if !buckets.isEmpty {
+        let periods = report.dayPeriods.filter { $0.timeInRanges != nil }
+        if !periods.isEmpty {
             lines.append("")
             lines += table([
-                String(localized: "Time of day", bundle: .module, comment: "Table column header: start of a time-of-day bucket"),
+                String(localized: "Time of day", bundle: .module, comment: "Table column header: part of the day"),
                 String(localized: "Very low", bundle: .module, comment: "Glucose band, short"),
                 String(localized: "Low", bundle: .module, comment: "Glucose band, short"),
                 String(localized: "In range", bundle: .module, comment: "Glucose band, short"),
                 String(localized: "High", bundle: .module, comment: "Glucose band, short"),
                 String(localized: "Very high", bundle: .module, comment: "Glucose band, short"),
-            ], buckets.compactMap { bucket in
-                bucket.timeInRanges.map { t in
-                    [f.timeOfDay(minute: bucket.startMinute), f.percent(t.veryLow), f.percent(t.low), f.percent(t.inRange), f.percent(t.high), f.percent(t.veryHigh)]
+            ], periods.compactMap { entry in
+                entry.timeInRanges.map { t in
+                    ["\(entry.period.title) (\(entry.period.hoursText))",
+                     f.percent(t.veryLow), f.percent(t.low), f.percent(t.inRange), f.percent(t.high), f.percent(t.veryHigh)]
                 }
             })
         }
         return lines
-    }
-
-    private func agp(_ report: TherapyReport, _ f: ReportFormatter) -> [String] {
-        let rows = report.agp.buckets.map { bucket -> [String] in
-            guard let p = bucket.percentiles else {
-                return [f.timeOfDay(minute: bucket.startMinute), "0", "–", "–", "–", "–", "–"]
-            }
-            return [f.timeOfDay(minute: bucket.startMinute), "\(bucket.readingCount)",
-                    f.glucose(p.p5), f.glucose(p.p25), f.glucose(p.p50), f.glucose(p.p75), f.glucose(p.p95)]
-        }
-        let intro = String(localized: "Glucose (\(report.displayUnit.rawValue)) by time of day, all days overlaid.", bundle: .module,
-                           comment: "AGP table caption; the argument is the glucose unit")
-        return [intro, ""] + table([
-            String(localized: "Time", bundle: .module, comment: "Table column header: time of day"),
-            String(localized: "Readings", bundle: .module, comment: "Statistic label: number of CGM readings"),
-            "5%", "25%", medianLabel, "75%", "95%",
-        ], rows)
     }
 
     private func distributionByDay(_ report: TherapyReport, _ f: ReportFormatter) -> [String] {

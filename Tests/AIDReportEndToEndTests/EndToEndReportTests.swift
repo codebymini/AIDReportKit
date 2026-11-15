@@ -460,9 +460,10 @@ final class EndToEndReportTests: XCTestCase {
             "| GMI | 6.8% |",
             "| Median | 125 mg/dL |",
             "| Time of day | Very low | Low | In range | High | Very high |",
-            "| 00:00 | 50.0% | 0.0% | 50.0% | 0.0% | 0.0% |",
-            "| 12:00 | 0.0% | 0.0% | 50.0% | 50.0% | 0.0% |",
-            "| 18:00 | 0.0% | 0.0% | 0.0% | 50.0% | 50.0% |",
+            "| Night (00–06) | 50.0% | 0.0% | 50.0% | 0.0% | 0.0% |",
+            "| Morning (06–12) | 0.0% | 50.0% | 50.0% | 0.0% | 0.0% |",
+            "| Afternoon (12–18) | 0.0% | 0.0% | 50.0% | 50.0% | 0.0% |",
+            "| Evening (18–24) | 0.0% | 0.0% | 0.0% | 50.0% | 50.0% |",
             "| 2026-01-01 | 46.5 U | 24.5 U | 22.0 U | 2.0 U |",
             "| 2026-01-01 | 180 g | 3 | 10 g | 20 g |",
             "Average 115 g per day in 2.0 entries per day (average 58 g per entry, largest 80 g).",
@@ -482,7 +483,7 @@ final class EndToEndReportTests: XCTestCase {
         XCTAssertEqual(ReportSection.Category.allCases, [.summary, .glucose, .carbs, .insulin])
         XCTAssertEqual(ReportSection.Category.summary.sections, [.overview, .dataQuality])
         XCTAssertEqual(ReportSection.Category.glucose.sections.map(\.menuTitle),
-                       ["Percentile", "Distribution", "Glycemia Risk Index", "Percentile (by day)", "Distribution (by day)", "Heatmap (by day)"])
+                       ["Distribution", "Glycemia Risk Index", "Percentile (by day)", "Distribution (by day)", "Heatmap (by day)"])
         XCTAssertEqual(ReportSection.Category.carbs.sections.map(\.menuTitle), ["Total Meals"])
         XCTAssertEqual(ReportSection.Category.insulin.sections.map(\.menuTitle), ["Total Daily Dose", "Bolus Distribution"])
 
@@ -610,7 +611,7 @@ final class EndToEndReportTests: XCTestCase {
             XCTAssertTrue(overview.contains(expected), "Overview page is missing: \(expected)")
         }
         let distribution = try text(.glucoseDistribution)
-        for expected in ["In range (70–180)", "37.5%", "Tight range (70–140)", "By time of day", "00:00", "21:00"] {
+        for expected in ["In range (70–180)", "37.5%", "Tight range (70–140)", "By time of day", "Night", "00–06", "Morning", "Afternoon", "Evening", "18–24", "50%"] {
             XCTAssertTrue(distribution.contains(expected), "Distribution page is missing: \(expected)")
         }
         let gri = try text(.glycemiaRiskIndex)

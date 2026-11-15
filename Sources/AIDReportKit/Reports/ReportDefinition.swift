@@ -71,7 +71,6 @@ public enum ReportRange: Hashable, Codable, Sendable {
 /// quality as the closing page.
 public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable {
     case overview
-    case glucosePercentileByTime
     case glucoseDistribution
     case glycemiaRiskIndex
     case glucosePercentileByDay
@@ -109,7 +108,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
     public var category: Category {
         switch self {
         case .overview, .dataQuality: return .summary
-        case .glucoseDistribution, .glucosePercentileByTime, .glucoseDistributionByDay, .glucosePercentileByDay,
+        case .glucoseDistribution, .glucoseDistributionByDay, .glucosePercentileByDay,
              .glucoseHeatmapByDay, .glycemiaRiskIndex:
             return .glucose
         case .insulinTotalDailyDose, .insulinBolusDistribution: return .insulin
@@ -123,8 +122,6 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
         switch self {
         case .overview:
             return String(localized: "Overview", bundle: .module, comment: "Report category and section heading")
-        case .glucosePercentileByTime:
-            return String(localized: "Percentile", bundle: .module, comment: "Export menu chart name: glucose percentiles by time of day (AGP)")
         case .glucoseDistribution:
             return String(localized: "Distribution", bundle: .module, comment: "Export menu chart name: time in ranges")
         case .glycemiaRiskIndex:
@@ -153,8 +150,6 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
             return String(localized: "Overview", bundle: .module, comment: "Report category and section heading")
         case .glucoseDistribution:
             return String(localized: "Glucose Distribution", bundle: .module, comment: "Report section: time in ranges and glucose metrics")
-        case .glucosePercentileByTime:
-            return String(localized: "Ambulatory Glucose Profile", bundle: .module, comment: "Report section: AGP, glucose percentiles by time of day")
         case .glucoseDistributionByDay:
             return String(localized: "Glucose Distribution by Day", bundle: .module, comment: "Report section: time in ranges for each day")
         case .glucosePercentileByDay:
@@ -192,7 +187,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
         case .glucosePercentileByDay, .glucoseDistributionByDay, .glucoseHeatmapByDay,
              .carbsTotals, .insulinTotalDailyDose, .insulinBolusDistribution:
             return true
-        case .overview, .glucosePercentileByTime, .glucoseDistribution, .glycemiaRiskIndex, .dataQuality:
+        case .overview, .glucoseDistribution, .glycemiaRiskIndex, .dataQuality:
             return false
         }
     }
@@ -206,7 +201,7 @@ public struct ReportDefinition: Hashable, Codable, Sendable {
     public var sections: [ReportSection]
 
     public static let defaultSections: [ReportSection] = [
-        .overview, .glucosePercentileByTime, .glucoseDistribution, .glycemiaRiskIndex,
+        .overview, .glucoseDistribution, .glycemiaRiskIndex,
         .carbsTotals, .insulinTotalDailyDose, .dataQuality,
     ]
 
@@ -216,6 +211,19 @@ public struct ReportDefinition: Hashable, Codable, Sendable {
         self.name = name
         self.range = range
         self.sections = sections
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case name, range, sections
+    }
+
+    /// Skips sections this version does not know, so saved presets keep loading after a section
+    /// is removed (the AGP page, `glucosePercentileByTime`) or one from a newer version appears.
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        range = try container.decode(ReportRange.self, forKey: .range)
+        sections = try container.decode([String].self, forKey: .sections).compactMap(ReportSection.init(rawValue:))
     }
 
     /// Sections that cannot be produced for `interval` (e.g. by-day charts on a 1-day report).

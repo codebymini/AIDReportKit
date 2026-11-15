@@ -120,9 +120,6 @@
     "Afternoon" : {
       "comment" : "Part of the day: 12–18"
     },
-    "Ambulatory Glucose Profile" : {
-      "comment" : "Report section: AGP, glucose percentiles by time of day"
-    },
     "App" : {
       "comment" : "Report header label for the app name"
     },
@@ -356,9 +353,6 @@
     "Glucose %@ mg/dL is outside the plausible range" : {
       "comment" : "Validation error; the argument is a glucose value"
     },
-    "Glucose (%@) by time of day, all days overlaid." : {
-      "comment" : "AGP table caption; the argument is the glucose unit"
-    },
     "Glucose Distribution" : {
       "comment" : "Report section: time in ranges and glucose metrics"
     },
@@ -524,9 +518,6 @@
     "Per day" : {
       "comment" : "Table column header: average per day"
     },
-    "Percentile" : {
-      "comment" : "Export menu chart name: glucose percentiles by time of day (AGP)"
-    },
     "Percentile (by day)" : {
       "comment" : "Export menu chart name: glucose percentiles for each day"
     },
@@ -617,14 +608,11 @@
         }
       }
     },
-    "Time" : {
-      "comment" : "Table column header: time of day"
-    },
     "Time in range" : {
       "comment" : "Statistic label: share of readings between the low and high thresholds"
     },
     "Time of day" : {
-      "comment" : "Table column header: start of a time-of-day bucket"
+      "comment" : "Table column header: part of the day"
     },
     "Total" : {
       "comment" : "Table column header: total insulin"

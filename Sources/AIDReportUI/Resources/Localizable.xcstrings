@@ -224,9 +224,6 @@
     "Per day: whisker 5–95%%, box 25–75%%, dot median (%@)." : {
       "comment" : "Chart caption; the argument is the glucose unit"
     },
-    "Percentiles of %@ by time of day, all days overlaid. Shaded: 5–95%% and 25–75%%; line: median." : {
-      "comment" : "AGP chart caption; the argument is the glucose unit"
-    },
     "Preset name" : {
       "comment" : "Placeholder for the preset name field"
     },
@@ -254,7 +251,7 @@
     "Share %@" : {
       "comment" : "Button to share the exported file; the argument is the file name"
     },
-    "Share of readings in each range for each hour of the day, all days overlaid." : {
+    "Share of readings in each range at night, in the morning, afternoon and evening, all days overlaid." : {
       "comment" : "Chart caption for the time-of-day range breakdown"
     },
     "Shown in the report header. Leave blank to omit." : {

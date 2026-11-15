@@ -144,4 +144,15 @@ final class ConformanceTests: XCTestCase {
         XCTAssertEqual(ReportRange.presets(within: 90 * day), ReportRange.presets)
         XCTAssertEqual(ReportRange.presets(within: hour), [])
     }
+
+    func testPresetsNamingARemovedSectionStillLoad() throws {
+        // Saved before the AGP page (glucosePercentileByTime) was removed.
+        let json = #"{"name": "Endo visit", "range": {"lastDays": {"_0": 90}}, "sections": ["overview", "glucosePercentileByTime", "glucoseDistribution"]}"#
+        let definition = try JSONDecoder().decode(ReportDefinition.self, from: Data(json.utf8))
+        XCTAssertEqual(definition.name, "Endo visit")
+        XCTAssertEqual(definition.range, .threeMonths)
+        XCTAssertEqual(definition.sections, [.overview, .glucoseDistribution])
+        // And what it writes reads back the same.
+        XCTAssertEqual(try JSONDecoder().decode(ReportDefinition.self, from: JSONEncoder().encode(definition)), definition)
+    }
 }

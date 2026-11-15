@@ -37,7 +37,6 @@ public struct ReportSectionView: View {
         switch section {
         case .overview: OverviewPage(report: report)
         case .glucoseDistribution: GlucoseDistributionPage(report: report)
-        case .glucosePercentileByTime: AGPPage(report: report)
         case .glucoseDistributionByDay: DistributionByDayPage(report: report)
         case .glucosePercentileByDay: PercentilesByDayPage(report: report)
         case .glucoseHeatmapByDay: GlucoseHeatmapPage(report: report)
@@ -164,7 +163,8 @@ struct TimeInRangeBar: View {
     let formatter: ReportFormatter
     var height: CGFloat = 200
 
-    private static let barWidth: CGFloat = 44
+    /// Shared with the time-of-day bars below it, so every stacked bar on the page is as wide.
+    static let barWidth: CGFloat = 44
     private static let connectorWidth: CGFloat = 22
     private static let rowHeight: CGFloat = 22
     private static let gap: CGFloat = 1
@@ -426,6 +426,7 @@ struct GlucoseDistributionPage: View {
         let time: String
         let band: String
         let share: Double
+        let textColor: Color
         var id: String { "\(time)-\(band)" }
     }
 
@@ -454,116 +455,64 @@ struct GlucoseDistributionPage: View {
         }
     }
 
-    /// The same ranges split by time of day, all days overlaid: one full-height bar per bucket.
+    /// The same ranges for night, morning, afternoon and evening, all days overlaid: one
+    /// full-height bar per part of the day, each range's share printed where it fits.
     @ViewBuilder
     private func timeOfDay(_ f: ReportFormatter) -> some View {
         // Bottom to top, the way each bar is stacked.
-        let bands = [Labels.veryLow, Labels.low, Labels.inRange, Labels.high, Labels.veryHigh]
-        let buckets = report.agp.buckets
-        let slices = buckets.flatMap { bucket -> [Slice] in
-            guard let t = bucket.timeInRanges else { return [] }
-            let time = f.timeOfDay(minute: bucket.startMinute)
-            return zip(bands, [t.veryLow, t.low, t.inRange, t.high, t.veryHigh]).map { Slice(time: time, band: $0.0, share: $0.1 * 100) }
+        let bands: [(label: String, color: Color, onColor: Color)] = [
+            (Labels.veryLow, ReportColors.veryLow, .white),
+            (Labels.low, ReportColors.low, .white),
+            (Labels.inRange, ReportColors.inRange, ReportColors.ink),
+            (Labels.high, ReportColors.high, ReportColors.ink),
+            (Labels.veryHigh, ReportColors.veryHigh, ReportColors.ink),
+        ]
+        let periods = report.dayPeriods
+        let slices = periods.flatMap { entry -> [Slice] in
+            guard let t = entry.timeInRanges else { return [] }
+            return zip(bands, [t.veryLow, t.low, t.inRange, t.high, t.veryHigh]).map { band, share in
+                Slice(time: entry.period.title, band: band.label, share: share * 100, textColor: band.onColor)
+            }
         }
         if !slices.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
                 Text(String(localized: "By time of day", bundle: .module, comment: "Chart heading: glucose ranges split by time of day")).font(.headline)
-                Text(String(localized: "Share of readings in each range for each hour of the day, all days overlaid.", bundle: .module,
+                Text(String(localized: "Share of readings in each range at night, in the morning, afternoon and evening, all days overlaid.", bundle: .module,
                             comment: "Chart caption for the time-of-day range breakdown"))
                     .font(.caption)
                     .foregroundStyle(Color.gray)
                 Chart(slices) { slice in
-                    BarMark(x: .value(plotLabel("Time"), slice.time), y: .value(plotLabel("Share (%)"), slice.share))
+                    BarMark(x: .value(plotLabel("Time"), slice.time), y: .value(plotLabel("Share (%)"), slice.share), width: .fixed(TimeInRangeBar.barWidth))
                         .foregroundStyle(by: .value(plotLabel("Range"), slice.band))
+                        .annotation(position: .overlay) {
+                            // Small slices cannot hold a label; the legend and Markdown table carry them.
+                            if slice.share >= 6 {
+                                Text(f.percent(slice.share / 100, decimals: 0))
+                                    .font(.caption2.weight(.semibold))
+                                    .monospacedDigit()
+                                    .foregroundStyle(slice.textColor)
+                            }
+                        }
                 }
-                .chartForegroundStyleScale([
-                    bands[0]: ReportColors.veryLow,
-                    bands[1]: ReportColors.low,
-                    bands[2]: ReportColors.inRange,
-                    bands[3]: ReportColors.high,
-                    bands[4]: ReportColors.veryHigh,
-                ])
-                .chartXScale(domain: buckets.map { f.timeOfDay(minute: $0.startMinute) }, range: .plotDimension(startPadding: 12, endPadding: 12))
+                .chartForegroundStyleScale(domain: bands.map(\.label), range: bands.map(\.color))
+                // All four parts of the day keep their place, with or without readings.
+                .chartXScale(domain: periods.map(\.period.title))
                 .chartXAxis {
-                    AxisMarks(values: buckets.filter { $0.startMinute % 180 == 0 }.map { f.timeOfDay(minute: $0.startMinute) }) { _ in
-                        AxisGridLine()
-                        AxisValueLabel()
-                    }
-                }
-                .chartYScale(domain: 0 ... 100)
-                .chartFrame(170)
-            }
-        }
-    }
-}
-
-@available(iOS 16.0, macOS 13.0, *)
-struct AGPPage: View {
-    let report: TherapyReport
-
-    private struct Point: Identifiable {
-        let minute: Int
-        let p: Percentiles
-        var id: Int { minute }
-    }
-
-    var body: some View {
-        let f = ReportFormatter(report: report)
-        let unit = report.displayUnit
-        let half = report.agp.bucketMinutes / 2
-        let points = report.agp.buckets.compactMap { b in b.percentiles.map { Point(minute: b.startMinute + half, p: $0) } }
-        let outer = String(localized: "5–95%", bundle: .module, comment: "Chart series: 5th to 95th percentile band")
-        let inner = String(localized: "25–75%", bundle: .module, comment: "Chart series: 25th to 75th percentile band")
-        let median = Labels.median
-        VStack(alignment: .leading, spacing: 12) {
-            Text(String(localized: "Percentiles of \(unit.rawValue) by time of day, all days overlaid. Shaded: 5–95% and 25–75%; line: median.",
-                        bundle: .module, comment: "AGP chart caption; the argument is the glucose unit"))
-                .font(.caption)
-                .foregroundStyle(Color.gray)
-            if points.isEmpty {
-                NoDataView()
-            } else {
-                Chart {
-                    ForEach(points) { point in
-                        AreaMark(x: .value(plotLabel("Time"), point.minute),
-                                 yStart: .value(plotLabel("5%"), unit.fromMgdL(point.p.p5)),
-                                 yEnd: .value(plotLabel("95%"), unit.fromMgdL(point.p.p95)))
-                            .foregroundStyle(by: .value(plotLabel("Band"), outer))
-                            .interpolationMethod(.catmullRom)
-                    }
-                    ForEach(points) { point in
-                        AreaMark(x: .value(plotLabel("Time"), point.minute),
-                                 yStart: .value(plotLabel("25%"), unit.fromMgdL(point.p.p25)),
-                                 yEnd: .value(plotLabel("75%"), unit.fromMgdL(point.p.p75)))
-                            .foregroundStyle(by: .value(plotLabel("Band"), inner))
-                            .interpolationMethod(.catmullRom)
-                    }
-                    ForEach(points) { point in
-                        LineMark(x: .value(plotLabel("Time"), point.minute), y: .value(plotLabel("Median"), unit.fromMgdL(point.p.p50)))
-                            .foregroundStyle(by: .value(plotLabel("Band"), median))
-                            .interpolationMethod(.catmullRom)
-                            .lineStyle(StrokeStyle(lineWidth: 2))
-                    }
-                    RuleMark(y: .value(plotLabel("Low"), unit.fromMgdL(report.thresholds.low)))
-                        .foregroundStyle(ReportColors.low.opacity(0.7))
-                    RuleMark(y: .value(plotLabel("High"), unit.fromMgdL(report.thresholds.high)))
-                        .foregroundStyle(ReportColors.high.opacity(0.9))
-                }
-                .chartForegroundStyleScale([
-                    outer: ReportColors.agpOuter,
-                    inner: ReportColors.agpInner,
-                    median: ReportColors.agpMedian,
-                ])
-                .chartXScale(domain: 0 ... 1440)
-                .chartXAxis {
-                    AxisMarks(values: Array(stride(from: 0, through: 1440, by: 180))) { value in
-                        AxisGridLine()
-                        AxisValueLabel {
-                            if let minute = value.as(Int.self) { Text(f.timeOfDay(minute: minute % 1440)) }
+                    AxisMarks { value in
+                        AxisValueLabel(centered: true) {
+                            if let title = value.as(String.self), let period = periods.first(where: { $0.period.title == title })?.period {
+                                VStack(spacing: 1) {
+                                    Text(title)
+                                    Text(period.hoursText).foregroundStyle(Color.gray)
+                                }
+                            }
                         }
                     }
                 }
-                .chartFrame(380)
+                .chartYScale(domain: 0 ... 100)
+                .chartFrame(240)
+                // Narrow, so the four bars stand close together, about half a bar apart.
+                .frame(width: 300)
             }
         }
     }
