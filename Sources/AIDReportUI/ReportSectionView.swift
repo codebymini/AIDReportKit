@@ -96,11 +96,9 @@ enum Labels {
     }
     static var median: String { String(localized: "Median", bundle: .module, comment: "Statistic or chart series: median glucose") }
     static var mean: String { String(localized: "Mean", bundle: .module, comment: "Statistic label") }
-    static var meanGlucose: String { String(localized: "Mean glucose", bundle: .module, comment: "Statistic label") }
     static var gmi: String { String(localized: "GMI", bundle: .module, comment: "Statistic label: Glucose Management Indicator") }
     static var cv: String { String(localized: "Coefficient of variation", bundle: .module, comment: "Statistic label") }
     static var coverage: String { String(localized: "CGM coverage", bundle: .module, comment: "Statistic label: share of time with sensor readings") }
-    static var readings: String { String(localized: "Readings", bundle: .module, comment: "Statistic label: number of CGM readings") }
     static var basal: String { String(localized: "Basal", bundle: .module, comment: "Insulin type / chart series") }
     static var bolus: String { String(localized: "Bolus", bundle: .module, comment: "Insulin type / chart series") }
     static var manual: String { String(localized: "Manual", bundle: .module, comment: "Bolus type / chart series: given by the user") }
@@ -118,10 +116,6 @@ enum Labels {
     static var carbEntriesPerDay: String {
         String(localized: "Carb entries per day", bundle: .module, comment: "Statistic label: average number of carb entries per day")
     }
-
-    static func gri(_ score: String, zone: String) -> String {
-        String(localized: "\(score) (zone \(zone))", bundle: .module, comment: "GRI score followed by its zone letter A–E")
-    }
 }
 
 @available(iOS 16.0, macOS 13.0, *)
@@ -130,8 +124,6 @@ struct MetricGrid: View {
     var columns = 3
     /// Smaller values and wrapping labels, for a grid that shares the page width with a chart.
     var compact = false
-    /// Shrinks a value that is too wide for its column instead of cutting it off.
-    var shrinksLongValues = false
 
     var body: some View {
         Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 12) {
@@ -152,14 +144,8 @@ struct MetricGrid: View {
         }
     }
 
-    @ViewBuilder
     private func value(_ text: String) -> some View {
-        let label = Text(text).font(compact ? .headline : .title3.weight(.semibold)).monospacedDigit()
-        if shrinksLongValues {
-            label.lineLimit(1).minimumScaleFactor(0.6)
-        } else {
-            label
-        }
+        Text(text).font(compact ? .headline : .title3.weight(.semibold)).monospacedDigit()
     }
 }
 
@@ -301,38 +287,133 @@ extension View {
 struct OverviewPage: View {
     let report: TherapyReport
 
+    // Fixed sizes rather than text styles, so the page reads the same rendered on an iPhone as on a Mac.
+    private static let headingFont = Font.system(size: 11, weight: .semibold)
+    private static let labelFont = Font.system(size: 8.5)
+    private static let valueFont = Font.system(size: 14, weight: .semibold)
+    private static let columns = 4
+
     var body: some View {
         let f = ReportFormatter(report: report)
-        let insulin = report.summary.insulin
-        let carbs = report.summary.carbs
-        VStack(alignment: .leading, spacing: 20) {
-            if let g = report.summary.glucose {
-                let tir = g.timeInRanges
-                MetricGrid(metrics: [
-                    (Labels.meanGlucose, f.glucose(g.mean, withUnit: true)),
-                    (Labels.gmi, String(format: "%.1f%%", g.gmi)),
-                    (Labels.cv, f.percent(g.coefficientOfVariation)),
-                    (String(localized: "Time in range", bundle: .module, comment: "Statistic label: share of readings between the low and high thresholds"), f.percent(tir.inRange)),
-                    (String(localized: "Time below range", bundle: .module, comment: "Statistic label: share of readings below the low threshold"), f.percent(tir.below)),
-                    (String(localized: "Time above range", bundle: .module, comment: "Statistic label: share of readings above the high threshold"), f.percent(tir.above)),
-                    (String(localized: "GRI", bundle: .module, comment: "Statistic label: Glycemia Risk Index"), Labels.gri(f.number(g.gri.score), zone: g.gri.zone.rawValue)),
-                    (Labels.coverage, f.percent(g.coverage)),
-                    (Labels.readings, "\(g.readingCount)"),
-                ])
-            } else {
-                NoDataView()
+        let metrics = report.overviewMetrics(f)
+        VStack(alignment: .leading, spacing: 22) {
+            group(String(localized: "Glucose", bundle: .module, comment: "Overview page heading above the glucose numbers")) {
+                if let g = report.summary.glucose, !metrics.glucose.isEmpty {
+                    tiles(metrics.glucose)
+                    TimeInRangeStrip(tir: g.timeInRanges, thresholds: report.thresholds, formatter: f)
+                    if AGPChart.hasData(report) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(String(localized: "Glucose by time of day (\(report.displayUnit.rawValue)), all days overlaid: median with 25–75% and 5–95% bands.",
+                                        bundle: .module, comment: "Caption of the small AGP chart on the overview page; the argument is the glucose unit"))
+                                .font(Self.labelFont)
+                                .foregroundStyle(Color.gray)
+                            AGPChart(report: report, axisFont: Self.labelFont).frame(height: 220)
+                        }
+                        .padding(.top, 4)
+                    }
+                } else {
+                    NoDataView()
+                }
             }
-            Divider()
-            MetricGrid(metrics: [
-                (String(localized: "Average daily insulin", bundle: .module, comment: "Statistic label"), f.insulin(insulin.averageDailyDose)),
-                (String(localized: "Basal share", bundle: .module, comment: "Statistic label: basal share of total insulin"), f.percent(insulin.basalFraction, decimals: 0)),
-                (Labels.automaticBolusPerDay, f.insulin(insulin.averageDailyAutomaticBolus)),
-                (String(localized: "Average carbs per day", bundle: .module, comment: "Statistic label"), f.grams(carbs.averageDailyGrams)),
-                (Labels.carbEntriesPerDay, f.number(carbs.averageDailyEntryCount)),
-                (String(localized: "Data issues", bundle: .module, comment: "Statistic label"),
-                 String(localized: "\(report.validation.count(.error)) errors, \(report.validation.count(.warning)) warnings", bundle: .module,
-                        comment: "Counts of validation errors and warnings")),
-            ], shrinksLongValues: true)
+            group(String(localized: "Insulin", bundle: .module, comment: "Overview page heading above the insulin numbers")) {
+                tiles(metrics.insulin)
+            }
+        }
+    }
+
+    private func group(_ title: String, @ViewBuilder content: () -> some View) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title).font(Self.headingFont)
+            content()
+        }
+    }
+
+    /// Rows of `columns` equal tiles, so glucose and insulin numbers line up in the same columns.
+    private func tiles(_ metrics: [TherapyReport.OverviewMetric]) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(Array(stride(from: 0, to: metrics.count, by: Self.columns)), id: \.self) { start in
+                let row = Array(metrics[start ..< min(start + Self.columns, metrics.count)])
+                HStack(alignment: .top, spacing: 14) {
+                    ForEach(row.indices, id: \.self) { index in
+                        tile(row[index])
+                    }
+                    ForEach(row.count ..< Self.columns, id: \.self) { _ in
+                        Color.clear.frame(maxWidth: .infinity, maxHeight: 1)
+                    }
+                }
+            }
+        }
+    }
+
+    private func tile(_ metric: TherapyReport.OverviewMetric) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(metric.label).font(Self.labelFont).foregroundStyle(Color.gray)
+            Text(metric.value)
+                .font(Self.valueFont)
+                .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+            if let detail = metric.detail {
+                Text(detail).font(Self.labelFont).monospacedDigit().foregroundStyle(Color.gray)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+/// The five glucose ranges as one thin horizontal bar, very low on the left, with each range's
+/// cut-offs and share listed underneath (tiny segments cannot carry their own label).
+@available(iOS 16.0, macOS 13.0, *)
+struct TimeInRangeStrip: View {
+    let tir: TimeInRanges
+    let thresholds: GlucoseThresholds
+    let formatter: ReportFormatter
+    var height: CGFloat = 10
+
+    private static let gap: CGFloat = 1.5
+    private static let font = Font.system(size: 8.5)
+
+    /// Left to right.
+    private var bands: [(label: String, share: Double, color: Color)] {
+        let labels = formatter.bandLabels(thresholds)
+        return [
+            (labels.veryLow, tir.veryLow, ReportColors.veryLow),
+            (labels.low, tir.low, ReportColors.low),
+            (labels.inRange, tir.inRange, ReportColors.inRange),
+            (labels.high, tir.high, ReportColors.high),
+            (labels.veryHigh, tir.veryHigh, ReportColors.veryHigh),
+        ]
+    }
+
+    var body: some View {
+        let bands = self.bands
+        let visible = bands.filter { $0.share > 0 }
+        VStack(alignment: .leading, spacing: 6) {
+            GeometryReader { geometry in
+                let usable = geometry.size.width - Self.gap * CGFloat(max(visible.count - 1, 0))
+                HStack(spacing: Self.gap) {
+                    ForEach(visible.indices, id: \.self) { index in
+                        Rectangle()
+                            .fill(visible[index].color)
+                            .frame(width: max(0, usable * CGFloat(visible[index].share)))
+                    }
+                }
+            }
+            .frame(height: height)
+            .clipShape(RoundedRectangle(cornerRadius: 2))
+            HStack(alignment: .top, spacing: 8) {
+                ForEach(bands.indices, id: \.self) { index in
+                    HStack(alignment: .firstTextBaseline, spacing: 4) {
+                        RoundedRectangle(cornerRadius: 1.5).fill(bands[index].color).frame(width: 7, height: 7)
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text(bands[index].label).foregroundStyle(Color.gray).lineLimit(1).minimumScaleFactor(0.8)
+                            Text(formatter.percent(bands[index].share)).fontWeight(.semibold).monospacedDigit()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .font(Self.font)
         }
     }
 }
@@ -485,6 +566,99 @@ struct AGPPage: View {
                 .chartFrame(380)
             }
         }
+    }
+}
+
+/// Glucose percentiles by time of day, all days overlaid (the ambulatory glucose profile): 5–95%
+/// and 25–75% bands, the median, and lines at the low and high thresholds. Drawn small on the
+/// overview, whose caption names the bands, so it has no legend.
+@available(iOS 16.0, macOS 13.0, *)
+struct AGPChart: View {
+    let report: TherapyReport
+    /// Axis labels; Charts does not take them from the surrounding font.
+    let axisFont: Font
+
+    private struct Point: Identifiable {
+        let minute: Int
+        let p: Percentiles
+        var id: Int { minute }
+    }
+
+    static func hasData(_ report: TherapyReport) -> Bool {
+        report.agp.buckets.contains { $0.percentiles != nil }
+    }
+
+    /// Each bucket at its middle (00:30, 01:30 … 23:30 for hours), plus midnight at both edges so
+    /// the profile spans the whole day. The day wraps around, so midnight lies halfway between the
+    /// last bucket and the first.
+    private static func points(_ agp: AGPProfile) -> [Point] {
+        let half = agp.bucketMinutes / 2
+        let points = agp.buckets.compactMap { b in b.percentiles.map { Point(minute: b.startMinute + half, p: $0) } }
+        guard let first = agp.buckets.first?.percentiles ?? agp.buckets.last?.percentiles,
+              let last = agp.buckets.last?.percentiles ?? agp.buckets.first?.percentiles
+        else { return points }
+        func mean(_ a: Double, _ b: Double) -> Double { (a + b) / 2 }
+        let midnight = Percentiles(p5: mean(first.p5, last.p5), p25: mean(first.p25, last.p25), p50: mean(first.p50, last.p50),
+                                   p75: mean(first.p75, last.p75), p95: mean(first.p95, last.p95))
+        return [Point(minute: 0, p: midnight)] + points + [Point(minute: 1440, p: midnight)]
+    }
+
+    var body: some View {
+        let f = ReportFormatter(report: report)
+        let unit = report.displayUnit
+        let points = Self.points(report.agp)
+        let outer = String(localized: "5–95%", bundle: .module, comment: "Chart series: 5th to 95th percentile band")
+        let inner = String(localized: "25–75%", bundle: .module, comment: "Chart series: 25th to 75th percentile band")
+        let median = Labels.median
+        Chart {
+            ForEach(points) { point in
+                AreaMark(x: .value(plotLabel("Time"), point.minute),
+                         yStart: .value(plotLabel("5%"), unit.fromMgdL(point.p.p5)),
+                         yEnd: .value(plotLabel("95%"), unit.fromMgdL(point.p.p95)))
+                    .foregroundStyle(by: .value(plotLabel("Band"), outer))
+                    .interpolationMethod(.catmullRom)
+            }
+            ForEach(points) { point in
+                AreaMark(x: .value(plotLabel("Time"), point.minute),
+                         yStart: .value(plotLabel("25%"), unit.fromMgdL(point.p.p25)),
+                         yEnd: .value(plotLabel("75%"), unit.fromMgdL(point.p.p75)))
+                    .foregroundStyle(by: .value(plotLabel("Band"), inner))
+                    .interpolationMethod(.catmullRom)
+            }
+            ForEach(points) { point in
+                LineMark(x: .value(plotLabel("Time"), point.minute), y: .value(plotLabel("Median"), unit.fromMgdL(point.p.p50)))
+                    .foregroundStyle(by: .value(plotLabel("Band"), median))
+                    .interpolationMethod(.catmullRom)
+                    .lineStyle(StrokeStyle(lineWidth: 2))
+            }
+            RuleMark(y: .value(plotLabel("Low"), unit.fromMgdL(report.thresholds.low)))
+                .foregroundStyle(ReportColors.low.opacity(0.7))
+            RuleMark(y: .value(plotLabel("High"), unit.fromMgdL(report.thresholds.high)))
+                .foregroundStyle(ReportColors.high.opacity(0.9))
+        }
+        .chartForegroundStyleScale([
+            outer: ReportColors.agpOuter,
+            inner: ReportColors.agpInner,
+            median: ReportColors.agpMedian,
+        ])
+        .chartXScale(domain: 0 ... 1440)
+        .chartXAxis {
+            AxisMarks(values: Array(stride(from: 0, through: 1440, by: 180))) { value in
+                AxisGridLine()
+                AxisValueLabel {
+                    if let minute = value.as(Int.self) { Text(f.timeOfDay(minute: minute % 1440)) }
+                }
+                .font(axisFont)
+            }
+        }
+        .chartYAxis {
+            AxisMarks { _ in
+                AxisGridLine()
+                AxisTick()
+                AxisValueLabel().font(axisFont)
+            }
+        }
+        .chartLegend(.hidden)
     }
 }
 

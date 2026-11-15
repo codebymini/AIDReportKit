@@ -1,33 +1,11 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ (zone %@)" : {
-      "comment" : "GRI score followed by its zone letter A–E",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ (zone %2$@)"
-          }
-        }
-      }
-    },
     "%@ — Statistics Report" : {
       "comment" : "PDF page title; the argument is the app name"
     },
     "%lld charts" : {
       "comment" : "Number of selected report pages; the argument is the count"
-    },
-    "%lld errors, %lld warnings" : {
-      "comment" : "Counts of validation errors and warnings",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld errors, %2$lld warnings"
-          }
-        }
-      }
     },
     "1 chart" : {
       "comment" : "Number of selected report pages: exactly one"
@@ -47,14 +25,8 @@
     "Automatic boluses per day" : {
       "comment" : "Statistic label: average number of automatic boluses per day"
     },
-    "Average carbs per day" : {
-      "comment" : "Statistic label"
-    },
     "Average daily dose" : {
       "comment" : "Statistic label: total daily insulin"
-    },
-    "Average daily insulin" : {
-      "comment" : "Statistic label"
     },
     "Average per day" : {
       "comment" : "Statistic label: carbs per day"
@@ -107,9 +79,6 @@
     "Could not render the PDF content." : {
       "comment" : "Export error"
     },
-    "Data issues" : {
-      "comment" : "Statistic label"
-    },
     "Each cell is one day's average glucose (%@), colored by the range it falls in. The number after each range is how many days fell in it." : {
       "comment" : "Heatmap caption; the argument is the glucose unit"
     },
@@ -160,6 +129,12 @@
         }
       }
     },
+    "Glucose" : {
+      "comment" : "Overview page heading above the glucose numbers"
+    },
+    "Glucose by time of day (%@), all days overlaid: median with 25–75%% and 5–95%% bands." : {
+      "comment" : "Caption of the small AGP chart on the overview page; the argument is the glucose unit"
+    },
     "Hardware" : {
       "comment" : "PDF header column: CGM, pump and phone"
     },
@@ -187,6 +162,9 @@
     "Include" : {
       "comment" : "Export sheet section listing what goes into the report"
     },
+    "Insulin" : {
+      "comment" : "Overview page heading above the insulin numbers"
+    },
     "Largest entry" : {
       "comment" : "Statistic label: largest carb entry"
     },
@@ -206,9 +184,6 @@
       "comment" : "Statistic label: average user-given bolus units per day"
     },
     "Mean" : {
-      "comment" : "Statistic label"
-    },
-    "Mean glucose" : {
       "comment" : "Statistic label"
     },
     "Median" : {
@@ -258,9 +233,6 @@
     "Range" : {
       "comment" : "Export sheet section for the report date range"
     },
-    "Readings" : {
-      "comment" : "Statistic label: number of CGM readings"
-    },
     "Save" : {
       "comment" : "Saves the preset"
     },
@@ -299,15 +271,6 @@
     },
     "The report has no pages to export." : {
       "comment" : "Export error"
-    },
-    "Time above range" : {
-      "comment" : "Statistic label: share of readings above the high threshold"
-    },
-    "Time below range" : {
-      "comment" : "Statistic label: share of readings below the low threshold"
-    },
-    "Time in range" : {
-      "comment" : "Statistic label: share of readings between the low and high thresholds"
     },
     "Very high" : {
       "comment" : "Glucose band, short"

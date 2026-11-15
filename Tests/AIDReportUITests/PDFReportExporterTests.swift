@@ -14,12 +14,18 @@ final class PDFReportExporterTests: XCTestCase {
         guard #available(iOS 16.0, macOS 13.0, *) else { throw XCTSkip("Requires iOS 16 / macOS 13") }
 
         let generator = SyntheticTherapyGenerator(days: 14)
-        let options = ReportOptions(metadata: ReportMetadata(
-            appName: "Trio", appVersion: "0.6.0", cgm: "Dexcom G7", pump: "Omnipod DASH", device: "iPhone 16",
-            settings: [.init("Closed loop", "On"), .init("SMB", "On"), .init("Dynamic ISF", "Off")]
-        ))
+        let dataset = generator.makeDataset()
+        let options = ReportOptions(
+            // The schedule the synthetic loop adjusts, so the overview can compare programmed and delivered basal.
+            basalSchedule: BasalSchedule(entries: [.init(startOffset: 0, ratePerHour: generator.scheduledBasalRate)], timeZone: dataset.source.timeZone),
+            metadata: ReportMetadata(
+                appName: "Trio", appVersion: "0.6.0", cgm: "Dexcom G7", pump: "Omnipod DASH", device: "iPhone 16",
+                settings: [.init("Closed loop", "On"), .init("SMB", "On"), .init("Dynamic ISF", "Off")]
+            )
+        )
         let definition = ReportDefinition(name: "Endo visit", range: .twoWeeks, sections: ReportSection.allCases)
-        let report = ReportBuilder(options: options).build(definition, from: generator.makeDataset(), now: generator.interval.end)
+        let report = ReportBuilder(options: options).build(definition, from: dataset, now: generator.interval.end)
+        XCTAssertNotNil(report.summary.insulin.programmedBasalUnits)
 
         let data = try PDFReportExporter.render(report)
         let document = try XCTUnwrap(CGDataProvider(data: data as CFData).flatMap(CGPDFDocument.init))

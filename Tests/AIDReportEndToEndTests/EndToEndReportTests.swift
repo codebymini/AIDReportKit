@@ -447,15 +447,17 @@ final class EndToEndReportTests: XCTestCase {
         let markdown = MarkdownReportRenderer().render(try await goldenReport())
         for expected in [
             "# Golden",
-            "| Mean glucose | 145 mg/dL |",
+            // Overview
+            "| Time in range | 37.5% (Below 25.0% · above 37.5%) |",
+            "| GRI | 100.0 (Zone E) |",
+            "| CV / SD | 54.8% / 79 mg/dL |",
+            "| eA1c | 6.7% (49 mmol/mol) |",
+            "| Total daily dose | 37.3 U |",
+            "| Programmed basal per day | 24.0 U (Basal schedule) |",
+            "| Delivered basal per day | 24.0 U (100% of programmed) |",
+            // Glucose distribution
+            "| Mean | 145 mg/dL |",
             "| GMI | 6.8% |",
-            "| Time in range | 37.5% |",
-            "| Time below range | 25.0% |",
-            "| Time above range | 37.5% |",
-            "| GRI | 100.0 (zone E) |",
-            "| CGM coverage | 100.0% |",
-            "| Average total daily dose | 37.3 U (basal 64%) |",
-            "| Average carbs per day | 115 g |",
             "| Median | 125 mg/dL |",
             "| Time of day | Very low | Low | In range | High | Very high |",
             "| 00:00 | 50.0% | 0.0% | 50.0% | 0.0% | 0.0% |",
@@ -551,7 +553,8 @@ final class EndToEndReportTests: XCTestCase {
         let report = ReportBuilder(options: options).build(definition, from: S.dataset(unit: .mmolL), now: S.end)
         XCTAssertEqual(report.summary.glucose?.mean ?? 0, 145, accuracy: accuracy) // stored in mg/dL
         let markdown = MarkdownReportRenderer().render(report)
-        XCTAssertTrue(markdown.contains("| Mean glucose | 8.0 mmol/L |")) // 145 / 18.0156
+        XCTAssertTrue(markdown.contains("| Mean | 8.0 mmol/L |")) // 145 / 18.015588
+        XCTAssertTrue(markdown.contains("| CV / SD | 54.8% / 4.4 mmol/L |"))
         XCTAssertTrue(markdown.contains("In range (3.9–10.0)"))
     }
 
@@ -601,7 +604,9 @@ final class EndToEndReportTests: XCTestCase {
             return try XCTUnwrap(document.page(at: index)?.string)
         }
         let overview = try text(.overview)
-        for expected in ["Golden", "145 mg/dL", "6.8%", "100.0 (zone E)", "37.5%", "37.3 U", "64%", "115 g", "Dexcom G7", "Page 1 of \(ReportSection.allCases.count)"] {
+        for expected in ["Golden", "Time in range", "37.5%", "Below 25.0% · above 37.5%", "GRI", "100.0", "Zone E", "CV / SD", "54.8% / 79 mg/dL",
+                         "eA1c", "6.7%", "49 mmol/mol", "Total daily dose", "37.3 U", "Programmed basal per day", "Delivered basal per day",
+                         "24.0 U", "100% of programmed", "Dexcom G7", "Page 1 of \(ReportSection.allCases.count)"] {
             XCTAssertTrue(overview.contains(expected), "Overview page is missing: \(expected)")
         }
         let distribution = try text(.glucoseDistribution)

@@ -68,34 +68,14 @@ public struct MarkdownReportRenderer: Sendable {
     // MARK: - Sections
 
     private func overview(_ report: TherapyReport, _ f: ReportFormatter) -> [String] {
-        let insulin = report.summary.insulin
-        let carbs = report.summary.carbs
-        var rows: [[String]] = []
-        if let g = report.summary.glucose {
-            rows += [
-                [String(localized: "Mean glucose", bundle: .module, comment: "Statistic label"), f.glucose(g.mean, withUnit: true)],
-                [String(localized: "GMI", bundle: .module, comment: "Statistic label: Glucose Management Indicator"), String(format: "%.1f%%", g.gmi)],
-                [String(localized: "Coefficient of variation", bundle: .module, comment: "Statistic label"), f.percent(g.coefficientOfVariation)],
-                [String(localized: "Time in range", bundle: .module, comment: "Statistic label"), f.percent(g.timeInRanges.inRange)],
-                [String(localized: "Time below range", bundle: .module, comment: "Statistic label"), f.percent(g.timeInRanges.below)],
-                [String(localized: "Time above range", bundle: .module, comment: "Statistic label"), f.percent(g.timeInRanges.above)],
-                [String(localized: "GRI", bundle: .module, comment: "Statistic label: Glycemia Risk Index"),
-                 String(localized: "\(f.number(g.gri.score)) (zone \(g.gri.zone.rawValue))", bundle: .module, comment: "GRI score followed by its zone letter A–E")],
-                [String(localized: "CGM coverage", bundle: .module, comment: "Statistic label: share of time with sensor readings"), f.percent(g.coverage)],
-            ]
-        } else {
-            rows.append([String(localized: "Glucose", bundle: .module, comment: "Report category heading"),
-                         String(localized: "No sensor data", bundle: .module, comment: "Shown when there are no CGM readings")])
+        let metrics = report.overviewMetrics(f)
+        var rows = (metrics.glucose + metrics.insulin).map { metric in
+            [metric.label, metric.detail.map { "\(metric.value) (\($0))" } ?? metric.value]
         }
-        rows += [
-            [String(localized: "Average total daily dose", bundle: .module, comment: "Statistic label"),
-             String(localized: "\(f.insulin(insulin.averageDailyDose)) (basal \(f.percent(insulin.basalFraction, decimals: 0)))", bundle: .module,
-                    comment: "Daily insulin dose followed by the basal share")],
-            [String(localized: "Average carbs per day", bundle: .module, comment: "Statistic label"), f.grams(carbs.averageDailyGrams)],
-            [String(localized: "Data issues", bundle: .module, comment: "Statistic label"),
-             String(localized: "\(report.validation.count(.error)) errors, \(report.validation.count(.warning)) warnings", bundle: .module,
-                    comment: "Counts of validation errors and warnings")],
-        ]
+        if metrics.glucose.isEmpty {
+            rows.insert([String(localized: "Glucose", bundle: .module, comment: "Report category heading"),
+                         String(localized: "No sensor data", bundle: .module, comment: "Shown when there are no CGM readings")], at: 0)
+        }
         return table(metricHeader, rows)
     }
 

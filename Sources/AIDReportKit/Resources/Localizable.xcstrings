@@ -1,28 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ (basal %@)" : {
-      "comment" : "Daily insulin dose followed by the basal share",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ (basal %2$@)"
-          }
-        }
-      }
-    },
-    "%@ (zone %@)" : {
-      "comment" : "GRI score followed by its zone letter A–E",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ (zone %2$@)"
-          }
-        }
-      }
-    },
     "%@ Statistics Report" : {
       "comment" : "Default report title; the argument is the app or data source name"
     },
@@ -37,19 +15,14 @@
         }
       }
     },
+    "%@ mmol/mol" : {
+      "comment" : "Under eA1c in %: the same estimate in mmol/mol (IFCC)"
+    },
+    "%@ of programmed" : {
+      "comment" : "Under delivered basal: delivered as a share of programmed basal"
+    },
     "%lld D" : {
       "comment" : "Short range name: a number of days"
-    },
-    "%lld errors, %lld warnings" : {
-      "comment" : "Counts of validation errors and warnings",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld errors, %2$lld warnings"
-          }
-        }
-      }
     },
     "%lld h %lld min" : {
       "comment" : "Duration in hours and minutes",
@@ -187,12 +160,6 @@
     "Average Glucose by Day" : {
       "comment" : "Report section: calendar shaded by each day's average glucose"
     },
-    "Average carbs per day" : {
-      "comment" : "Statistic label"
-    },
-    "Average total daily dose" : {
-      "comment" : "Statistic label"
-    },
     "Basal" : {
       "comment" : "Insulin type"
     },
@@ -215,6 +182,20 @@
     },
     "Basal records overlap by %@" : {
       "comment" : "Validation warning; the argument is a duration"
+    },
+    "Basal schedule" : {
+      "comment" : "Under programmed basal: where the number comes from"
+    },
+    "Below %@ · above %@" : {
+      "comment" : "Under time in range: time below and time above range",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Below %1$@ · above %2$@"
+          }
+        }
+      }
     },
     "Bolus" : {
       "comment" : "Insulin type"
@@ -259,6 +240,9 @@
         }
       }
     },
+    "CV / SD" : {
+      "comment" : "Statistic label: coefficient of variation and standard deviation of glucose"
+    },
     "Carb entry of %@ g exceeds %@ g" : {
       "comment" : "Validation warning; arguments are grams of carbohydrate",
       "localizations" : {
@@ -300,9 +284,6 @@
     "Data Quality" : {
       "comment" : "Report section: coverage and validation issues"
     },
-    "Data issues" : {
-      "comment" : "Statistic label"
-    },
     "Day" : {
       "comment" : "Table column header: calendar day"
     },
@@ -311,6 +292,9 @@
     },
     "Days with data" : {
       "comment" : "Heatmap statistic label: days that have sensor glucose"
+    },
+    "Delivered basal per day" : {
+      "comment" : "Statistic label: basal actually delivered per day, temp basals and suspensions included"
     },
     "Device" : {
       "comment" : "Report header label for the phone model"
@@ -477,9 +461,6 @@
     "Mean" : {
       "comment" : "Statistic label"
     },
-    "Mean glucose" : {
-      "comment" : "Statistic label"
-    },
     "Median" : {
       "comment" : "Statistic: median value"
     },
@@ -506,6 +487,9 @@
     },
     "Night" : {
       "comment" : "Part of the day: 00–06"
+    },
+    "No basal schedule" : {
+      "comment" : "Under programmed basal when the app supplied no basal schedule"
     },
     "No data" : {
       "comment" : "Shown when a value cannot be computed"
@@ -545,6 +529,9 @@
     },
     "Percentile (by day)" : {
       "comment" : "Export menu chart name: glucose percentiles for each day"
+    },
+    "Programmed basal per day" : {
+      "comment" : "Statistic label: basal the basal schedule would deliver per day"
     },
     "Protein" : {
       "comment" : "Table column header: grams of protein"
@@ -633,14 +620,8 @@
     "Time" : {
       "comment" : "Table column header: time of day"
     },
-    "Time above range" : {
-      "comment" : "Statistic label"
-    },
-    "Time below range" : {
-      "comment" : "Statistic label"
-    },
     "Time in range" : {
-      "comment" : "Statistic label"
+      "comment" : "Statistic label: share of readings between the low and high thresholds"
     },
     "Time of day" : {
       "comment" : "Table column header: start of a time-of-day bucket"
@@ -653,6 +634,9 @@
     },
     "Total Meals" : {
       "comment" : "Export menu chart name: carbs, fat and protein per day"
+    },
+    "Total daily dose" : {
+      "comment" : "Statistic label: average insulin per day, basal and bolus"
     },
     "Tue" : {
       "comment" : "Short weekday name: Tuesday"
@@ -695,6 +679,12 @@
     },
     "Week of" : {
       "comment" : "Table column header: the date a calendar week starts"
+    },
+    "Zone %@" : {
+      "comment" : "Under the GRI score: its zone letter A–E"
+    },
+    "eA1c" : {
+      "comment" : "Statistic label: estimated A1c from mean glucose"
     }
   },
   "version" : "1.0"
