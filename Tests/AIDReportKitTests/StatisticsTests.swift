@@ -11,6 +11,8 @@ final class GlucoseStatisticsTests: XCTestCase {
         XCTAssertEqual(stats.standardDeviation, 50, accuracy: 1e-9) // sample SD
         XCTAssertEqual(stats.coefficientOfVariation, 1.0 / 3.0, accuracy: 1e-9)
         XCTAssertEqual(stats.gmi, 3.31 + 0.02392 * 150, accuracy: 1e-9)
+        XCTAssertEqual(stats.estimatedA1c, (150 + 46.7) / 28.7, accuracy: 1e-9) // ≈ 6.85%
+        XCTAssertEqual(stats.estimatedA1cMmolMol, 10.929 * ((150 + 46.7) / 28.7 - 2.152), accuracy: 1e-9) // ≈ 51
         XCTAssertEqual(stats.minimum, 100)
         XCTAssertEqual(stats.maximum, 200)
     }
@@ -117,6 +119,23 @@ final class InsulinAndCarbStatisticsTests: XCTestCase {
         let interval = DateInterval(start: t0, duration: day)
         let suspend = InsulinDose(kind: .suspend, start: t0 + hour, end: t0 + hour + minutes(45), units: 0)
         XCTAssertEqual(InsulinStatistics.compute([suspend], interval: interval).suspendedDuration, minutes(45), accuracy: 1e-9)
+    }
+
+    func testProgrammedBasalCountsOnlyWhereThereIsData() throws {
+        // 1 U/h until noon, 2 U/h after. Data from 06:00 to 18:00, the loop running 0.5 U/h throughout.
+        let schedule = try XCTUnwrap(BasalSchedule(entries: [.init(startOffset: 0, ratePerHour: 1), .init(startOffset: 12 * hour, ratePerHour: 2)], timeZone: utc))
+        let window = DateInterval(start: t0 + 6 * hour, end: t0 + 18 * hour)
+        let temp = InsulinDose.basal(.tempBasal, start: window.start, end: window.end, ratePerHour: 0.5, isAutomatic: true)
+        let interval = DateInterval(start: t0, duration: day)
+
+        let s = InsulinStatistics.compute([temp], interval: interval, schedule: schedule, within: window)
+        XCTAssertEqual(s.programmedBasalUnits ?? 0, 6 * 1 + 6 * 2, accuracy: 1e-9) // not 36: no data before 06:00 or after 18:00
+        XCTAssertEqual(s.averageDailyProgrammedBasal ?? 0, 18, accuracy: 1e-9)
+        XCTAssertEqual(s.basalUnits, 6, accuracy: 1e-9)
+        XCTAssertEqual(s.deliveredBasalFraction ?? 0, 6.0 / 18, accuracy: 1e-9)
+
+        XCTAssertNil(InsulinStatistics.compute([temp], interval: interval).programmedBasalUnits)
+        XCTAssertNil(InsulinStatistics.compute([temp], interval: interval).deliveredBasalFraction)
     }
 
     func testCarbsExcludeFatProteinEquivalents() {

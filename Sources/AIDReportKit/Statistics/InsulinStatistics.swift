@@ -23,10 +23,20 @@ public struct InsulinStatistics: Hashable, Codable, Sendable {
     /// Fraction of the interval covered by basal records. Below ~0.9 the basal total undercounts;
     /// provide a `BasalSchedule` so gaps are filled with scheduled basal.
     public var basalCoverage: Double
+    /// What the basal schedule (the profile programmed in the app) would have delivered over the
+    /// time there is data, before any temp basal or suspension; `nil` without a schedule.
+    /// Compare with `basalUnits`, what was delivered, to see how far the loop moved basal.
+    public var programmedBasalUnits: Double?
 
     // MARK: Per-day averages (what reports show; the totals above depend on the period length)
 
     public var averageDailyBasal: Double { perDay(basalUnits) }
+    public var averageDailyProgrammedBasal: Double? { programmedBasalUnits.map(perDay) }
+    /// Delivered basal as a share of programmed basal (1 = as scheduled); `nil` without a schedule.
+    public var deliveredBasalFraction: Double? {
+        guard let programmed = programmedBasalUnits, programmed > 0 else { return nil }
+        return basalUnits / programmed
+    }
     public var averageDailyBolus: Double { perDay(bolusUnits) }
     public var averageDailyManualBolus: Double { perDay(manualBolusUnits) }
     public var averageDailyAutomaticBolus: Double { perDay(automaticBolusUnits) }
@@ -39,7 +49,16 @@ public struct InsulinStatistics: Hashable, Codable, Sendable {
 
     private func perDay(_ total: Double) -> Double { days > 0 ? total / days : 0 }
 
-    public static func compute(_ doses: [InsulinDose], interval: DateInterval) -> InsulinStatistics {
+    /// - Parameters:
+    ///   - schedule: The basal schedule, for `programmedBasalUnits`.
+    ///   - window: The time there is data. Programmed basal only counts there, as delivered basal
+    ///     does, so a period that starts before the first record is not read as a shortfall.
+    public static func compute(
+        _ doses: [InsulinDose],
+        interval: DateInterval,
+        schedule: BasalSchedule? = nil,
+        within window: DateInterval? = nil
+    ) -> InsulinStatistics {
         let clamped = doses.compactMap { $0.clamped(to: interval) }
         let boluses = clamped.filter { $0.kind == .bolus }
         let basal = clamped.filter { $0.kind == .basal || $0.kind == .tempBasal }
@@ -65,7 +84,11 @@ public struct InsulinStatistics: Hashable, Codable, Sendable {
             days: days,
             averageDailyDose: days > 0 ? total / days : 0,
             basalFraction: total > 0 ? basalUnits / total : 0,
-            basalCoverage: BasalTimeline.coverage(clamped, in: interval)
+            basalCoverage: BasalTimeline.coverage(clamped, in: interval),
+            programmedBasalUnits: schedule.map { schedule in
+                guard let span = interval.intersection(with: window ?? interval), span.duration > 0 else { return 0 }
+                return schedule.doses(in: span).reduce(0) { $0 + $1.units }
+            }
         )
     }
 }

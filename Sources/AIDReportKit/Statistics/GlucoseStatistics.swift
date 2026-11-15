@@ -120,6 +120,11 @@ public struct GlucoseStatistics: Hashable, Codable, Sendable {
     public var coefficientOfVariation: Double
     /// Glucose Management Indicator, % (3.31 + 0.02392 × mean mg/dL).
     public var gmi: Double
+    /// Estimated A1c, % (NGSP), from the ADAG relation (mean mg/dL + 46.7) / 28.7, as Trio and
+    /// LoopFollow show it next to GMI.
+    public var estimatedA1c: Double { (mean + 46.7) / 28.7 }
+    /// Estimated A1c in mmol/mol (IFCC), converted the way Trio does: 10.929 × (NGSP − 2.152).
+    public var estimatedA1cMmolMol: Double { 10.929 * (estimatedA1c - 2.152) }
     public var minimum: Double
     public var maximum: Double
     public var percentiles: Percentiles

@@ -144,6 +144,9 @@
         }
       }
     },
+    "Afternoon" : {
+      "comment" : "Part of the day: 12–18"
+    },
     "Ambulatory Glucose Profile" : {
       "comment" : "Report section: AGP, glucose percentiles by time of day"
     },
@@ -336,6 +339,9 @@
     "Errors" : {
       "comment" : "Count of validation errors"
     },
+    "Evening" : {
+      "comment" : "Part of the day: 18–24"
+    },
     "External" : {
       "comment" : "Bolus type: not delivered by the pump"
     },
@@ -489,11 +495,17 @@
     "Mon" : {
       "comment" : "Short weekday name: Monday"
     },
+    "Morning" : {
+      "comment" : "Part of the day: 06–12"
+    },
     "Negative carb entry %@ g" : {
       "comment" : "Validation error; the argument is grams of carbohydrate"
     },
     "Negative insulin amount %@ U" : {
       "comment" : "Validation error; the argument is insulin units"
+    },
+    "Night" : {
+      "comment" : "Part of the day: 00–06"
     },
     "No data" : {
       "comment" : "Shown when a value cannot be computed"
