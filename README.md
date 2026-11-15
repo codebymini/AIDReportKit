@@ -55,10 +55,11 @@ let source = MergedTherapyDataSource([nightscout, health])
 let definition = ReportDefinition(
     name: "Endo visit",
     range: .threeMonths,
-    sections: [.overview, .glucoseDistribution, .glucosePercentileByTime, .glycemiaRiskIndex,
+    sections: [.overview, .glucoseDistribution, .glycemiaRiskIndex,
                .insulinTotalDailyDose, .carbsTotals, .dataQuality]
 )
-let options = ReportOptions(basalSchedule: try await nightscout.basalSchedule())
+let profile = try await nightscout.profile()
+let options = ReportOptions(basalSchedule: profile.basalSchedule, therapySettings: profile.therapySettings)
 let report = try await AIDReport.generate(definition, from: source, options: options)
 
 let markdown = MarkdownReportRenderer().render(report)
@@ -72,13 +73,13 @@ let pdfURL = try PDFReportExporter.export(report)   // import AIDReportUI
 The report model follows the concepts in the Trio statistics export
 ([nightscout/Trio#1746](https://github.com/nightscout/Trio/pull/1746)), made app-neutral:
 
-- **`ReportSection`**: one flat catalogue of everything a report can contain: overview, AGP,
-  glucose distribution, GRI, percentiles/distribution by day, a calendar heatmap of each day's
-  average glucose, carbs, total daily dose, bolus
-  distribution, data quality. Case order is the PDF page order: overview, the charts in export
+- **`ReportSection`**: one flat catalogue of everything a report can contain: overview (with a
+  small AGP), glucose distribution, GRI, percentiles/distribution by day, a calendar heatmap of each day's
+  average glucose, carbs, insulin (with basal rates, carb ratios and ISF), the other therapy
+  settings, bolus distribution, data quality. Case order is the PDF page order: overview, the charts in export
   menu order (glucose, carbs, insulin), data quality last. Each has a category, a short
   `menuTitle` and a minimum span (by-day sections need ≥ 2 days).
-- **`ReportDefinition`**: name + `ReportRange` (a rolling window ending now, or custom) +
+- **`ReportDefinition`**: name (for the preset; not printed) + `ReportRange` (a rolling window ending now, or custom) +
   ordered sections. Renderers emit one section/page per entry, in order.
 - **`ReportPreset` / `ReportPresetStore`**: saved definitions for recurring reports. Back the store
   with the host's own storage, or use `JSONFileReportPresetStore`.
@@ -96,7 +97,7 @@ The report model follows the concepts in the Trio statistics export
   D and W only, rather than averaging a week of data over a month.
 - **`PDFReportExporter`**: one page per section with shared header/footer, always light appearance.
   Hosts can pass their own SwiftUI pages wrapped in `ReportPage`. See
-  [`Docs/sample-report.pdf`](Docs/sample-report.pdf) (all eleven sections, synthetic data).
+  [`Docs/sample-report.pdf`](Docs/sample-report.pdf) (the six default pages, synthetic data; the by-day pages and Bolus Distribution are optional).
 
 ## Statistics
 
@@ -107,15 +108,19 @@ All glucose values are mg/dL internally; `GlucoseUnit` converts only for display
 | Time in ranges | Share of sensor readings: very low < 54, low 54–< 70, in range 70–180, high > 180–250, very high > 250 mg/dL; tight range 70–140 (2019 international consensus; thresholds configurable) |
 | Mean, SD, CV | Sample SD (n − 1); CV = SD / mean (target ≤ 36%) |
 | GMI | 3.31 + 0.02392 × mean mg/dL |
+| eA1c | (mean mg/dL + 46.7) / 28.7 (ADAG), and in mmol/mol 10.929 × (eA1c − 2.152), as Trio and LoopFollow show it next to GMI |
 | GRI | 3.0 × (VLow + 0.8 × Low) + 1.6 × (VHigh + 0.5 × High), capped at 100, zones A–E. Always uses the fixed consensus thresholds |
 | CGM coverage | Share of 5-minute slots with ≥ 1 reading (correct for 1- and 5-minute sensors) |
-| AGP | 5/25/50/75/95 percentiles by time of day (default 60-minute buckets) in the data's time zone |
-| Ranges by time of day | Time in ranges for each time-of-day bucket (same buckets as the AGP), drawn as one full-height stacked bar per hour on the Glucose Distribution page |
+| AGP | 5/25/50/75/95 percentiles by time of day (default 60-minute buckets) in the data's time zone, drawn small on the overview |
+| Ranges by time of day | Time in ranges at night (00–06), in the morning (06–12), afternoon (12–18) and evening (18–24), all days overlaid, on the report's clock (`TherapyReport.dayPeriods`, the same parts of the day as LoopFollow). Drawn as four stacked bars on the Glucose Distribution page |
 | GRI grid | Hypoglycemia component across, hyperglycemia component up; zones A–E are the triangles under 3 × hypo + 1.6 × hyper = 20, 40, 60, 80, 100, as in Trio and LoopFollow. The dot is the report |
 | Time zone | Days, times of day, midnight and every printed time are on the clock of `DataSourceInfo.timeZone`, never implicitly the device's. Loop and Trio run on the looper's phone, so that is the device time zone. A follower passes the looper's: `NightscoutTherapyDataSource.profile()` returns the time zone in the site's profile (Trio/AAPS region names, Loop's `ETC/GMT-1`, plain offsets) and `usingTimeZone(_:)` applies it. The header prints it, e.g. `Generated 2026-11-14 23:33 (GMT+1)` |
 | Partial days | A rolling range starts and ends mid-day. When the first or the last data point is more than 10 minutes from midnight (on the report's clock), every page with per-day values and the Data Quality page carry a warning naming the short day(s) (`TherapyReport.partialDayWarning`, `DataSpan`) |
 | Daily heatmap | One calendar cell per day, colored by where that day's mean glucose falls against the thresholds (consensus cut-offs by default): green in range (70–180), yellow high (> 180–250), red very high (> 250), dark red for a day averaging below 70. The band is decided on the average as printed (whole mg/dL, or mmol/L to one decimal), so a cell reading "180" or "10.0" is always green, and the value is printed in every cell, so the page never relies on color alone. Days under 50% CGM coverage are marked `*`; days without data are grey |
 | Insulin | Total, basal (scheduled + temp), bolus split manual / automatic (SMB) / external, average daily dose, basal share, suspended time, basal record coverage |
+| Programmed vs delivered basal | Programmed basal is what the basal schedule passed in `ReportOptions.basalSchedule` would have delivered, counted from the first to the last data point like delivered basal, so a period that starts before the data is not read as a shortfall. Delivered basal is what was actually given: scheduled and temp basal, net of suspensions. Without a schedule, programmed basal is left out. The schedule is the current one: none of the apps keep a history of profile changes |
+| Therapy settings | `TherapySettingsSnapshot` (passed as `ReportOptions.therapySettings`): carb ratios, ISF and glucose targets by time of day in mg/dL, plus groups of other settings the app formats in its own words. The basal schedule is shown with them. The Insulin page prints basal rates, carb ratios and ISF; the optional Settings page prints targets and the groups. They are the settings in force when the report is made: none of the apps keep a history of changes. Loop maps LoopKit's `TherapySettings`, Trio its stored settings files and preferences, LoopFollow the followed site's Nightscout profile |
+| Overview | The first page: time in range (with time below and above), GRI, CV / SD and eA1c, a thin time-in-range bar and a small AGP, then total daily dose, programmed basal and delivered basal per day (delivered as a share of programmed). Every renderer takes the numbers from `TherapyReport.overviewMetrics(_:)`. Page-by-page contents: [`Docs/report-pages.md`](Docs/report-pages.md) |
 | Reported figures | Reports show insulin and carbs as per-day averages (dose, basal, bolus, automatic bolus, boluses, carb grams, carb entries, suspended time), never period totals, so a week and three months read the same way. The totals stay available on `InsulinStatistics` / `CarbStatistics` and in the JSON export |
 | Carbs | Total, entries, average per entry and per day, fat/protein; Trio FPU carb equivalents reported separately and excluded from totals. Only entries with carbs count as carb entries: a fat/protein-only meal (0 g) adds its fat and protein but not to the entry count |
 | Nightscout | Read the way LoopFollow reads it: token as a query item, responses never from cache, the profile in force now (`profiles.json` filtered on `startDate`, falling back to the newest record). Pump suspensions are taken from Loop's "Suspend Pump" / "Resume Pump" treatments and from Trio's "PumpSuspend" / "PumpResume" notes; one whose resume never reached the site ends at the next temp basal |
@@ -147,7 +152,7 @@ All limits live in `ValidationConfiguration`.
 ## Testing
 
 ```sh
-swift test                                              # 107 tests, macOS
+swift test                                              # 113 tests, macOS
 AIDREPORT_PDF_OUTPUT=/tmp/sample.pdf swift test --filter PDF   # also writes a sample PDF
 ```
 

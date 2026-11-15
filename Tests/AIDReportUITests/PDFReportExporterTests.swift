@@ -30,14 +30,19 @@ final class PDFReportExporterTests: XCTestCase {
         let dataset = generator.makeDataset()
         let options = ReportOptions(
             // The schedule the synthetic loop adjusts, so the overview can compare programmed and delivered basal.
-            basalSchedule: BasalSchedule(entries: [.init(startOffset: 0, ratePerHour: generator.scheduledBasalRate)], timeZone: dataset.source.timeZone),
+            // Five rates averaging the generator's 0.8 U/h (19.15 U a day), so the schedule bar has parts to show.
+            basalSchedule: BasalSchedule(entries: [
+                .init(startOffset: 0, ratePerHour: 0.7), .init(startOffset: 4.0 * 3600, ratePerHour: 0.9), .init(startOffset: 9.0 * 3600, ratePerHour: 0.8),
+                .init(startOffset: 15.0 * 3600, ratePerHour: 0.75), .init(startOffset: 21.0 * 3600, ratePerHour: 0.85),
+            ], timeZone: dataset.source.timeZone),
             therapySettings: Self.sampleSettings,
             metadata: ReportMetadata(
                 appName: "Trio", appVersion: "0.6.0", cgm: "Dexcom G7", pump: "Omnipod DASH", device: "iPhone 16",
                 settings: [.init("Closed loop", "On"), .init("SMB", "On"), .init("Dynamic ISF", "Off")]
             )
         )
-        let definition = ReportDefinition(name: "Endo visit", range: .twoWeeks, sections: ReportSection.allCases)
+        // The pages the export sheet preselects; every page is rendered in the end-to-end tests.
+        let definition = ReportDefinition(name: "Endo visit", range: .twoWeeks, sections: ReportDefinition.defaultSections)
         let report = ReportBuilder(options: options).build(definition, from: dataset, now: generator.interval.end)
         XCTAssertNotNil(report.summary.insulin.programmedBasalUnits)
 
@@ -51,6 +56,12 @@ final class PDFReportExporterTests: XCTestCase {
         // Set AIDREPORT_PDF_OUTPUT=/path/sample.pdf to inspect the rendering.
         if let output = ProcessInfo.processInfo.environment["AIDREPORT_PDF_OUTPUT"] {
             try data.write(to: URL(fileURLWithPath: output))
+        }
+        // And AIDREPORT_ALL_PAGES_PDF_OUTPUT for the same report with the optional pages switched on too.
+        if let output = ProcessInfo.processInfo.environment["AIDREPORT_ALL_PAGES_PDF_OUTPUT"] {
+            let everything = ReportDefinition(name: definition.name, range: definition.range, sections: ReportSection.allCases)
+            let full = ReportBuilder(options: options).build(everything, from: dataset, now: generator.interval.end)
+            try PDFReportExporter.render(full).write(to: URL(fileURLWithPath: output))
         }
     }
 
