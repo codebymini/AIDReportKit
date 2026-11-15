@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ Statistics Report" : {
-      "comment" : "Default report title; the argument is the app or data source name"
-    },
     "%@ boluses per day, %@ of them automatic." : {
       "comment" : "Bolus count summary; arguments are average boluses per day and average automatic boluses per day",
       "localizations" : {
@@ -361,6 +358,9 @@
     },
     "Glucose Percentiles by Day" : {
       "comment" : "Report section: glucose percentiles for each day"
+    },
+    "Glucose Report" : {
+      "comment" : "Report title, at the top of every PDF page and of text exports"
     },
     "Glucose changed %@ mg/dL/min" : {
       "comment" : "Validation warning about a very fast glucose change"

@@ -100,14 +100,14 @@ public enum PDFReportExporter {
         return url
     }
 
-    /// `<Source>-Statistics-yyyyMMdd_HHmmss`
+    /// `<Source>-Glucose-Report-yyyyMMdd_HHmmss`, after the report's title
     public static func defaultFileName(for report: TherapyReport) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = report.source.timeZone
         formatter.dateFormat = "yyyyMMdd_HHmmss"
         let name = report.source.name.replacingOccurrences(of: " ", with: "")
-        return "\(name)-Statistics-\(formatter.string(from: report.generatedAt))"
+        return "\(name)-Glucose-Report-\(formatter.string(from: report.generatedAt))"
     }
 }
 #endif

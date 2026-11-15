@@ -195,7 +195,7 @@ public enum ReportSection: String, Codable, CaseIterable, Sendable, Identifiable
 
 /// What to put in a report: name, range and ordered sections.
 public struct ReportDefinition: Hashable, Codable, Sendable {
-    /// Printed in the report header; empty uses the source name.
+    /// Names a saved preset in the export sheet. Not printed in the report.
     public var name: String
     public var range: ReportRange
     public var sections: [ReportSection]

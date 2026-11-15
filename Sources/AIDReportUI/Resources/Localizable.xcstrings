@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ — Statistics Report" : {
-      "comment" : "PDF page title; the argument is the app name"
-    },
     "%lld charts" : {
       "comment" : "Number of selected report pages; the argument is the count"
     },

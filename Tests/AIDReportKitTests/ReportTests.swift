@@ -24,7 +24,7 @@ final class ReportTests: XCTestCase {
         XCTAssertEqual(report.summary.carbs.entryCount, 42)
         XCTAssertGreaterThan(report.summary.insulin.averageDailyDose, 10)
         XCTAssertFalse(report.validation.hasErrors)
-        XCTAssertEqual(report.title, "Clinic visit")
+        XCTAssertEqual(report.title, "Glucose Report") // the preset is named "Clinic visit"; that name is not printed
     }
 
     func testByDaySectionsAreDroppedForSingleDayReports() {
@@ -52,7 +52,7 @@ final class ReportTests: XCTestCase {
         let positions = sections.map { try? XCTUnwrap(markdown.range(of: "## \($0.title)")).lowerBound }
         XCTAssertEqual(positions.compactMap { $0 }.count, 3)
         XCTAssertEqual(positions.compactMap { $0 }, positions.compactMap { $0 }.sorted())
-        XCTAssertTrue(markdown.contains("Synthetic data Statistics Report"))
+        XCTAssertTrue(markdown.hasPrefix("# Glucose Report\n"))
         XCTAssertTrue(markdown.contains("**CGM:** Dexcom G7"))
     }
 

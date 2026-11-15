@@ -129,7 +129,7 @@ final class PDFReportExporterTests: XCTestCase {
     func testDefaultFileName() {
         let generator = SyntheticTherapyGenerator(days: 1)
         let report = ReportBuilder().build(.standard, from: generator.makeDataset(app: .trio), now: generator.interval.end)
-        XCTAssertEqual(PDFReportExporter.defaultFileName(for: report), "Trio-Statistics-20260102_000000")
+        XCTAssertEqual(PDFReportExporter.defaultFileName(for: report), "Trio-Glucose-Report-20260102_000000")
     }
 }
 #endif

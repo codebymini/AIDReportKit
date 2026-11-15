@@ -446,7 +446,7 @@ final class EndToEndReportTests: XCTestCase {
     func testMarkdownShowsTheComputedNumbers() async throws {
         let markdown = MarkdownReportRenderer().render(try await goldenReport())
         for expected in [
-            "# Golden",
+            "# Glucose Report",
             // Overview
             "| Time in range | 37.5% (Below 25.0% · above 37.5%) |",
             "| GRI | 100.0 (Zone E) |",
@@ -605,7 +605,8 @@ final class EndToEndReportTests: XCTestCase {
             return try XCTUnwrap(document.page(at: index)?.string)
         }
         let overview = try text(.overview)
-        for expected in ["Golden", "Time in range", "37.5%", "Below 25.0% · above 37.5%", "GRI", "100.0", "Zone E", "CV / SD", "54.8% / 79 mg/dL",
+        XCTAssertFalse(overview.contains("Golden"), "a preset's name is not printed")
+        for expected in ["Glucose Report", "Time in range", "37.5%", "Below 25.0% · above 37.5%", "GRI", "100.0", "Zone E", "CV / SD", "54.8% / 79 mg/dL",
                          "eA1c", "6.7%", "49 mmol/mol", "Total daily dose", "37.3 U", "Programmed basal per day", "Delivered basal per day",
                          "24.0 U", "100% of programmed", "Dexcom G7", "Page 1 of \(ReportSection.allCases.count)"] {
             XCTAssertTrue(overview.contains(expected), "Overview page is missing: \(expected)")

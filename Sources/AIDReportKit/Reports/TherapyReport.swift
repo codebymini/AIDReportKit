@@ -27,10 +27,10 @@ public struct TherapyReport: Hashable, Codable, Sendable {
 
     public var displayUnit: GlucoseUnit { source.displayUnit }
 
+    /// The same for every report, whichever app made it and whatever preset it came from: the app
+    /// is named under Software in the header, and a preset's name is only for finding it again.
     public var title: String {
-        definition.name.isEmpty
-            ? String(localized: "\(source.name) Statistics Report", bundle: .module, comment: "Default report title; the argument is the app or data source name")
-            : definition.name
+        String(localized: "Glucose Report", bundle: .module, comment: "Report title, at the top of every PDF page and of text exports")
     }
 
     /// The definition's sections in order, minus those that do not fit the interval.

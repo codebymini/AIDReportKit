@@ -71,14 +71,10 @@ public struct ReportPage<Content: View>: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(String(localized: "\(report.metadata.appName ?? report.source.name) — Statistics Report", bundle: .module,
-                        comment: "PDF page title; the argument is the app name"))
+            Text(report.title)
                 .font(.title2.bold())
             if let patientName = report.metadata.printablePatientName {
                 Text(patientName).font(.headline)
-            }
-            if !report.definition.name.isEmpty {
-                Text(report.definition.name).font(.headline)
             }
             Text(verbatim: "\(categoryTitle) · \(report.definition.range.displayName) (\(formatter.period(report.interval)))")
                 .font(.subheadline)
