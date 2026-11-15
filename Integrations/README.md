@@ -56,9 +56,9 @@ Application Support folder.
 
 | App | Where | Builds the report with |
 | --- | --- | --- |
-| Loop | Settings → Support → **Statistics Report** (once onboarding is complete) | `DeviceDataManager.makeStatisticsReport`: Loop's stores + basal schedule + settings header, read when the report is made |
-| Trio | Statistics → share icon, top right (same spot as nightscout/Trio#1746) | `Stat.StateModel.makeAIDReport`: Core Data + basal profile + settings header |
-| LoopFollow | Statistics → share icon next to Refresh (disabled without a Nightscout URL) | `LoopFollowStats.makeReport`: Nightscout + site basal profile, on the looper's clock |
+| Loop | Settings → Support → **Statistics Report** (once onboarding is complete) | `DeviceDataManager.makeStatisticsReport`: Loop's stores + basal schedule + therapy settings (`TherapySettingsSnapshot(loop:dosing:displayUnit:)`) + header, read when the report is made |
+| Trio | Statistics → share icon, top right (same spot as nightscout/Trio#1746) | `Stat.StateModel.makeAIDReport`: Core Data + basal profile + therapy settings from the stored ISF, carb ratio, target and pump settings files and preferences + header |
+| LoopFollow | Statistics → share icon next to Refresh (disabled without a Nightscout URL) | `LoopFollowStats.makeReport`: Nightscout + the site profile's basal schedule and settings, on the looper's clock |
 
 ## 1. Add the package
 
@@ -107,8 +107,9 @@ XCTAssertEqual(failures, [])
   row, the "Export statistics report" accessibility label in Trio and LoopFollow, and LoopFollow's
   Nightscout-not-configured message. (Xcode adds those to the app catalog on build, together with
   unrelated catalog cleanup, so commit just those keys.)
-- **Naming**: the carb model is `CarbIntake`, not `CarbEntry`, because LoopKit (used by Loop and
-  Trio) already has a public `CarbEntry` protocol and files importing both would be ambiguous.
+- **Naming**: the carb model is `CarbIntake`, not `CarbEntry`, and the settings model is
+  `TherapySettingsSnapshot`, not `TherapySettings`, because LoopKit (used by Loop and Trio) already
+  has public `CarbEntry` and `TherapySettings` types and files importing both would be ambiguous.
   No other public AIDReportKit type collides with LoopKit or with types defined in the three apps.
 - **Loop**: the stores keep 7 days (`LOOP_LOCAL_CACHE_DURATION_DAYS`); anything older lives only
   in Apple Health. The sheet therefore gets `ReportRange.presets(within:)`, because a longer range

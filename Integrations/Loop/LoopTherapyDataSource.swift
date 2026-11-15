@@ -26,6 +26,7 @@ import Foundation
 import HealthKit
 import LoopCore
 import LoopKit
+import LoopKitUI
 
 /// Feeds AIDReportKit from Loop's own stores, so a report sees what the algorithm saw and works offline.
 ///
@@ -131,6 +132,63 @@ extension BasalSchedule {
     }
 }
 
+extension TherapySettingsSnapshot {
+    /// Loop's therapy settings: schedules converted to mg/dL and grams, everything else under
+    /// LoopKit's own (translated) setting names, glucose printed in `displayUnit`.
+    init(loop settings: TherapySettings, dosing: LoopSettings, displayUnit: GlucoseUnit) {
+        let mgdL = HKUnit.milligramsPerDeciliter
+        let f = ReportFormatter(unit: displayUnit, timeZone: .current)
+        func glucose(_ quantity: HKQuantity) -> String { displayUnit.format(mgdL: quantity.doubleValue(for: mgdL), includeUnit: true) }
+        func range(_ range: ClosedRange<HKQuantity>) -> String {
+            let low = glucose(range.lowerBound), high = glucose(range.upperBound)
+            return low == high ? low : "\(displayUnit.format(mgdL: range.lowerBound.doubleValue(for: mgdL)))–\(high)"
+        }
+        func entries(_ schedule: SingleQuantitySchedule?, in unit: HKUnit) -> [Entry] {
+            guard let schedule else { return [] }
+            return schedule.items.map { Entry(startOffset: $0.startTime, value: HKQuantity(unit: schedule.unit, doubleValue: $0.value).doubleValue(for: unit)) }
+        }
+        let targets = settings.glucoseTargetRangeSchedule.map { schedule in
+            schedule.quantityRanges.map { TargetRange(startOffset: $0.startTime, low: $0.value.lowerBound.doubleValue(for: mgdL), high: $0.value.upperBound.doubleValue(for: mgdL)) }
+        } ?? []
+
+        var limits: [ReportMetadata.Item] = []
+        if let maximumBasal = settings.maximumBasalRatePerHour {
+            limits.append(.init(DeliveryLimits.Setting.maximumBasalRate.title, "\(f.rate(maximumBasal)) U/h"))
+        }
+        if let maximumBolus = settings.maximumBolus {
+            limits.append(.init(DeliveryLimits.Setting.maximumBolus.title, "\(f.compact(maximumBolus)) U"))
+        }
+        var glucoseSettings: [ReportMetadata.Item] = []
+        if let threshold = settings.suspendThreshold {
+            glucoseSettings.append(.init(TherapySetting.suspendThreshold.title, glucose(threshold.quantity)))
+        }
+        if let preMeal = settings.correctionRangeOverrides?.preMeal {
+            glucoseSettings.append(.init(TherapySetting.preMealCorrectionRangeOverride.title, range(preMeal)))
+        }
+        if let workout = settings.correctionRangeOverrides?.workout {
+            glucoseSettings.append(.init(TherapySetting.workoutCorrectionRangeOverride.title, range(workout)))
+        }
+        let closedLoop = dosing.dosingEnabled
+            ? NSLocalizedString("On", comment: "Statistics report: closed loop is on")
+            : NSLocalizedString("Off", comment: "Statistics report: closed loop is off")
+
+        self.init(
+            carbRatios: entries(settings.carbRatioSchedule, in: .gram()),
+            insulinSensitivities: entries(settings.insulinSensitivitySchedule, in: mgdL),
+            targets: targets,
+            groups: [
+                .init(TherapySetting.deliveryLimits.title, limits),
+                .init(NSLocalizedString("Glucose Settings", comment: "Statistics report: settings group with the glucose safety limit and the pre-meal and workout ranges"), glucoseSettings),
+                .init(TherapySetting.insulinModel.title, settings.defaultRapidActingModel.map { [.init(TherapySetting.insulinModel.title, $0.title)] } ?? []),
+                .init(NSLocalizedString("Dosing", comment: "Statistics report: settings group with closed loop and the dosing strategy"), [
+                    .init(NSLocalizedString("Closed Loop", comment: "Statistics report: label of the closed loop setting"), closedLoop),
+                    .init(NSLocalizedString("Dosing Strategy", comment: "Statistics report: label of the dosing strategy setting"), dosing.automaticDosingStrategy.title),
+                ]),
+            ]
+        )
+    }
+}
+
 extension ReportMetadata {
     /// Report header for Loop: devices and the settings that most change how the numbers read.
     static func loop(deviceDataManager: DeviceDataManager) -> ReportMetadata {
@@ -164,6 +222,7 @@ extension DeviceDataManager {
         let source = LoopTherapyDataSource(deviceDataManager: self)
         let options = ReportOptions(
             basalSchedule: loopManager.settings.basalRateSchedule.flatMap { BasalSchedule($0) },
+            therapySettings: TherapySettingsSnapshot(loop: loopManager.therapySettings, dosing: loopManager.settings, displayUnit: source.info.displayUnit),
             metadata: .loop(deviceDataManager: self)
         )
         return try await AIDReport.generate(definition, from: source, options: options)

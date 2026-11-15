@@ -216,6 +216,107 @@ extension BasalSchedule {
     }
 }
 
+/// Trio's stored therapy settings, read together for a report (see `Stat.Provider`).
+struct TrioTherapySettingsFiles {
+    var sensitivities: InsulinSensitivities?
+    var carbRatios: CarbRatios?
+    var targets: BGTargets?
+    var pump: PumpSettings?
+}
+
+extension TherapySettingsSnapshot {
+    /// Trio's settings: ISF, carb ratios and targets converted to mg/dL and grams; limits, the
+    /// insulin model, SMB and the algorithm under Trio's own names.
+    init(trio files: TrioTherapySettingsFiles, settings: TrioSettings, preferences: Preferences) {
+        let f = ReportFormatter(unit: settings.units == .mmolL ? .mmolL : .mgdL, timeZone: .current)
+        func number(_ value: Decimal) -> Double { NSDecimalNumber(decimal: value).doubleValue }
+        func mgdL(_ value: Decimal, _ units: GlucoseUnits) -> Double {
+            units == .mmolL ? number(value) * GlucoseUnit.mgdLPerMmolL : number(value)
+        }
+        func onOff(_ value: Bool) -> String { value ? String(localized: "On") : String(localized: "Off") }
+        func minutes(_ value: Decimal) -> String { "\(f.compact(number(value))) min" }
+
+        let sensitivities = files.sensitivities.map { isf in
+            isf.sensitivities.map { Entry(startOffset: TimeInterval($0.offset * 60), value: mgdL($0.sensitivity, isf.units)) }
+        } ?? []
+        // Ratios in exchanges have no fixed gram value; leave them out rather than guess.
+        let carbRatios = files.carbRatios.flatMap { ratios in
+            ratios.units == .grams ? ratios.schedule
+                .map { Entry(startOffset: TimeInterval($0.offset * 60), value: number($0.ratio)) } : nil
+        } ?? []
+        let targets = files.targets.map { targets in
+            targets.targets.map {
+                TargetRange(
+                    startOffset: TimeInterval($0.offset * 60),
+                    low: mgdL($0.low, targets.units),
+                    high: mgdL($0.high, targets.units)
+                )
+            }
+        } ?? []
+
+        var limits: [ReportMetadata.Item] = [
+            .init(String(localized: "Max IOB"), "\(f.compact(number(preferences.maxIOB))) U"),
+            .init(String(localized: "Max COB"), "\(f.compact(number(preferences.maxCOB))) g")
+        ]
+        var insulinModel: [ReportMetadata.Item] = [
+            .init(String(localized: "Insulin Curve"), {
+                switch preferences.curve {
+                case .rapidActing: return String(localized: "Rapid-Acting")
+                case .ultraRapid: return String(localized: "Ultra-Rapid")
+                case .bilinear: return String(localized: "Bilinear")
+                }
+            }())
+        ]
+        if preferences.useCustomPeakTime {
+            insulinModel.append(.init(String(localized: "Insulin Peak Time"), minutes(preferences.insulinPeakTime)))
+        }
+        if let pump = files.pump {
+            limits += [
+                .init(String(localized: "Max Basal"), "\(f.rate(number(pump.maxBasal))) U/h"),
+                .init(String(localized: "Max Bolus"), "\(f.compact(number(pump.maxBolus))) U")
+            ]
+            insulinModel
+                .append(.init(String(localized: "Duration of Insulin Action"), "\(f.compact(number(pump.insulinActionCurve))) h"))
+        }
+
+        self.init(
+            carbRatios: carbRatios,
+            insulinSensitivities: sensitivities,
+            targets: targets,
+            groups: [
+                .init(String(localized: "Limits"), limits),
+                .init(String(localized: "Insulin Model"), insulinModel),
+                .init(String(localized: "SMB"), [
+                    .init(String(localized: "Enable SMB Always"), onOff(preferences.enableSMBAlways)),
+                    .init(String(localized: "Enable SMB With COB"), onOff(preferences.enableSMBWithCOB)),
+                    .init(String(localized: "Enable SMB With Temptarget"), onOff(preferences.enableSMBWithTemptarget)),
+                    .init(String(localized: "Enable SMB After Carbs"), onOff(preferences.enableSMBAfterCarbs)),
+                    .init(String(localized: "Enable SMB With High BG"), onOff(preferences.enableSMB_high_bg)),
+                    .init(String(localized: "Max SMB Basal Minutes"), minutes(preferences.maxSMBBasalMinutes)),
+                    .init(String(localized: "Max UAM SMB Basal Minutes"), minutes(preferences.maxUAMSMBBasalMinutes)),
+                    .init(String(localized: "SMB Interval"), minutes(preferences.smbInterval))
+                ]),
+                .init(String(localized: "Algorithm"), [
+                    .init(String(localized: "Dosing Mode"), settings.dosingMode.displayName),
+                    .init(String(localized: "Enable UAM"), onOff(preferences.enableUAM)),
+                    .init(String(localized: "Dynamic ISF"), onOff(preferences.useNewFormula)),
+                    .init(
+                        String(localized: "Adjustment Factor"),
+                        f.compact(number(
+                            preferences.useNewFormula && preferences.sigmoid
+                                ? preferences.adjustmentFactorSigmoid : preferences.adjustmentFactor
+                        ))
+                    ),
+                    .init(
+                        String(localized: "Autosens"),
+                        "\(f.compact(number(preferences.autosensMin)))–\(f.compact(number(preferences.autosensMax)))"
+                    )
+                ])
+            ]
+        )
+    }
+}
+
 extension ReportMetadata {
     /// Report header: hardware, software and the settings that most change how the numbers read
     /// (the same ones as the Statistics PDF export, nightscout/Trio#1746).
