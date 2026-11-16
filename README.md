@@ -5,6 +5,10 @@ statistics for open-source automated insulin delivery apps: **Loop**, **Trio** a
 It reads from each app's own store, from **Nightscout**, or from **Apple Health**, and produces the
 same numbers and the same report everywhere.
 
+The same repository holds a Kotlin Multiplatform port of the core for **AndroidAPS** and other
+Kotlin apps ([`Kotlin/`](Kotlin/README.md)). Both implementations are tested against one set of
+fixtures ([`Fixtures/`](Fixtures/README.md)), so a report gives the same numbers on either platform.
+
 ```
             ┌──────────── TherapyDataSource ────────────┐
  Loop stores │  Trio Core Data │ LoopFollow │ Nightscout │ Apple Health │ Merged(…)
@@ -34,6 +38,17 @@ same numbers and the same report everywhere.
 
 The package never imports LoopKit, Trio's Core Data model or LoopFollow types. Each app adds a
 small adapter from [`Integrations/`](Integrations/README.md) to its own target.
+
+### Kotlin
+
+| Module | What it contains | Swift counterpart |
+| --- | --- | --- |
+| `Kotlin/aidreport-core` | Models, data sources and merging, basal timeline, validation, statistics, report definitions/presets, report builder, JSON. JVM (Android), iOS arm64 and simulator | `AIDReportKit` |
+
+The Nightscout reader, the text exports and the pages/PDF are not ported yet. The Kotlin report
+JSON has the same shape as Swift's (`TherapyReport.schemaVersion` 2): each side reads the reports
+the other writes. See [`Kotlin/README.md`](Kotlin/README.md) for building it, using it from an app and
+how its names differ from Swift's.
 
 ## Quick start
 
@@ -152,9 +167,18 @@ All limits live in `ValidationConfiguration`.
 ## Testing
 
 ```sh
-swift test                                              # 113 tests, macOS
+swift test                                              # 116 tests, macOS
 AIDREPORT_PDF_OUTPUT=/tmp/sample.pdf swift test --filter PDF   # also writes a sample PDF
+cd Kotlin && ./gradlew :aidreport-core:jvmTest          # the Kotlin port (JDK 21)
 ```
+
+**Shared fixtures.** `Fixtures/reports` holds seven cases (input data and the report Swift builds
+from it): the golden scenario on a UTC and a Stockholm clock, dirty data, a late install, mmol/L
+passed as mg/dL, a week across the change to summer time and an empty day. `SharedFixtureTests`
+(Swift) and `SharedFixtureTest` (Kotlin) rebuild every case and compare the whole report JSON, so a
+calculation changed on one side only fails the other side's tests. Swift also decodes the reports
+the Kotlin tests write (`Kotlin/aidreport-core/build/fixture-output`) and checks they say the same. See
+[`Fixtures/README.md`](Fixtures/README.md) for regenerating them.
 
 `Tests/AIDReportEndToEndTests` runs one hand-computed two-day scenario (`GoldenScenario.swift`,
 every expected number is derived in comments) through the whole pipeline: pump-history,
