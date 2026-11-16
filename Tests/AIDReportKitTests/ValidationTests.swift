@@ -37,6 +37,13 @@ final class ValidationTests: XCTestCase {
         XCTAssertTrue(found.contains { $0.code == .glucoseLowCoverage })
     }
 
+    func testReadingsOutOfOrderDoNotLookLikeGaps() {
+        // A whole day every 5 minutes, then one reading added out of order (decoded or edited data).
+        var data = dataset(glucose: readings(Array(repeating: 110, count: 288)))
+        data.glucose.append(GlucoseReading(date: t0 + 2 * hour + 60, mgdL: 112, sourceID: "late"))
+        XCTAssertFalse(codes(data).contains(.glucoseGap))
+    }
+
     func testRapidChangeIsFlagged() {
         XCTAssertTrue(codes(dataset(glucose: readings([100, 160]))).contains(.glucoseRateOfChange))
     }
