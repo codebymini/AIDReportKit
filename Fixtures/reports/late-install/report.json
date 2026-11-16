@@ -1,0 +1,839 @@
+{
+  "agp" : {
+    "bucketMinutes" : 60,
+    "buckets" : [
+      {
+        "percentiles" : {
+          "p25" : 50,
+          "p5" : 50,
+          "p50" : 50,
+          "p75" : 50,
+          "p95" : 50
+        },
+        "readingCount" : 12,
+        "startMinute" : 0,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 1
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 50,
+          "p5" : 50,
+          "p50" : 50,
+          "p75" : 50,
+          "p95" : 50
+        },
+        "readingCount" : 12,
+        "startMinute" : 60,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 1
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 50,
+          "p5" : 50,
+          "p50" : 50,
+          "p75" : 50,
+          "p95" : 50
+        },
+        "readingCount" : 12,
+        "startMinute" : 120,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 1
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 50,
+          "p5" : 50,
+          "p50" : 50,
+          "p75" : 50,
+          "p95" : 50
+        },
+        "readingCount" : 12,
+        "startMinute" : 180,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 1
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 50,
+          "p5" : 50,
+          "p50" : 50,
+          "p75" : 50,
+          "p95" : 50
+        },
+        "readingCount" : 12,
+        "startMinute" : 240,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 1
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 50,
+          "p5" : 50,
+          "p50" : 50,
+          "p75" : 50,
+          "p95" : 50
+        },
+        "readingCount" : 12,
+        "startMinute" : 300,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 1
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 60,
+          "p5" : 60,
+          "p50" : 60,
+          "p75" : 60,
+          "p95" : 60
+        },
+        "readingCount" : 12,
+        "startMinute" : 360,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 1,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 60,
+          "p5" : 60,
+          "p50" : 60,
+          "p75" : 60,
+          "p95" : 60
+        },
+        "readingCount" : 12,
+        "startMinute" : 420,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 1,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 60,
+          "p5" : 60,
+          "p50" : 60,
+          "p75" : 60,
+          "p95" : 60
+        },
+        "readingCount" : 12,
+        "startMinute" : 480,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 1,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 60,
+          "p5" : 60,
+          "p50" : 60,
+          "p75" : 60,
+          "p95" : 60
+        },
+        "readingCount" : 12,
+        "startMinute" : 540,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 1,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 60,
+          "p5" : 60,
+          "p50" : 60,
+          "p75" : 60,
+          "p95" : 60
+        },
+        "readingCount" : 12,
+        "startMinute" : 600,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 1,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 60,
+          "p5" : 60,
+          "p50" : 60,
+          "p75" : 60,
+          "p95" : 60
+        },
+        "readingCount" : 12,
+        "startMinute" : 660,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 1,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 150,
+          "p5" : 150,
+          "p50" : 150,
+          "p75" : 150,
+          "p95" : 150
+        },
+        "readingCount" : 12,
+        "startMinute" : 720,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 1,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 150,
+          "p5" : 150,
+          "p50" : 150,
+          "p75" : 150,
+          "p95" : 150
+        },
+        "readingCount" : 12,
+        "startMinute" : 780,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 1,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 150,
+          "p5" : 150,
+          "p50" : 150,
+          "p75" : 150,
+          "p95" : 150
+        },
+        "readingCount" : 12,
+        "startMinute" : 840,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 1,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 150,
+          "p5" : 150,
+          "p50" : 150,
+          "p75" : 150,
+          "p95" : 150
+        },
+        "readingCount" : 12,
+        "startMinute" : 900,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 1,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 150,
+          "p5" : 150,
+          "p50" : 150,
+          "p75" : 150,
+          "p95" : 150
+        },
+        "readingCount" : 12,
+        "startMinute" : 960,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 1,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 150,
+          "p5" : 150,
+          "p50" : 150,
+          "p75" : 150,
+          "p95" : 150
+        },
+        "readingCount" : 12,
+        "startMinute" : 1020,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 1,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 0,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 300,
+          "p5" : 300,
+          "p50" : 300,
+          "p75" : 300,
+          "p95" : 300
+        },
+        "readingCount" : 12,
+        "startMinute" : 1080,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 1,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 300,
+          "p5" : 300,
+          "p50" : 300,
+          "p75" : 300,
+          "p95" : 300
+        },
+        "readingCount" : 12,
+        "startMinute" : 1140,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 1,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 300,
+          "p5" : 300,
+          "p50" : 300,
+          "p75" : 300,
+          "p95" : 300
+        },
+        "readingCount" : 12,
+        "startMinute" : 1200,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 1,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 300,
+          "p5" : 300,
+          "p50" : 300,
+          "p75" : 300,
+          "p95" : 300
+        },
+        "readingCount" : 12,
+        "startMinute" : 1260,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 1,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 300,
+          "p5" : 300,
+          "p50" : 300,
+          "p75" : 300,
+          "p95" : 300
+        },
+        "readingCount" : 12,
+        "startMinute" : 1320,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 1,
+          "veryLow" : 0
+        }
+      },
+      {
+        "percentiles" : {
+          "p25" : 300,
+          "p5" : 300,
+          "p50" : 300,
+          "p75" : 300,
+          "p95" : 300
+        },
+        "readingCount" : 12,
+        "startMinute" : 1380,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0,
+          "low" : 0,
+          "tightRange" : 0,
+          "veryHigh" : 1,
+          "veryLow" : 0
+        }
+      }
+    ]
+  },
+  "daily" : [
+    {
+      "carbs" : {
+        "averageDailyGrams" : 0,
+        "averagePerEntry" : 0,
+        "days" : 1,
+        "entryCount" : 0,
+        "fatProteinEquivalentGrams" : 0,
+        "largestEntry" : 0,
+        "totalFatGrams" : 0,
+        "totalGrams" : 0,
+        "totalProteinGrams" : 0
+      },
+      "day" : "2026-01-01T00:00:00Z",
+      "insulin" : {
+        "automaticBolusCount" : 0,
+        "automaticBolusUnits" : 0,
+        "averageDailyDose" : 0,
+        "basalCoverage" : 0,
+        "basalFraction" : 0,
+        "basalUnits" : 0,
+        "bolusCount" : 0,
+        "bolusUnits" : 0,
+        "days" : 1,
+        "externalBolusUnits" : 0,
+        "manualBolusUnits" : 0,
+        "programmedBasalUnits" : 0,
+        "suspendedDuration" : 0,
+        "totalUnits" : 0
+      },
+      "interval" : {
+        "duration" : 86400,
+        "start" : "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "carbs" : {
+        "averageDailyGrams" : 50,
+        "averagePerEntry" : 50,
+        "days" : 1,
+        "entryCount" : 1,
+        "fatProteinEquivalentGrams" : 0,
+        "largestEntry" : 50,
+        "totalFatGrams" : 0,
+        "totalGrams" : 50,
+        "totalProteinGrams" : 0
+      },
+      "day" : "2026-01-02T00:00:00Z",
+      "glucose" : {
+        "coefficientOfVariation" : 0.7173156245222989,
+        "coverage" : 1,
+        "gmi" : 6.6588,
+        "gri" : {
+          "highPercent" : 0,
+          "hyperComponent" : 25,
+          "hypoComponent" : 45,
+          "lowPercent" : 25,
+          "score" : 100,
+          "uncappedScore" : 175,
+          "veryHighPercent" : 25,
+          "veryLowPercent" : 25,
+          "zone" : "E"
+        },
+        "maximum" : 300,
+        "mean" : 140,
+        "minimum" : 50,
+        "percentiles" : {
+          "p25" : 57.5,
+          "p5" : 50,
+          "p50" : 105,
+          "p75" : 187.5,
+          "p95" : 300
+        },
+        "readingCount" : 288,
+        "standardDeviation" : 100.42418743312184,
+        "timeInRanges" : {
+          "high" : 0,
+          "inRange" : 0.25,
+          "low" : 0.25,
+          "tightRange" : 0,
+          "veryHigh" : 0.25,
+          "veryLow" : 0.25
+        }
+      },
+      "insulin" : {
+        "automaticBolusCount" : 2,
+        "automaticBolusUnits" : 0.5,
+        "averageDailyDose" : 28.083333333333332,
+        "basalCoverage" : 0.9965277777777778,
+        "basalFraction" : 0.8397626112759644,
+        "basalUnits" : 23.583333333333332,
+        "bolusCount" : 3,
+        "bolusUnits" : 4.5,
+        "days" : 1,
+        "externalBolusUnits" : 0,
+        "manualBolusUnits" : 4,
+        "programmedBasalUnits" : 23.916666666666668,
+        "suspendedDuration" : 3600,
+        "totalUnits" : 28.083333333333332
+      },
+      "interval" : {
+        "duration" : 86400,
+        "start" : "2026-01-02T00:00:00Z"
+      }
+    }
+  ],
+  "dataSpan" : {
+    "first" : "2026-01-02T00:00:00Z",
+    "last" : "2026-01-02T23:55:00Z"
+  },
+  "dayPeriods" : [
+    {
+      "period" : "night",
+      "readingCount" : 72,
+      "timeInRanges" : {
+        "high" : 0,
+        "inRange" : 0,
+        "low" : 0,
+        "tightRange" : 0,
+        "veryHigh" : 0,
+        "veryLow" : 1
+      }
+    },
+    {
+      "period" : "morning",
+      "readingCount" : 72,
+      "timeInRanges" : {
+        "high" : 0,
+        "inRange" : 0,
+        "low" : 1,
+        "tightRange" : 0,
+        "veryHigh" : 0,
+        "veryLow" : 0
+      }
+    },
+    {
+      "period" : "afternoon",
+      "readingCount" : 72,
+      "timeInRanges" : {
+        "high" : 0,
+        "inRange" : 1,
+        "low" : 0,
+        "tightRange" : 0,
+        "veryHigh" : 0,
+        "veryLow" : 0
+      }
+    },
+    {
+      "period" : "evening",
+      "readingCount" : 72,
+      "timeInRanges" : {
+        "high" : 0,
+        "inRange" : 0,
+        "low" : 0,
+        "tightRange" : 0,
+        "veryHigh" : 1,
+        "veryLow" : 0
+      }
+    }
+  ],
+  "definition" : {
+    "name" : "Shared fixture",
+    "range" : {
+      "custom" : {
+        "_0" : {
+          "duration" : 172800,
+          "start" : "2026-01-01T00:00:00Z"
+        }
+      }
+    },
+    "sections" : [
+      "overview",
+      "glucoseDistribution",
+      "glycemiaRiskIndex",
+      "glucosePercentileByDay",
+      "glucoseDistributionByDay",
+      "glucoseHeatmapByDay",
+      "carbsTotals",
+      "insulinTotalDailyDose",
+      "therapySettings",
+      "insulinBolusDistribution",
+      "dataQuality"
+    ]
+  },
+  "generatedAt" : "2026-01-03T00:00:00Z",
+  "interval" : {
+    "duration" : 172800,
+    "start" : "2026-01-01T00:00:00Z"
+  },
+  "metadata" : {
+    "appName" : "Trio",
+    "appVersion" : "1.0",
+    "cgm" : "Dexcom G7",
+    "pump" : "Omnipod DASH",
+    "settings" : [
+      {
+        "label" : "Closed loop",
+        "value" : "On"
+      }
+    ]
+  },
+  "schemaVersion" : 2,
+  "settings" : {
+    "basalSchedule" : {
+      "entries" : [
+        {
+          "ratePerHour" : 1,
+          "startOffset" : 0
+        }
+      ],
+      "timeZoneIdentifier" : "GMT"
+    },
+    "carbRatios" : [
+      {
+        "startOffset" : 0,
+        "value" : 10
+      },
+      {
+        "startOffset" : 39600,
+        "value" : 12
+      }
+    ],
+    "groups" : [
+      {
+        "items" : [
+          {
+            "label" : "Max bolus",
+            "value" : "10 U"
+          },
+          {
+            "label" : "Max basal",
+            "value" : "3 U\/h"
+          }
+        ],
+        "title" : "Limits"
+      }
+    ],
+    "insulinSensitivities" : [
+      {
+        "startOffset" : 0,
+        "value" : 50
+      },
+      {
+        "startOffset" : 21600,
+        "value" : 45
+      }
+    ],
+    "targets" : [
+      {
+        "high" : 110,
+        "low" : 100,
+        "startOffset" : 0
+      },
+      {
+        "high" : 105,
+        "low" : 95,
+        "startOffset" : 25200
+      }
+    ]
+  },
+  "source" : {
+    "app" : "trio",
+    "displayUnit" : "mg\/dL",
+    "name" : "Trio",
+    "timeZoneIdentifier" : "GMT"
+  },
+  "summary" : {
+    "carbs" : {
+      "averageDailyGrams" : 25,
+      "averagePerEntry" : 50,
+      "days" : 2,
+      "entryCount" : 1,
+      "fatProteinEquivalentGrams" : 0,
+      "largestEntry" : 50,
+      "totalFatGrams" : 0,
+      "totalGrams" : 50,
+      "totalProteinGrams" : 0
+    },
+    "glucose" : {
+      "coefficientOfVariation" : 0.7173156245222989,
+      "coverage" : 0.5,
+      "gmi" : 6.6588,
+      "gri" : {
+        "highPercent" : 0,
+        "hyperComponent" : 25,
+        "hypoComponent" : 45,
+        "lowPercent" : 25,
+        "score" : 100,
+        "uncappedScore" : 175,
+        "veryHighPercent" : 25,
+        "veryLowPercent" : 25,
+        "zone" : "E"
+      },
+      "maximum" : 300,
+      "mean" : 140,
+      "minimum" : 50,
+      "percentiles" : {
+        "p25" : 57.5,
+        "p5" : 50,
+        "p50" : 105,
+        "p75" : 187.5,
+        "p95" : 300
+      },
+      "readingCount" : 288,
+      "standardDeviation" : 100.42418743312184,
+      "timeInRanges" : {
+        "high" : 0,
+        "inRange" : 0.25,
+        "low" : 0.25,
+        "tightRange" : 0,
+        "veryHigh" : 0.25,
+        "veryLow" : 0.25
+      }
+    },
+    "insulin" : {
+      "automaticBolusCount" : 2,
+      "automaticBolusUnits" : 0.5,
+      "averageDailyDose" : 14.041666666666666,
+      "basalCoverage" : 0.49826388888888884,
+      "basalFraction" : 0.8397626112759644,
+      "basalUnits" : 23.583333333333332,
+      "bolusCount" : 3,
+      "bolusUnits" : 4.5,
+      "days" : 2,
+      "externalBolusUnits" : 0,
+      "manualBolusUnits" : 4,
+      "programmedBasalUnits" : 23.916666666666668,
+      "suspendedDuration" : 3600,
+      "totalUnits" : 28.083333333333332
+    },
+    "interval" : {
+      "duration" : 172800,
+      "start" : "2026-01-01T00:00:00Z"
+    }
+  },
+  "thresholds" : {
+    "high" : 180,
+    "low" : 70,
+    "tightHigh" : 140,
+    "veryHigh" : 250,
+    "veryLow" : 54
+  },
+  "validation" : {
+    "issues" : [
+      {
+        "code" : "glucose.lowCoverage",
+        "message" : "CGM coverage is 50% (minimum 70%)",
+        "severity" : "warning"
+      },
+      {
+        "code" : "glucose.rateOfChange",
+        "date" : "2026-01-02T12:00:00Z",
+        "message" : "Glucose changed 18.0 mg\/dL\/min",
+        "severity" : "warning",
+        "sourceID" : "g432"
+      },
+      {
+        "code" : "glucose.rateOfChange",
+        "date" : "2026-01-02T18:00:00Z",
+        "message" : "Glucose changed 30.0 mg\/dL\/min",
+        "severity" : "warning",
+        "sourceID" : "g504"
+      },
+      {
+        "code" : "dataset.shortSpan",
+        "message" : "Report covers 2.0 days; GMI and time-in-range targets assume at least 14 days",
+        "severity" : "info"
+      },
+      {
+        "code" : "glucose.gap",
+        "date" : "2026-01-01T00:00:00Z",
+        "message" : "No sensor data for the first 1 440 min",
+        "severity" : "info"
+      }
+    ]
+  }
+}

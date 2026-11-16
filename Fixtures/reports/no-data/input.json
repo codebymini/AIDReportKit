@@ -1,0 +1,48 @@
+{
+  "dataset" : {
+    "carbs" : [
+
+    ],
+    "glucose" : [
+
+    ],
+    "insulin" : [
+
+    ],
+    "interval" : {
+      "duration" : 86400,
+      "start" : "2026-01-02T00:00:00Z"
+    },
+    "source" : {
+      "app" : "loop",
+      "displayUnit" : "mg\/dL",
+      "name" : "Loop",
+      "timeZoneIdentifier" : "GMT"
+    }
+  },
+  "definition" : {
+    "name" : "",
+    "range" : {
+      "custom" : {
+        "_0" : {
+          "duration" : 86400,
+          "start" : "2026-01-02T00:00:00Z"
+        }
+      }
+    },
+    "sections" : [
+      "overview",
+      "glucoseDistribution",
+      "glycemiaRiskIndex",
+      "glucosePercentileByDay",
+      "glucoseDistributionByDay",
+      "glucoseHeatmapByDay",
+      "carbsTotals",
+      "insulinTotalDailyDose",
+      "therapySettings",
+      "insulinBolusDistribution",
+      "dataQuality"
+    ]
+  },
+  "now" : "2026-01-03T00:00:00Z"
+}

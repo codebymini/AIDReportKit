@@ -1,0 +1,255 @@
+{
+  "agp" : {
+    "bucketMinutes" : 60,
+    "buckets" : [
+      {
+        "readingCount" : 0,
+        "startMinute" : 0
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 60
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 120
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 180
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 240
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 300
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 360
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 420
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 480
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 540
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 600
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 660
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 720
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 780
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 840
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 900
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 960
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1020
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1080
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1140
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1200
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1260
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1320
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1380
+      }
+    ]
+  },
+  "daily" : [
+    {
+      "carbs" : {
+        "averageDailyGrams" : 0,
+        "averagePerEntry" : 0,
+        "days" : 1,
+        "entryCount" : 0,
+        "fatProteinEquivalentGrams" : 0,
+        "largestEntry" : 0,
+        "totalFatGrams" : 0,
+        "totalGrams" : 0,
+        "totalProteinGrams" : 0
+      },
+      "day" : "2026-01-02T00:00:00Z",
+      "insulin" : {
+        "automaticBolusCount" : 0,
+        "automaticBolusUnits" : 0,
+        "averageDailyDose" : 0,
+        "basalCoverage" : 0,
+        "basalFraction" : 0,
+        "basalUnits" : 0,
+        "bolusCount" : 0,
+        "bolusUnits" : 0,
+        "days" : 1,
+        "externalBolusUnits" : 0,
+        "manualBolusUnits" : 0,
+        "suspendedDuration" : 0,
+        "totalUnits" : 0
+      },
+      "interval" : {
+        "duration" : 86400,
+        "start" : "2026-01-02T00:00:00Z"
+      }
+    }
+  ],
+  "dayPeriods" : [
+    {
+      "period" : "night",
+      "readingCount" : 0
+    },
+    {
+      "period" : "morning",
+      "readingCount" : 0
+    },
+    {
+      "period" : "afternoon",
+      "readingCount" : 0
+    },
+    {
+      "period" : "evening",
+      "readingCount" : 0
+    }
+  ],
+  "definition" : {
+    "name" : "",
+    "range" : {
+      "custom" : {
+        "_0" : {
+          "duration" : 86400,
+          "start" : "2026-01-02T00:00:00Z"
+        }
+      }
+    },
+    "sections" : [
+      "overview",
+      "glucoseDistribution",
+      "glycemiaRiskIndex",
+      "glucosePercentileByDay",
+      "glucoseDistributionByDay",
+      "glucoseHeatmapByDay",
+      "carbsTotals",
+      "insulinTotalDailyDose",
+      "therapySettings",
+      "insulinBolusDistribution",
+      "dataQuality"
+    ]
+  },
+  "generatedAt" : "2026-01-03T00:00:00Z",
+  "interval" : {
+    "duration" : 86400,
+    "start" : "2026-01-02T00:00:00Z"
+  },
+  "metadata" : {
+    "settings" : [
+
+    ]
+  },
+  "schemaVersion" : 2,
+  "source" : {
+    "app" : "loop",
+    "displayUnit" : "mg\/dL",
+    "name" : "Loop",
+    "timeZoneIdentifier" : "GMT"
+  },
+  "summary" : {
+    "carbs" : {
+      "averageDailyGrams" : 0,
+      "averagePerEntry" : 0,
+      "days" : 1,
+      "entryCount" : 0,
+      "fatProteinEquivalentGrams" : 0,
+      "largestEntry" : 0,
+      "totalFatGrams" : 0,
+      "totalGrams" : 0,
+      "totalProteinGrams" : 0
+    },
+    "insulin" : {
+      "automaticBolusCount" : 0,
+      "automaticBolusUnits" : 0,
+      "averageDailyDose" : 0,
+      "basalCoverage" : 0,
+      "basalFraction" : 0,
+      "basalUnits" : 0,
+      "bolusCount" : 0,
+      "bolusUnits" : 0,
+      "days" : 1,
+      "externalBolusUnits" : 0,
+      "manualBolusUnits" : 0,
+      "suspendedDuration" : 0,
+      "totalUnits" : 0
+    },
+    "interval" : {
+      "duration" : 86400,
+      "start" : "2026-01-02T00:00:00Z"
+    }
+  },
+  "thresholds" : {
+    "high" : 180,
+    "low" : 70,
+    "tightHigh" : 140,
+    "veryHigh" : 250,
+    "veryLow" : 54
+  },
+  "validation" : {
+    "issues" : [
+      {
+        "code" : "glucose.noData",
+        "message" : "No sensor glucose in the interval",
+        "severity" : "warning"
+      },
+      {
+        "code" : "insulin.noData",
+        "message" : "No insulin records in the interval",
+        "severity" : "warning"
+      },
+      {
+        "code" : "dataset.shortSpan",
+        "message" : "Report covers 1.0 days; GMI and time-in-range targets assume at least 14 days",
+        "severity" : "info"
+      }
+    ]
+  }
+}
