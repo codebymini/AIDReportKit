@@ -6,3 +6,9 @@ xcuserdata/
 DerivedData/
 *.xcodeproj
 Package.resolved
+/Kotlin/.gradle
+/Kotlin/.kotlin
+/Kotlin/**/build
+/Kotlin/local.properties
+.idea/
+*.iml
