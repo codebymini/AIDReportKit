@@ -4,6 +4,7 @@ public enum HostApp: String, Codable, Sendable {
     case loop
     case trio
     case loopFollow
+    case androidAPS
     case nightscout
     case appleHealth
     case merged
@@ -44,6 +45,7 @@ extension HostApp {
         case .loop: return "Loop"
         case .trio: return "Trio"
         case .loopFollow: return "LoopFollow"
+        case .androidAPS: return "AndroidAPS"
         case .nightscout: return "Nightscout"
         case .appleHealth: return "Apple Health"
         case .merged: return String(localized: "Merged sources", bundle: .module, comment: "Data source name when several sources are combined")

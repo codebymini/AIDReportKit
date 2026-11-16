@@ -56,7 +56,9 @@ public struct GlucoseDuplicateRule: ValidationRule {
 public struct GlucoseContinuityRule: ValidationRule {
     public init() {}
     public func validate(_ dataset: TherapyDataset, configuration c: ValidationConfiguration, now: Date) -> [ValidationIssue] {
+        // In time order: a dataset that was decoded or edited after it was made may not be.
         let sensor = dataset.glucose.filter { $0.kind == .sensor && dataset.interval.containsHalfOpen($0.date) }
+            .sorted { $0.date < $1.date }
         guard let first = sensor.first, let last = sensor.last else {
             return [ValidationIssue(.glucoseNoData, .warning,
                                     String(localized: "No sensor glucose in the interval", bundle: .module, comment: "Validation warning"))]

@@ -1,0 +1,3746 @@
+{
+  "basalSchedule" : {
+    "entries" : [
+      {
+        "ratePerHour" : 0.8,
+        "startOffset" : 0
+      },
+      {
+        "ratePerHour" : 1.2,
+        "startOffset" : 21600
+      },
+      {
+        "ratePerHour" : 0.9,
+        "startOffset" : 79200
+      }
+    ],
+    "timeZoneIdentifier" : "Europe\/Stockholm"
+  },
+  "dataset" : {
+    "carbs" : [
+      {
+        "date" : "2026-01-01T07:30:00Z",
+        "grams" : 40,
+        "isFatProteinEquivalent" : false,
+        "sourceID" : "c1"
+      },
+      {
+        "date" : "2026-01-01T12:30:00Z",
+        "grams" : 60,
+        "isFatProteinEquivalent" : false,
+        "sourceID" : "c2"
+      },
+      {
+        "date" : "2026-01-01T18:30:00Z",
+        "fatGrams" : 10,
+        "grams" : 80,
+        "isFatProteinEquivalent" : false,
+        "proteinGrams" : 20,
+        "sourceID" : "c3"
+      },
+      {
+        "date" : "2026-01-01T19:30:00Z",
+        "grams" : 15,
+        "isFatProteinEquivalent" : true,
+        "sourceID" : "c3-fpu"
+      },
+      {
+        "date" : "2026-01-02T08:00:00Z",
+        "grams" : 50,
+        "isFatProteinEquivalent" : false,
+        "sourceID" : "c4"
+      }
+    ],
+    "glucose" : [
+      {
+        "date" : "2026-01-01T00:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g0"
+      },
+      {
+        "date" : "2026-01-01T00:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g1"
+      },
+      {
+        "date" : "2026-01-01T00:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g2"
+      },
+      {
+        "date" : "2026-01-01T00:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g3"
+      },
+      {
+        "date" : "2026-01-01T00:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g4"
+      },
+      {
+        "date" : "2026-01-01T00:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g5"
+      },
+      {
+        "date" : "2026-01-01T00:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g6"
+      },
+      {
+        "date" : "2026-01-01T00:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g7"
+      },
+      {
+        "date" : "2026-01-01T00:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g8"
+      },
+      {
+        "date" : "2026-01-01T00:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g9"
+      },
+      {
+        "date" : "2026-01-01T00:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g10"
+      },
+      {
+        "date" : "2026-01-01T00:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g11"
+      },
+      {
+        "date" : "2026-01-01T01:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g12"
+      },
+      {
+        "date" : "2026-01-01T01:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g13"
+      },
+      {
+        "date" : "2026-01-01T01:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g14"
+      },
+      {
+        "date" : "2026-01-01T01:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g15"
+      },
+      {
+        "date" : "2026-01-01T01:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g16"
+      },
+      {
+        "date" : "2026-01-01T01:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g17"
+      },
+      {
+        "date" : "2026-01-01T01:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g18"
+      },
+      {
+        "date" : "2026-01-01T01:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g19"
+      },
+      {
+        "date" : "2026-01-01T01:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g20"
+      },
+      {
+        "date" : "2026-01-01T01:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g21"
+      },
+      {
+        "date" : "2026-01-01T01:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g22"
+      },
+      {
+        "date" : "2026-01-01T01:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g23"
+      },
+      {
+        "date" : "2026-01-01T02:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g24"
+      },
+      {
+        "date" : "2026-01-01T02:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g25"
+      },
+      {
+        "date" : "2026-01-01T02:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g26"
+      },
+      {
+        "date" : "2026-01-01T02:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g27"
+      },
+      {
+        "date" : "2026-01-01T02:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g28"
+      },
+      {
+        "date" : "2026-01-01T02:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g29"
+      },
+      {
+        "date" : "2026-01-01T02:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g30"
+      },
+      {
+        "date" : "2026-01-01T02:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g31"
+      },
+      {
+        "date" : "2026-01-01T02:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g32"
+      },
+      {
+        "date" : "2026-01-01T02:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g33"
+      },
+      {
+        "date" : "2026-01-01T02:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g34"
+      },
+      {
+        "date" : "2026-01-01T02:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g35"
+      },
+      {
+        "date" : "2026-01-01T03:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g36"
+      },
+      {
+        "date" : "2026-01-01T03:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g37"
+      },
+      {
+        "date" : "2026-01-01T03:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g38"
+      },
+      {
+        "date" : "2026-01-01T03:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g39"
+      },
+      {
+        "date" : "2026-01-01T03:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g40"
+      },
+      {
+        "date" : "2026-01-01T03:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g41"
+      },
+      {
+        "date" : "2026-01-01T03:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g42"
+      },
+      {
+        "date" : "2026-01-01T03:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g43"
+      },
+      {
+        "date" : "2026-01-01T03:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g44"
+      },
+      {
+        "date" : "2026-01-01T03:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g45"
+      },
+      {
+        "date" : "2026-01-01T03:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g46"
+      },
+      {
+        "date" : "2026-01-01T03:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g47"
+      },
+      {
+        "date" : "2026-01-01T04:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g48"
+      },
+      {
+        "date" : "2026-01-01T04:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g49"
+      },
+      {
+        "date" : "2026-01-01T04:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g50"
+      },
+      {
+        "date" : "2026-01-01T04:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g51"
+      },
+      {
+        "date" : "2026-01-01T04:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g52"
+      },
+      {
+        "date" : "2026-01-01T04:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g53"
+      },
+      {
+        "date" : "2026-01-01T04:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g54"
+      },
+      {
+        "date" : "2026-01-01T04:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g55"
+      },
+      {
+        "date" : "2026-01-01T04:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g56"
+      },
+      {
+        "date" : "2026-01-01T04:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g57"
+      },
+      {
+        "date" : "2026-01-01T04:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g58"
+      },
+      {
+        "date" : "2026-01-01T04:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g59"
+      },
+      {
+        "date" : "2026-01-01T05:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g60"
+      },
+      {
+        "date" : "2026-01-01T05:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g61"
+      },
+      {
+        "date" : "2026-01-01T05:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g62"
+      },
+      {
+        "date" : "2026-01-01T05:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g63"
+      },
+      {
+        "date" : "2026-01-01T05:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g64"
+      },
+      {
+        "date" : "2026-01-01T05:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g65"
+      },
+      {
+        "date" : "2026-01-01T05:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g66"
+      },
+      {
+        "date" : "2026-01-01T05:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g67"
+      },
+      {
+        "date" : "2026-01-01T05:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g68"
+      },
+      {
+        "date" : "2026-01-01T05:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g69"
+      },
+      {
+        "date" : "2026-01-01T05:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g70"
+      },
+      {
+        "date" : "2026-01-01T05:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g71"
+      },
+      {
+        "date" : "2026-01-01T06:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g72"
+      },
+      {
+        "date" : "2026-01-01T06:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g73"
+      },
+      {
+        "date" : "2026-01-01T06:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g74"
+      },
+      {
+        "date" : "2026-01-01T06:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g75"
+      },
+      {
+        "date" : "2026-01-01T06:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g76"
+      },
+      {
+        "date" : "2026-01-01T06:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g77"
+      },
+      {
+        "date" : "2026-01-01T06:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g78"
+      },
+      {
+        "date" : "2026-01-01T06:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g79"
+      },
+      {
+        "date" : "2026-01-01T06:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g80"
+      },
+      {
+        "date" : "2026-01-01T06:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g81"
+      },
+      {
+        "date" : "2026-01-01T06:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g82"
+      },
+      {
+        "date" : "2026-01-01T06:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g83"
+      },
+      {
+        "date" : "2026-01-01T07:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g84"
+      },
+      {
+        "date" : "2026-01-01T07:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g85"
+      },
+      {
+        "date" : "2026-01-01T07:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g86"
+      },
+      {
+        "date" : "2026-01-01T07:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g87"
+      },
+      {
+        "date" : "2026-01-01T07:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g88"
+      },
+      {
+        "date" : "2026-01-01T07:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g89"
+      },
+      {
+        "date" : "2026-01-01T07:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g90"
+      },
+      {
+        "date" : "2026-01-01T07:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g91"
+      },
+      {
+        "date" : "2026-01-01T07:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g92"
+      },
+      {
+        "date" : "2026-01-01T07:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g93"
+      },
+      {
+        "date" : "2026-01-01T07:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g94"
+      },
+      {
+        "date" : "2026-01-01T07:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g95"
+      },
+      {
+        "date" : "2026-01-01T08:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g96"
+      },
+      {
+        "date" : "2026-01-01T08:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g97"
+      },
+      {
+        "date" : "2026-01-01T08:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g98"
+      },
+      {
+        "date" : "2026-01-01T08:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g99"
+      },
+      {
+        "date" : "2026-01-01T08:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g100"
+      },
+      {
+        "date" : "2026-01-01T08:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g101"
+      },
+      {
+        "date" : "2026-01-01T08:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g102"
+      },
+      {
+        "date" : "2026-01-01T08:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g103"
+      },
+      {
+        "date" : "2026-01-01T08:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g104"
+      },
+      {
+        "date" : "2026-01-01T08:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g105"
+      },
+      {
+        "date" : "2026-01-01T08:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g106"
+      },
+      {
+        "date" : "2026-01-01T08:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g107"
+      },
+      {
+        "date" : "2026-01-01T09:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g108"
+      },
+      {
+        "date" : "2026-01-01T09:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g109"
+      },
+      {
+        "date" : "2026-01-01T09:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g110"
+      },
+      {
+        "date" : "2026-01-01T09:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g111"
+      },
+      {
+        "date" : "2026-01-01T09:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g112"
+      },
+      {
+        "date" : "2026-01-01T09:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g113"
+      },
+      {
+        "date" : "2026-01-01T09:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g114"
+      },
+      {
+        "date" : "2026-01-01T09:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g115"
+      },
+      {
+        "date" : "2026-01-01T09:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g116"
+      },
+      {
+        "date" : "2026-01-01T09:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g117"
+      },
+      {
+        "date" : "2026-01-01T09:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g118"
+      },
+      {
+        "date" : "2026-01-01T09:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g119"
+      },
+      {
+        "date" : "2026-01-01T10:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g120"
+      },
+      {
+        "date" : "2026-01-01T10:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g121"
+      },
+      {
+        "date" : "2026-01-01T10:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g122"
+      },
+      {
+        "date" : "2026-01-01T10:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g123"
+      },
+      {
+        "date" : "2026-01-01T10:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g124"
+      },
+      {
+        "date" : "2026-01-01T10:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g125"
+      },
+      {
+        "date" : "2026-01-01T10:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g126"
+      },
+      {
+        "date" : "2026-01-01T10:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g127"
+      },
+      {
+        "date" : "2026-01-01T10:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g128"
+      },
+      {
+        "date" : "2026-01-01T10:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g129"
+      },
+      {
+        "date" : "2026-01-01T10:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g130"
+      },
+      {
+        "date" : "2026-01-01T10:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g131"
+      },
+      {
+        "date" : "2026-01-01T11:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g132"
+      },
+      {
+        "date" : "2026-01-01T11:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g133"
+      },
+      {
+        "date" : "2026-01-01T11:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g134"
+      },
+      {
+        "date" : "2026-01-01T11:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g135"
+      },
+      {
+        "date" : "2026-01-01T11:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g136"
+      },
+      {
+        "date" : "2026-01-01T11:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g137"
+      },
+      {
+        "date" : "2026-01-01T11:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g138"
+      },
+      {
+        "date" : "2026-01-01T11:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g139"
+      },
+      {
+        "date" : "2026-01-01T11:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g140"
+      },
+      {
+        "date" : "2026-01-01T11:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g141"
+      },
+      {
+        "date" : "2026-01-01T11:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g142"
+      },
+      {
+        "date" : "2026-01-01T11:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 100,
+        "sourceID" : "g143"
+      },
+      {
+        "date" : "2026-01-01T12:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g144"
+      },
+      {
+        "date" : "2026-01-01T12:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g145"
+      },
+      {
+        "date" : "2026-01-01T12:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g146"
+      },
+      {
+        "date" : "2026-01-01T12:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g147"
+      },
+      {
+        "date" : "2026-01-01T12:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g148"
+      },
+      {
+        "date" : "2026-01-01T12:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g149"
+      },
+      {
+        "date" : "2026-01-01T12:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g150"
+      },
+      {
+        "date" : "2026-01-01T12:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g151"
+      },
+      {
+        "date" : "2026-01-01T12:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g152"
+      },
+      {
+        "date" : "2026-01-01T12:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g153"
+      },
+      {
+        "date" : "2026-01-01T12:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g154"
+      },
+      {
+        "date" : "2026-01-01T12:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g155"
+      },
+      {
+        "date" : "2026-01-01T13:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g156"
+      },
+      {
+        "date" : "2026-01-01T13:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g157"
+      },
+      {
+        "date" : "2026-01-01T13:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g158"
+      },
+      {
+        "date" : "2026-01-01T13:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g159"
+      },
+      {
+        "date" : "2026-01-01T13:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g160"
+      },
+      {
+        "date" : "2026-01-01T13:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g161"
+      },
+      {
+        "date" : "2026-01-01T13:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g162"
+      },
+      {
+        "date" : "2026-01-01T13:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g163"
+      },
+      {
+        "date" : "2026-01-01T13:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g164"
+      },
+      {
+        "date" : "2026-01-01T13:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g165"
+      },
+      {
+        "date" : "2026-01-01T13:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g166"
+      },
+      {
+        "date" : "2026-01-01T13:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g167"
+      },
+      {
+        "date" : "2026-01-01T14:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g168"
+      },
+      {
+        "date" : "2026-01-01T14:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g169"
+      },
+      {
+        "date" : "2026-01-01T14:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g170"
+      },
+      {
+        "date" : "2026-01-01T14:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g171"
+      },
+      {
+        "date" : "2026-01-01T14:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g172"
+      },
+      {
+        "date" : "2026-01-01T14:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g173"
+      },
+      {
+        "date" : "2026-01-01T14:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g174"
+      },
+      {
+        "date" : "2026-01-01T14:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g175"
+      },
+      {
+        "date" : "2026-01-01T14:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g176"
+      },
+      {
+        "date" : "2026-01-01T14:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g177"
+      },
+      {
+        "date" : "2026-01-01T14:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g178"
+      },
+      {
+        "date" : "2026-01-01T14:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g179"
+      },
+      {
+        "date" : "2026-01-01T15:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g180"
+      },
+      {
+        "date" : "2026-01-01T15:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g181"
+      },
+      {
+        "date" : "2026-01-01T15:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g182"
+      },
+      {
+        "date" : "2026-01-01T15:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g183"
+      },
+      {
+        "date" : "2026-01-01T15:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g184"
+      },
+      {
+        "date" : "2026-01-01T15:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g185"
+      },
+      {
+        "date" : "2026-01-01T15:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g186"
+      },
+      {
+        "date" : "2026-01-01T15:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g187"
+      },
+      {
+        "date" : "2026-01-01T15:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g188"
+      },
+      {
+        "date" : "2026-01-01T15:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g189"
+      },
+      {
+        "date" : "2026-01-01T15:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g190"
+      },
+      {
+        "date" : "2026-01-01T15:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g191"
+      },
+      {
+        "date" : "2026-01-01T16:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g192"
+      },
+      {
+        "date" : "2026-01-01T16:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g193"
+      },
+      {
+        "date" : "2026-01-01T16:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g194"
+      },
+      {
+        "date" : "2026-01-01T16:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g195"
+      },
+      {
+        "date" : "2026-01-01T16:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g196"
+      },
+      {
+        "date" : "2026-01-01T16:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g197"
+      },
+      {
+        "date" : "2026-01-01T16:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g198"
+      },
+      {
+        "date" : "2026-01-01T16:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g199"
+      },
+      {
+        "date" : "2026-01-01T16:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g200"
+      },
+      {
+        "date" : "2026-01-01T16:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g201"
+      },
+      {
+        "date" : "2026-01-01T16:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g202"
+      },
+      {
+        "date" : "2026-01-01T16:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g203"
+      },
+      {
+        "date" : "2026-01-01T17:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g204"
+      },
+      {
+        "date" : "2026-01-01T17:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g205"
+      },
+      {
+        "date" : "2026-01-01T17:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g206"
+      },
+      {
+        "date" : "2026-01-01T17:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g207"
+      },
+      {
+        "date" : "2026-01-01T17:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g208"
+      },
+      {
+        "date" : "2026-01-01T17:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g209"
+      },
+      {
+        "date" : "2026-01-01T17:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g210"
+      },
+      {
+        "date" : "2026-01-01T17:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g211"
+      },
+      {
+        "date" : "2026-01-01T17:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g212"
+      },
+      {
+        "date" : "2026-01-01T17:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g213"
+      },
+      {
+        "date" : "2026-01-01T17:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g214"
+      },
+      {
+        "date" : "2026-01-01T17:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g215"
+      },
+      {
+        "date" : "2026-01-01T18:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g216"
+      },
+      {
+        "date" : "2026-01-01T18:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g217"
+      },
+      {
+        "date" : "2026-01-01T18:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g218"
+      },
+      {
+        "date" : "2026-01-01T18:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g219"
+      },
+      {
+        "date" : "2026-01-01T18:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g220"
+      },
+      {
+        "date" : "2026-01-01T18:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g221"
+      },
+      {
+        "date" : "2026-01-01T18:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g222"
+      },
+      {
+        "date" : "2026-01-01T18:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g223"
+      },
+      {
+        "date" : "2026-01-01T18:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g224"
+      },
+      {
+        "date" : "2026-01-01T18:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g225"
+      },
+      {
+        "date" : "2026-01-01T18:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g226"
+      },
+      {
+        "date" : "2026-01-01T18:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g227"
+      },
+      {
+        "date" : "2026-01-01T19:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g228"
+      },
+      {
+        "date" : "2026-01-01T19:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g229"
+      },
+      {
+        "date" : "2026-01-01T19:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g230"
+      },
+      {
+        "date" : "2026-01-01T19:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g231"
+      },
+      {
+        "date" : "2026-01-01T19:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g232"
+      },
+      {
+        "date" : "2026-01-01T19:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g233"
+      },
+      {
+        "date" : "2026-01-01T19:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g234"
+      },
+      {
+        "date" : "2026-01-01T19:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g235"
+      },
+      {
+        "date" : "2026-01-01T19:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g236"
+      },
+      {
+        "date" : "2026-01-01T19:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g237"
+      },
+      {
+        "date" : "2026-01-01T19:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g238"
+      },
+      {
+        "date" : "2026-01-01T19:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g239"
+      },
+      {
+        "date" : "2026-01-01T20:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g240"
+      },
+      {
+        "date" : "2026-01-01T20:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g241"
+      },
+      {
+        "date" : "2026-01-01T20:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g242"
+      },
+      {
+        "date" : "2026-01-01T20:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g243"
+      },
+      {
+        "date" : "2026-01-01T20:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g244"
+      },
+      {
+        "date" : "2026-01-01T20:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g245"
+      },
+      {
+        "date" : "2026-01-01T20:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g246"
+      },
+      {
+        "date" : "2026-01-01T20:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g247"
+      },
+      {
+        "date" : "2026-01-01T20:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g248"
+      },
+      {
+        "date" : "2026-01-01T20:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g249"
+      },
+      {
+        "date" : "2026-01-01T20:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g250"
+      },
+      {
+        "date" : "2026-01-01T20:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g251"
+      },
+      {
+        "date" : "2026-01-01T21:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g252"
+      },
+      {
+        "date" : "2026-01-01T21:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g253"
+      },
+      {
+        "date" : "2026-01-01T21:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g254"
+      },
+      {
+        "date" : "2026-01-01T21:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g255"
+      },
+      {
+        "date" : "2026-01-01T21:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g256"
+      },
+      {
+        "date" : "2026-01-01T21:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g257"
+      },
+      {
+        "date" : "2026-01-01T21:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g258"
+      },
+      {
+        "date" : "2026-01-01T21:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g259"
+      },
+      {
+        "date" : "2026-01-01T21:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g260"
+      },
+      {
+        "date" : "2026-01-01T21:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g261"
+      },
+      {
+        "date" : "2026-01-01T21:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g262"
+      },
+      {
+        "date" : "2026-01-01T21:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g263"
+      },
+      {
+        "date" : "2026-01-01T22:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g264"
+      },
+      {
+        "date" : "2026-01-01T22:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g265"
+      },
+      {
+        "date" : "2026-01-01T22:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g266"
+      },
+      {
+        "date" : "2026-01-01T22:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g267"
+      },
+      {
+        "date" : "2026-01-01T22:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g268"
+      },
+      {
+        "date" : "2026-01-01T22:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g269"
+      },
+      {
+        "date" : "2026-01-01T22:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g270"
+      },
+      {
+        "date" : "2026-01-01T22:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g271"
+      },
+      {
+        "date" : "2026-01-01T22:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g272"
+      },
+      {
+        "date" : "2026-01-01T22:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g273"
+      },
+      {
+        "date" : "2026-01-01T22:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g274"
+      },
+      {
+        "date" : "2026-01-01T22:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g275"
+      },
+      {
+        "date" : "2026-01-01T23:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g276"
+      },
+      {
+        "date" : "2026-01-01T23:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g277"
+      },
+      {
+        "date" : "2026-01-01T23:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g278"
+      },
+      {
+        "date" : "2026-01-01T23:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g279"
+      },
+      {
+        "date" : "2026-01-01T23:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g280"
+      },
+      {
+        "date" : "2026-01-01T23:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g281"
+      },
+      {
+        "date" : "2026-01-01T23:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g282"
+      },
+      {
+        "date" : "2026-01-01T23:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g283"
+      },
+      {
+        "date" : "2026-01-01T23:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g284"
+      },
+      {
+        "date" : "2026-01-01T23:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g285"
+      },
+      {
+        "date" : "2026-01-01T23:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g286"
+      },
+      {
+        "date" : "2026-01-01T23:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 200,
+        "sourceID" : "g287"
+      },
+      {
+        "date" : "2026-01-02T00:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g288"
+      },
+      {
+        "date" : "2026-01-02T00:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g289"
+      },
+      {
+        "date" : "2026-01-02T00:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g290"
+      },
+      {
+        "date" : "2026-01-02T00:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g291"
+      },
+      {
+        "date" : "2026-01-02T00:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g292"
+      },
+      {
+        "date" : "2026-01-02T00:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g293"
+      },
+      {
+        "date" : "2026-01-02T00:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g294"
+      },
+      {
+        "date" : "2026-01-02T00:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g295"
+      },
+      {
+        "date" : "2026-01-02T00:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g296"
+      },
+      {
+        "date" : "2026-01-02T00:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g297"
+      },
+      {
+        "date" : "2026-01-02T00:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g298"
+      },
+      {
+        "date" : "2026-01-02T00:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g299"
+      },
+      {
+        "date" : "2026-01-02T01:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g300"
+      },
+      {
+        "date" : "2026-01-02T01:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g301"
+      },
+      {
+        "date" : "2026-01-02T01:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g302"
+      },
+      {
+        "date" : "2026-01-02T01:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g303"
+      },
+      {
+        "date" : "2026-01-02T01:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g304"
+      },
+      {
+        "date" : "2026-01-02T01:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g305"
+      },
+      {
+        "date" : "2026-01-02T01:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g306"
+      },
+      {
+        "date" : "2026-01-02T01:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g307"
+      },
+      {
+        "date" : "2026-01-02T01:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g308"
+      },
+      {
+        "date" : "2026-01-02T01:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g309"
+      },
+      {
+        "date" : "2026-01-02T01:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g310"
+      },
+      {
+        "date" : "2026-01-02T01:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g311"
+      },
+      {
+        "date" : "2026-01-02T02:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g312"
+      },
+      {
+        "date" : "2026-01-02T02:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g313"
+      },
+      {
+        "date" : "2026-01-02T02:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g314"
+      },
+      {
+        "date" : "2026-01-02T02:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g315"
+      },
+      {
+        "date" : "2026-01-02T02:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g316"
+      },
+      {
+        "date" : "2026-01-02T02:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g317"
+      },
+      {
+        "date" : "2026-01-02T02:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g318"
+      },
+      {
+        "date" : "2026-01-02T02:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g319"
+      },
+      {
+        "date" : "2026-01-02T02:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g320"
+      },
+      {
+        "date" : "2026-01-02T02:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g321"
+      },
+      {
+        "date" : "2026-01-02T02:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g322"
+      },
+      {
+        "date" : "2026-01-02T02:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g323"
+      },
+      {
+        "date" : "2026-01-02T03:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g324"
+      },
+      {
+        "date" : "2026-01-02T03:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g325"
+      },
+      {
+        "date" : "2026-01-02T03:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g326"
+      },
+      {
+        "date" : "2026-01-02T03:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g327"
+      },
+      {
+        "date" : "2026-01-02T03:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g328"
+      },
+      {
+        "date" : "2026-01-02T03:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g329"
+      },
+      {
+        "date" : "2026-01-02T03:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g330"
+      },
+      {
+        "date" : "2026-01-02T03:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g331"
+      },
+      {
+        "date" : "2026-01-02T03:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g332"
+      },
+      {
+        "date" : "2026-01-02T03:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g333"
+      },
+      {
+        "date" : "2026-01-02T03:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g334"
+      },
+      {
+        "date" : "2026-01-02T03:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g335"
+      },
+      {
+        "date" : "2026-01-02T04:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g336"
+      },
+      {
+        "date" : "2026-01-02T04:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g337"
+      },
+      {
+        "date" : "2026-01-02T04:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g338"
+      },
+      {
+        "date" : "2026-01-02T04:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g339"
+      },
+      {
+        "date" : "2026-01-02T04:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g340"
+      },
+      {
+        "date" : "2026-01-02T04:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g341"
+      },
+      {
+        "date" : "2026-01-02T04:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g342"
+      },
+      {
+        "date" : "2026-01-02T04:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g343"
+      },
+      {
+        "date" : "2026-01-02T04:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g344"
+      },
+      {
+        "date" : "2026-01-02T04:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g345"
+      },
+      {
+        "date" : "2026-01-02T04:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g346"
+      },
+      {
+        "date" : "2026-01-02T04:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g347"
+      },
+      {
+        "date" : "2026-01-02T05:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g348"
+      },
+      {
+        "date" : "2026-01-02T05:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g349"
+      },
+      {
+        "date" : "2026-01-02T05:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g350"
+      },
+      {
+        "date" : "2026-01-02T05:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g351"
+      },
+      {
+        "date" : "2026-01-02T05:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g352"
+      },
+      {
+        "date" : "2026-01-02T05:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g353"
+      },
+      {
+        "date" : "2026-01-02T05:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g354"
+      },
+      {
+        "date" : "2026-01-02T05:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g355"
+      },
+      {
+        "date" : "2026-01-02T05:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g356"
+      },
+      {
+        "date" : "2026-01-02T05:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g357"
+      },
+      {
+        "date" : "2026-01-02T05:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g358"
+      },
+      {
+        "date" : "2026-01-02T05:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 50,
+        "sourceID" : "g359"
+      },
+      {
+        "date" : "2026-01-02T06:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g360"
+      },
+      {
+        "date" : "2026-01-02T06:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g361"
+      },
+      {
+        "date" : "2026-01-02T06:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g362"
+      },
+      {
+        "date" : "2026-01-02T06:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g363"
+      },
+      {
+        "date" : "2026-01-02T06:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g364"
+      },
+      {
+        "date" : "2026-01-02T06:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g365"
+      },
+      {
+        "date" : "2026-01-02T06:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g366"
+      },
+      {
+        "date" : "2026-01-02T06:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g367"
+      },
+      {
+        "date" : "2026-01-02T06:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g368"
+      },
+      {
+        "date" : "2026-01-02T06:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g369"
+      },
+      {
+        "date" : "2026-01-02T06:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g370"
+      },
+      {
+        "date" : "2026-01-02T06:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g371"
+      },
+      {
+        "date" : "2026-01-02T07:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g372"
+      },
+      {
+        "date" : "2026-01-02T07:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g373"
+      },
+      {
+        "date" : "2026-01-02T07:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g374"
+      },
+      {
+        "date" : "2026-01-02T07:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g375"
+      },
+      {
+        "date" : "2026-01-02T07:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g376"
+      },
+      {
+        "date" : "2026-01-02T07:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g377"
+      },
+      {
+        "date" : "2026-01-02T07:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g378"
+      },
+      {
+        "date" : "2026-01-02T07:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g379"
+      },
+      {
+        "date" : "2026-01-02T07:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g380"
+      },
+      {
+        "date" : "2026-01-02T07:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g381"
+      },
+      {
+        "date" : "2026-01-02T07:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g382"
+      },
+      {
+        "date" : "2026-01-02T07:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g383"
+      },
+      {
+        "date" : "2026-01-02T08:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g384"
+      },
+      {
+        "date" : "2026-01-02T08:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g385"
+      },
+      {
+        "date" : "2026-01-02T08:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g386"
+      },
+      {
+        "date" : "2026-01-02T08:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g387"
+      },
+      {
+        "date" : "2026-01-02T08:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g388"
+      },
+      {
+        "date" : "2026-01-02T08:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g389"
+      },
+      {
+        "date" : "2026-01-02T08:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g390"
+      },
+      {
+        "date" : "2026-01-02T08:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g391"
+      },
+      {
+        "date" : "2026-01-02T08:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g392"
+      },
+      {
+        "date" : "2026-01-02T08:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g393"
+      },
+      {
+        "date" : "2026-01-02T08:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g394"
+      },
+      {
+        "date" : "2026-01-02T08:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g395"
+      },
+      {
+        "date" : "2026-01-02T09:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g396"
+      },
+      {
+        "date" : "2026-01-02T09:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g397"
+      },
+      {
+        "date" : "2026-01-02T09:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g398"
+      },
+      {
+        "date" : "2026-01-02T09:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g399"
+      },
+      {
+        "date" : "2026-01-02T09:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g400"
+      },
+      {
+        "date" : "2026-01-02T09:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g401"
+      },
+      {
+        "date" : "2026-01-02T09:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g402"
+      },
+      {
+        "date" : "2026-01-02T09:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g403"
+      },
+      {
+        "date" : "2026-01-02T09:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g404"
+      },
+      {
+        "date" : "2026-01-02T09:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g405"
+      },
+      {
+        "date" : "2026-01-02T09:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g406"
+      },
+      {
+        "date" : "2026-01-02T09:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g407"
+      },
+      {
+        "date" : "2026-01-02T10:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g408"
+      },
+      {
+        "date" : "2026-01-02T10:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g409"
+      },
+      {
+        "date" : "2026-01-02T10:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g410"
+      },
+      {
+        "date" : "2026-01-02T10:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g411"
+      },
+      {
+        "date" : "2026-01-02T10:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g412"
+      },
+      {
+        "date" : "2026-01-02T10:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g413"
+      },
+      {
+        "date" : "2026-01-02T10:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g414"
+      },
+      {
+        "date" : "2026-01-02T10:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g415"
+      },
+      {
+        "date" : "2026-01-02T10:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g416"
+      },
+      {
+        "date" : "2026-01-02T10:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g417"
+      },
+      {
+        "date" : "2026-01-02T10:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g418"
+      },
+      {
+        "date" : "2026-01-02T10:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g419"
+      },
+      {
+        "date" : "2026-01-02T11:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g420"
+      },
+      {
+        "date" : "2026-01-02T11:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g421"
+      },
+      {
+        "date" : "2026-01-02T11:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g422"
+      },
+      {
+        "date" : "2026-01-02T11:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g423"
+      },
+      {
+        "date" : "2026-01-02T11:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g424"
+      },
+      {
+        "date" : "2026-01-02T11:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g425"
+      },
+      {
+        "date" : "2026-01-02T11:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g426"
+      },
+      {
+        "date" : "2026-01-02T11:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g427"
+      },
+      {
+        "date" : "2026-01-02T11:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g428"
+      },
+      {
+        "date" : "2026-01-02T11:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g429"
+      },
+      {
+        "date" : "2026-01-02T11:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g430"
+      },
+      {
+        "date" : "2026-01-02T11:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 60,
+        "sourceID" : "g431"
+      },
+      {
+        "date" : "2026-01-02T12:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g432"
+      },
+      {
+        "date" : "2026-01-02T12:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g433"
+      },
+      {
+        "date" : "2026-01-02T12:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g434"
+      },
+      {
+        "date" : "2026-01-02T12:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g435"
+      },
+      {
+        "date" : "2026-01-02T12:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g436"
+      },
+      {
+        "date" : "2026-01-02T12:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g437"
+      },
+      {
+        "date" : "2026-01-02T12:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g438"
+      },
+      {
+        "date" : "2026-01-02T12:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g439"
+      },
+      {
+        "date" : "2026-01-02T12:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g440"
+      },
+      {
+        "date" : "2026-01-02T12:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g441"
+      },
+      {
+        "date" : "2026-01-02T12:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g442"
+      },
+      {
+        "date" : "2026-01-02T12:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g443"
+      },
+      {
+        "date" : "2026-01-02T13:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g444"
+      },
+      {
+        "date" : "2026-01-02T13:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g445"
+      },
+      {
+        "date" : "2026-01-02T13:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g446"
+      },
+      {
+        "date" : "2026-01-02T13:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g447"
+      },
+      {
+        "date" : "2026-01-02T13:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g448"
+      },
+      {
+        "date" : "2026-01-02T13:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g449"
+      },
+      {
+        "date" : "2026-01-02T13:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g450"
+      },
+      {
+        "date" : "2026-01-02T13:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g451"
+      },
+      {
+        "date" : "2026-01-02T13:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g452"
+      },
+      {
+        "date" : "2026-01-02T13:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g453"
+      },
+      {
+        "date" : "2026-01-02T13:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g454"
+      },
+      {
+        "date" : "2026-01-02T13:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g455"
+      },
+      {
+        "date" : "2026-01-02T14:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g456"
+      },
+      {
+        "date" : "2026-01-02T14:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g457"
+      },
+      {
+        "date" : "2026-01-02T14:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g458"
+      },
+      {
+        "date" : "2026-01-02T14:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g459"
+      },
+      {
+        "date" : "2026-01-02T14:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g460"
+      },
+      {
+        "date" : "2026-01-02T14:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g461"
+      },
+      {
+        "date" : "2026-01-02T14:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g462"
+      },
+      {
+        "date" : "2026-01-02T14:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g463"
+      },
+      {
+        "date" : "2026-01-02T14:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g464"
+      },
+      {
+        "date" : "2026-01-02T14:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g465"
+      },
+      {
+        "date" : "2026-01-02T14:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g466"
+      },
+      {
+        "date" : "2026-01-02T14:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g467"
+      },
+      {
+        "date" : "2026-01-02T15:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g468"
+      },
+      {
+        "date" : "2026-01-02T15:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g469"
+      },
+      {
+        "date" : "2026-01-02T15:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g470"
+      },
+      {
+        "date" : "2026-01-02T15:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g471"
+      },
+      {
+        "date" : "2026-01-02T15:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g472"
+      },
+      {
+        "date" : "2026-01-02T15:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g473"
+      },
+      {
+        "date" : "2026-01-02T15:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g474"
+      },
+      {
+        "date" : "2026-01-02T15:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g475"
+      },
+      {
+        "date" : "2026-01-02T15:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g476"
+      },
+      {
+        "date" : "2026-01-02T15:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g477"
+      },
+      {
+        "date" : "2026-01-02T15:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g478"
+      },
+      {
+        "date" : "2026-01-02T15:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g479"
+      },
+      {
+        "date" : "2026-01-02T16:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g480"
+      },
+      {
+        "date" : "2026-01-02T16:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g481"
+      },
+      {
+        "date" : "2026-01-02T16:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g482"
+      },
+      {
+        "date" : "2026-01-02T16:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g483"
+      },
+      {
+        "date" : "2026-01-02T16:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g484"
+      },
+      {
+        "date" : "2026-01-02T16:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g485"
+      },
+      {
+        "date" : "2026-01-02T16:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g486"
+      },
+      {
+        "date" : "2026-01-02T16:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g487"
+      },
+      {
+        "date" : "2026-01-02T16:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g488"
+      },
+      {
+        "date" : "2026-01-02T16:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g489"
+      },
+      {
+        "date" : "2026-01-02T16:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g490"
+      },
+      {
+        "date" : "2026-01-02T16:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g491"
+      },
+      {
+        "date" : "2026-01-02T17:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g492"
+      },
+      {
+        "date" : "2026-01-02T17:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g493"
+      },
+      {
+        "date" : "2026-01-02T17:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g494"
+      },
+      {
+        "date" : "2026-01-02T17:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g495"
+      },
+      {
+        "date" : "2026-01-02T17:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g496"
+      },
+      {
+        "date" : "2026-01-02T17:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g497"
+      },
+      {
+        "date" : "2026-01-02T17:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g498"
+      },
+      {
+        "date" : "2026-01-02T17:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g499"
+      },
+      {
+        "date" : "2026-01-02T17:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g500"
+      },
+      {
+        "date" : "2026-01-02T17:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g501"
+      },
+      {
+        "date" : "2026-01-02T17:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g502"
+      },
+      {
+        "date" : "2026-01-02T17:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 150,
+        "sourceID" : "g503"
+      },
+      {
+        "date" : "2026-01-02T18:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g504"
+      },
+      {
+        "date" : "2026-01-02T18:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g505"
+      },
+      {
+        "date" : "2026-01-02T18:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g506"
+      },
+      {
+        "date" : "2026-01-02T18:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g507"
+      },
+      {
+        "date" : "2026-01-02T18:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g508"
+      },
+      {
+        "date" : "2026-01-02T18:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g509"
+      },
+      {
+        "date" : "2026-01-02T18:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g510"
+      },
+      {
+        "date" : "2026-01-02T18:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g511"
+      },
+      {
+        "date" : "2026-01-02T18:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g512"
+      },
+      {
+        "date" : "2026-01-02T18:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g513"
+      },
+      {
+        "date" : "2026-01-02T18:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g514"
+      },
+      {
+        "date" : "2026-01-02T18:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g515"
+      },
+      {
+        "date" : "2026-01-02T19:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g516"
+      },
+      {
+        "date" : "2026-01-02T19:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g517"
+      },
+      {
+        "date" : "2026-01-02T19:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g518"
+      },
+      {
+        "date" : "2026-01-02T19:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g519"
+      },
+      {
+        "date" : "2026-01-02T19:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g520"
+      },
+      {
+        "date" : "2026-01-02T19:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g521"
+      },
+      {
+        "date" : "2026-01-02T19:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g522"
+      },
+      {
+        "date" : "2026-01-02T19:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g523"
+      },
+      {
+        "date" : "2026-01-02T19:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g524"
+      },
+      {
+        "date" : "2026-01-02T19:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g525"
+      },
+      {
+        "date" : "2026-01-02T19:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g526"
+      },
+      {
+        "date" : "2026-01-02T19:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g527"
+      },
+      {
+        "date" : "2026-01-02T20:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g528"
+      },
+      {
+        "date" : "2026-01-02T20:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g529"
+      },
+      {
+        "date" : "2026-01-02T20:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g530"
+      },
+      {
+        "date" : "2026-01-02T20:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g531"
+      },
+      {
+        "date" : "2026-01-02T20:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g532"
+      },
+      {
+        "date" : "2026-01-02T20:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g533"
+      },
+      {
+        "date" : "2026-01-02T20:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g534"
+      },
+      {
+        "date" : "2026-01-02T20:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g535"
+      },
+      {
+        "date" : "2026-01-02T20:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g536"
+      },
+      {
+        "date" : "2026-01-02T20:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g537"
+      },
+      {
+        "date" : "2026-01-02T20:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g538"
+      },
+      {
+        "date" : "2026-01-02T20:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g539"
+      },
+      {
+        "date" : "2026-01-02T21:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g540"
+      },
+      {
+        "date" : "2026-01-02T21:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g541"
+      },
+      {
+        "date" : "2026-01-02T21:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g542"
+      },
+      {
+        "date" : "2026-01-02T21:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g543"
+      },
+      {
+        "date" : "2026-01-02T21:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g544"
+      },
+      {
+        "date" : "2026-01-02T21:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g545"
+      },
+      {
+        "date" : "2026-01-02T21:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g546"
+      },
+      {
+        "date" : "2026-01-02T21:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g547"
+      },
+      {
+        "date" : "2026-01-02T21:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g548"
+      },
+      {
+        "date" : "2026-01-02T21:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g549"
+      },
+      {
+        "date" : "2026-01-02T21:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g550"
+      },
+      {
+        "date" : "2026-01-02T21:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g551"
+      },
+      {
+        "date" : "2026-01-02T22:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g552"
+      },
+      {
+        "date" : "2026-01-02T22:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g553"
+      },
+      {
+        "date" : "2026-01-02T22:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g554"
+      },
+      {
+        "date" : "2026-01-02T22:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g555"
+      },
+      {
+        "date" : "2026-01-02T22:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g556"
+      },
+      {
+        "date" : "2026-01-02T22:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g557"
+      },
+      {
+        "date" : "2026-01-02T22:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g558"
+      },
+      {
+        "date" : "2026-01-02T22:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g559"
+      },
+      {
+        "date" : "2026-01-02T22:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g560"
+      },
+      {
+        "date" : "2026-01-02T22:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g561"
+      },
+      {
+        "date" : "2026-01-02T22:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g562"
+      },
+      {
+        "date" : "2026-01-02T22:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g563"
+      },
+      {
+        "date" : "2026-01-02T23:00:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g564"
+      },
+      {
+        "date" : "2026-01-02T23:05:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g565"
+      },
+      {
+        "date" : "2026-01-02T23:10:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g566"
+      },
+      {
+        "date" : "2026-01-02T23:15:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g567"
+      },
+      {
+        "date" : "2026-01-02T23:20:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g568"
+      },
+      {
+        "date" : "2026-01-02T23:25:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g569"
+      },
+      {
+        "date" : "2026-01-02T23:30:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g570"
+      },
+      {
+        "date" : "2026-01-02T23:35:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g571"
+      },
+      {
+        "date" : "2026-01-02T23:40:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g572"
+      },
+      {
+        "date" : "2026-01-02T23:45:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g573"
+      },
+      {
+        "date" : "2026-01-02T23:50:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g574"
+      },
+      {
+        "date" : "2026-01-02T23:55:00Z",
+        "kind" : "sensor",
+        "mgdL" : 300,
+        "sourceID" : "g575"
+      }
+    ],
+    "insulin" : [
+      {
+        "end" : "2026-01-01T08:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "tempBasal",
+        "sourceID" : "t1",
+        "start" : "2026-01-01T06:00:00Z",
+        "units" : 4
+      },
+      {
+        "end" : "2026-01-01T08:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "tempBasal",
+        "sourceID" : "t2",
+        "start" : "2026-01-01T07:00:00Z",
+        "units" : 0.5
+      },
+      {
+        "end" : "2026-01-01T07:30:00Z",
+        "isAutomatic" : false,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "b1",
+        "start" : "2026-01-01T07:30:00Z",
+        "units" : 5
+      },
+      {
+        "end" : "2026-01-01T08:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "s1",
+        "start" : "2026-01-01T08:00:00Z",
+        "units" : 0.5
+      },
+      {
+        "end" : "2026-01-01T09:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "s2",
+        "start" : "2026-01-01T09:00:00Z",
+        "units" : 0.5
+      },
+      {
+        "end" : "2026-01-01T10:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "s3",
+        "start" : "2026-01-01T10:00:00Z",
+        "units" : 0.5
+      },
+      {
+        "end" : "2026-01-01T11:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "s4",
+        "start" : "2026-01-01T11:00:00Z",
+        "units" : 0.5
+      },
+      {
+        "end" : "2026-01-01T12:30:00Z",
+        "isAutomatic" : false,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "b2",
+        "start" : "2026-01-01T12:30:00Z",
+        "units" : 6
+      },
+      {
+        "end" : "2026-01-01T18:30:00Z",
+        "isAutomatic" : false,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "b3",
+        "start" : "2026-01-01T18:30:00Z",
+        "units" : 7
+      },
+      {
+        "end" : "2026-01-01T21:00:00Z",
+        "isAutomatic" : false,
+        "isExternal" : true,
+        "kind" : "bolus",
+        "sourceID" : "x1",
+        "start" : "2026-01-01T21:00:00Z",
+        "units" : 2
+      },
+      {
+        "end" : "2026-01-02T08:00:00Z",
+        "isAutomatic" : false,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "b4",
+        "start" : "2026-01-02T08:00:00Z",
+        "units" : 4
+      },
+      {
+        "end" : "2026-01-02T09:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "s5",
+        "start" : "2026-01-02T09:00:00Z",
+        "units" : 0.25
+      },
+      {
+        "end" : "2026-01-02T11:00:00Z",
+        "isAutomatic" : false,
+        "isExternal" : false,
+        "kind" : "suspend",
+        "sourceID" : "su1",
+        "start" : "2026-01-02T10:00:00Z",
+        "units" : 0
+      },
+      {
+        "end" : "2026-01-02T13:00:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "bolus",
+        "sourceID" : "s6",
+        "start" : "2026-01-02T13:00:00Z",
+        "units" : 0.25
+      },
+      {
+        "end" : "2026-01-02T20:20:00Z",
+        "isAutomatic" : true,
+        "isExternal" : false,
+        "kind" : "tempBasal",
+        "sourceID" : "t3",
+        "start" : "2026-01-02T20:00:00Z",
+        "units" : 1
+      }
+    ],
+    "interval" : {
+      "duration" : 172800,
+      "start" : "2026-01-01T00:00:00Z"
+    },
+    "source" : {
+      "app" : "trio",
+      "displayUnit" : "mmol\/L",
+      "name" : "Trio",
+      "timeZoneIdentifier" : "Europe\/Stockholm"
+    }
+  },
+  "definition" : {
+    "name" : "Shared fixture",
+    "range" : {
+      "custom" : {
+        "_0" : {
+          "duration" : 172800,
+          "start" : "2026-01-01T00:00:00Z"
+        }
+      }
+    },
+    "sections" : [
+      "overview",
+      "glucoseDistribution",
+      "glycemiaRiskIndex",
+      "glucosePercentileByDay",
+      "glucoseDistributionByDay",
+      "glucoseHeatmapByDay",
+      "carbsTotals",
+      "insulinTotalDailyDose",
+      "therapySettings",
+      "insulinBolusDistribution",
+      "dataQuality"
+    ]
+  },
+  "metadata" : {
+    "appName" : "Trio",
+    "appVersion" : "1.0",
+    "cgm" : "Dexcom G7",
+    "pump" : "Omnipod DASH",
+    "settings" : [
+      {
+        "label" : "Closed loop",
+        "value" : "On"
+      }
+    ]
+  },
+  "now" : "2026-01-03T00:00:00Z",
+  "therapySettings" : {
+    "carbRatios" : [
+      {
+        "startOffset" : 0,
+        "value" : 10
+      },
+      {
+        "startOffset" : 39600,
+        "value" : 12
+      }
+    ],
+    "groups" : [
+      {
+        "items" : [
+          {
+            "label" : "Max bolus",
+            "value" : "10 U"
+          },
+          {
+            "label" : "Max basal",
+            "value" : "3 U\/h"
+          }
+        ],
+        "title" : "Limits"
+      }
+    ],
+    "insulinSensitivities" : [
+      {
+        "startOffset" : 0,
+        "value" : 50
+      },
+      {
+        "startOffset" : 21600,
+        "value" : 45
+      }
+    ],
+    "targets" : [
+      {
+        "high" : 110,
+        "low" : 100,
+        "startOffset" : 0
+      },
+      {
+        "high" : 105,
+        "low" : 95,
+        "startOffset" : 25200
+      }
+    ]
+  }
+}

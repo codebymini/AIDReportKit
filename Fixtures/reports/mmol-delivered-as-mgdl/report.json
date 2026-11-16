@@ -1,0 +1,535 @@
+{
+  "agp" : {
+    "bucketMinutes" : 60,
+    "buckets" : [
+      {
+        "readingCount" : 0,
+        "startMinute" : 0
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 60
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 120
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 180
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 240
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 300
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 360
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 420
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 480
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 540
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 600
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 660
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 720
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 780
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 840
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 900
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 960
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1020
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1080
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1140
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1200
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1260
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1320
+      },
+      {
+        "readingCount" : 0,
+        "startMinute" : 1380
+      }
+    ]
+  },
+  "daily" : [
+    {
+      "carbs" : {
+        "averageDailyGrams" : 180,
+        "averagePerEntry" : 60,
+        "days" : 1,
+        "entryCount" : 3,
+        "fatProteinEquivalentGrams" : 15,
+        "largestEntry" : 80,
+        "totalFatGrams" : 10,
+        "totalGrams" : 180,
+        "totalProteinGrams" : 20
+      },
+      "day" : "2026-01-01T00:00:00Z",
+      "insulin" : {
+        "automaticBolusCount" : 4,
+        "automaticBolusUnits" : 2,
+        "averageDailyDose" : 24.5,
+        "basalCoverage" : 0.08333333333333337,
+        "basalFraction" : 0.10204081632653061,
+        "basalUnits" : 2.5,
+        "bolusCount" : 8,
+        "bolusUnits" : 22,
+        "days" : 1,
+        "externalBolusUnits" : 2,
+        "manualBolusUnits" : 18,
+        "suspendedDuration" : 0,
+        "totalUnits" : 24.5
+      },
+      "interval" : {
+        "duration" : 86400,
+        "start" : "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "carbs" : {
+        "averageDailyGrams" : 50,
+        "averagePerEntry" : 50,
+        "days" : 1,
+        "entryCount" : 1,
+        "fatProteinEquivalentGrams" : 0,
+        "largestEntry" : 50,
+        "totalFatGrams" : 0,
+        "totalGrams" : 50,
+        "totalProteinGrams" : 0
+      },
+      "day" : "2026-01-02T00:00:00Z",
+      "insulin" : {
+        "automaticBolusCount" : 2,
+        "automaticBolusUnits" : 0.5,
+        "averageDailyDose" : 5.5,
+        "basalCoverage" : 0.05555555555555558,
+        "basalFraction" : 0.18181818181818182,
+        "basalUnits" : 1,
+        "bolusCount" : 3,
+        "bolusUnits" : 4.5,
+        "days" : 1,
+        "externalBolusUnits" : 0,
+        "manualBolusUnits" : 4,
+        "suspendedDuration" : 3600,
+        "totalUnits" : 5.5
+      },
+      "interval" : {
+        "duration" : 86400,
+        "start" : "2026-01-02T00:00:00Z"
+      }
+    }
+  ],
+  "dataSpan" : {
+    "first" : "2026-01-01T06:00:00Z",
+    "last" : "2026-01-02T20:20:00Z"
+  },
+  "dayPeriods" : [
+    {
+      "period" : "night",
+      "readingCount" : 0
+    },
+    {
+      "period" : "morning",
+      "readingCount" : 0
+    },
+    {
+      "period" : "afternoon",
+      "readingCount" : 0
+    },
+    {
+      "period" : "evening",
+      "readingCount" : 0
+    }
+  ],
+  "definition" : {
+    "name" : "Shared fixture",
+    "range" : {
+      "custom" : {
+        "_0" : {
+          "duration" : 172800,
+          "start" : "2026-01-01T00:00:00Z"
+        }
+      }
+    },
+    "sections" : [
+      "overview",
+      "glucoseDistribution",
+      "glycemiaRiskIndex",
+      "glucosePercentileByDay",
+      "glucoseDistributionByDay",
+      "glucoseHeatmapByDay",
+      "carbsTotals",
+      "insulinTotalDailyDose",
+      "therapySettings",
+      "insulinBolusDistribution",
+      "dataQuality"
+    ]
+  },
+  "generatedAt" : "2026-01-03T00:00:00Z",
+  "interval" : {
+    "duration" : 172800,
+    "start" : "2026-01-01T00:00:00Z"
+  },
+  "metadata" : {
+    "appName" : "Trio",
+    "appVersion" : "1.0",
+    "cgm" : "Dexcom G7",
+    "pump" : "Omnipod DASH",
+    "settings" : [
+      {
+        "label" : "Closed loop",
+        "value" : "On"
+      }
+    ]
+  },
+  "schemaVersion" : 2,
+  "settings" : {
+    "carbRatios" : [
+      {
+        "startOffset" : 0,
+        "value" : 10
+      },
+      {
+        "startOffset" : 39600,
+        "value" : 12
+      }
+    ],
+    "groups" : [
+      {
+        "items" : [
+          {
+            "label" : "Max bolus",
+            "value" : "10 U"
+          },
+          {
+            "label" : "Max basal",
+            "value" : "3 U\/h"
+          }
+        ],
+        "title" : "Limits"
+      }
+    ],
+    "insulinSensitivities" : [
+      {
+        "startOffset" : 0,
+        "value" : 50
+      },
+      {
+        "startOffset" : 21600,
+        "value" : 45
+      }
+    ],
+    "targets" : [
+      {
+        "high" : 110,
+        "low" : 100,
+        "startOffset" : 0
+      },
+      {
+        "high" : 105,
+        "low" : 95,
+        "startOffset" : 25200
+      }
+    ]
+  },
+  "source" : {
+    "app" : "trio",
+    "displayUnit" : "mg\/dL",
+    "name" : "Trio",
+    "timeZoneIdentifier" : "GMT"
+  },
+  "summary" : {
+    "carbs" : {
+      "averageDailyGrams" : 115,
+      "averagePerEntry" : 57.5,
+      "days" : 2,
+      "entryCount" : 4,
+      "fatProteinEquivalentGrams" : 15,
+      "largestEntry" : 80,
+      "totalFatGrams" : 10,
+      "totalGrams" : 230,
+      "totalProteinGrams" : 20
+    },
+    "insulin" : {
+      "automaticBolusCount" : 6,
+      "automaticBolusUnits" : 2.5,
+      "averageDailyDose" : 15,
+      "basalCoverage" : 0.06944444444444442,
+      "basalFraction" : 0.11666666666666667,
+      "basalUnits" : 3.5,
+      "bolusCount" : 11,
+      "bolusUnits" : 26.5,
+      "days" : 2,
+      "externalBolusUnits" : 2,
+      "manualBolusUnits" : 22,
+      "suspendedDuration" : 3600,
+      "totalUnits" : 30
+    },
+    "interval" : {
+      "duration" : 172800,
+      "start" : "2026-01-01T00:00:00Z"
+    }
+  },
+  "thresholds" : {
+    "high" : 180,
+    "low" : 70,
+    "tightHigh" : 140,
+    "veryHigh" : 250,
+    "veryLow" : 54
+  },
+  "validation" : {
+    "issues" : [
+      {
+        "code" : "glucose.likelyMmolL",
+        "message" : "Median sensor glucose is below 30; values look like mmol\/L delivered as mg\/dL",
+        "severity" : "error"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:00:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g0"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:05:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g1"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:10:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g2"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:15:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g3"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:20:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g4"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:25:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g5"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:30:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g6"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:35:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g7"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:40:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g8"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:45:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g9"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:50:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g10"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T00:55:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g11"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:00:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g12"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:05:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g13"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:10:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g14"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:15:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g15"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:20:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g16"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:25:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g17"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:30:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g18"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:35:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g19"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:40:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g20"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:45:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g21"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:50:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g22"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T01:55:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g23"
+      },
+      {
+        "code" : "glucose.implausibleValue",
+        "date" : "2026-01-01T02:00:00Z",
+        "message" : "Glucose 5.6 mg\/dL is outside the plausible range",
+        "severity" : "error",
+        "sourceID" : "g24"
+      },
+      {
+        "code" : "insulin.lowBasalCoverage",
+        "message" : "Basal records cover 7% of the interval; basal totals undercount unless a basal schedule is provided",
+        "severity" : "warning"
+      },
+      {
+        "code" : "insulin.basalOverlap",
+        "date" : "2026-01-01T07:00:00Z",
+        "message" : "Basal records overlap by 60 min",
+        "severity" : "warning",
+        "sourceID" : "t2"
+      },
+      {
+        "code" : "dataset.shortSpan",
+        "message" : "Report covers 2.0 days; GMI and time-in-range targets assume at least 14 days",
+        "severity" : "info"
+      },
+      {
+        "code" : "validation.truncated",
+        "message" : "551 more glucose.implausibleValue issues not listed",
+        "severity" : "info"
+      }
+    ]
+  }
+}
